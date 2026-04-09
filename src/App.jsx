@@ -323,11 +323,7 @@ export default function App() {
 
               <div className="mt-10 grid grid-cols-3 gap-3 max-w-xl">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                  <div className="text-2xl md:text-3xl font-semibold text-[#e9d4ac]">19</div>
-                  <div className="text-[11px] uppercase tracking-[0.25em] text-white/45 mt-1">
-                    {t.clips}
-                  </div>
-                </div>
+                 
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
                   <div className="text-2xl md:text-3xl font-semibold text-[#e9d4ac]">100%</div>
