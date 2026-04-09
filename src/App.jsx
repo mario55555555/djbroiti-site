@@ -1,88 +1,148 @@
-import { useMemo, useState } from "react";
-import { Analytics } from "@vercel/analytics/react";
+import { useState } from "react";
 
 export default function App() {
   const [lang, setLang] = useState("he");
 
-  const youtubePlaylistId = "PLqNi4ilGBqeCX3zVNTRPxsmK3O7hKoEIx";
+  const content = {
+    he: {
+      dir: "rtl",
+      badge: "האתר הרשמי",
+      heroTitle1: "זה לא רק מוזיקה.",
+      heroTitle2: "זה העתיד של הרגש.",
+      heroText:
+        "DJ Broiti הוא אמן מוזיקה מבוסס בינה מלאכותית מירושלים, היוצר מוזיקה אלקטרונית רגשית, דיפ האוס, סאונד פרוגרסיבי וקליפים קולנועיים בעזרת AI.",
+      listenNow: "האזנה ביוטיוב",
+      watchTrailer: "לצפייה בטריילר",
+      spotifyNow: "Spotify",
+      quickLinksTitle: "קישורים מהירים",
+      quickLinksText: "כל המקומות הרשמיים של DJ Broiti במקום אחד.",
+      trailerTitle: "הטריילר הרשמי",
+      videosBadge: "כל הקליפים",
+      videosTitle: "הקליפים הרשמיים",
+      videosText:
+        "כל הקליפים הרשמיים של DJ Broiti במקום אחד — חוויית צפייה יוקרתית עם גישה ישירה ליוטיוב.",
+      platformsTitle: "האזינו בכל הפלטפורמות",
+      platformsText: "כל המוזיקה של DJ Broiti זמינה בפלטפורמות המובילות.",
+      aboutTitle: "אודות",
+      aboutText:
+        "DJ Broiti משלב שירים מקוריים, סיפור קולנועי וויזואלים מבוססי AI לחוויה מוזיקלית ייחודית. הפרויקט מחבר בין רגש, טכנולוגיה וסאונד אלקטרוני מודרני בעברית ובאנגלית.",
+      contactTitle: "יצירת קשר",
+      contactText: "לשיתופי פעולה, פניות ויצירת קשר רשמית:",
+      siteTitle: "האתר הרשמי",
+      watchOnYoutube: "לצפייה ביוטיוב",
+      footer: "DJ Broiti — האתר הרשמי",
+      officialVideos: "קליפים רשמיים",
+      streamMusic: "האזנה למוזיקה",
+      artistPage: "עמוד אמן רשמי",
+      visualsUpdates: "ויזואלים ועדכונים",
+      shortContent: "תוכן קצר",
+      officialLink: "קישור רשמי",
+      emailLabel: "מייל רשמי",
+    },
+    en: {
+      dir: "ltr",
+      badge: "OFFICIAL WEBSITE",
+      heroTitle1: "This is not just music.",
+      heroTitle2: "This is the future of emotion.",
+      heroText:
+        "DJ Broiti is an AI-generated music artist from Jerusalem, creating emotional electronic music, deep house, progressive sound, and cinematic AI-powered visuals.",
+      listenNow: "Listen on YouTube",
+      watchTrailer: "Watch Trailer",
+      spotifyNow: "Spotify",
+      quickLinksTitle: "Quick Links",
+      quickLinksText: "All official DJ Broiti destinations in one place.",
+      trailerTitle: "Official Trailer",
+      videosBadge: "All Music Videos",
+      videosTitle: "Official Music Videos",
+      videosText:
+        "All official DJ Broiti music videos in one premium gallery, with direct access to YouTube.",
+      platformsTitle: "Listen Everywhere",
+      platformsText: "Stream DJ Broiti across the leading music platforms.",
+      aboutTitle: "About",
+      aboutText:
+        "DJ Broiti blends original songs, cinematic storytelling, and AI-generated visuals into a unique music experience. The project combines emotion, technology, and modern electronic sound in both Hebrew and English.",
+      contactTitle: "Contact",
+      contactText: "For collaborations, inquiries, and official contact:",
+      siteTitle: "Official Website",
+      watchOnYoutube: "Watch on YouTube",
+      footer: "DJ Broiti — Official Website",
+      officialVideos: "Official videos",
+      streamMusic: "Stream the music",
+      artistPage: "Official artist page",
+      visualsUpdates: "Visuals & updates",
+      shortContent: "Short-form content",
+      officialLink: "Official link",
+      emailLabel: "Official email",
+    },
+  };
 
-  const t = useMemo(() => {
-    return lang === "he"
-      ? {
-          dir: "rtl",
-          navHome: "בית",
-          navAbout: "אודות",
-          navMusic: "מוזיקה",
-          navVideo: "טריילר",
-          navYoutube: "קליפים",
-          navContact: "יצירת קשר",
-          heroBadge: "DJ • Producer • AI Creator",
-          heroTitle: "DJ Broiti",
-          heroSubtitle: "Cinematic Electronic Experience",
-          heroText:
-            "DJ Broiti הוא אמן, מפיק ויוצר AI מירושלים, המשלב מוזיקה אלקטרונית מודרנית, ויזואליים קולנועיים וקליפים רשמיים ליצירת חוויה עוצמתית וייחודית.",
-          listenNow: "האזינו עכשיו",
-          watchTrailer: "צפו בטריילר",
-          aboutTitle: "אודות",
-          aboutText:
-            "DJ Broiti הוא אמן AI מירושלים, יוצר תוכן, וידאו ומוזיקה בעזרת בינה מלאכותית.",
-          musicTitle: "מוזיקה",
-          videoTitle: "טריילר רשמי",
-          youtubeGalleryTitle: "קליפים רשמיים",
-          youtubeGalleryText:
-            "כל השירים והקליפים של DJ Broiti, בנגן YouTube רשמי בתוך האתר.",
-          contactTitle: "יצירת קשר",
-          contactText: "להופעות, שיתופי פעולה ויצירת קשר:",
-          contactButton: "שלחו מייל",
-          followTitle: "עקבו אחרי DJ Broiti",
-          spotify: "ספוטיפיי",
-          apple: "אפל מיוזיק",
-          instagram: "אינסטגרם",
-          tiktok: "טיקטוק",
-          youtube: "יוטיוב",
-          fullPlaylist: "לפלייליסט המלא",
-          openYoutube: "פתח ביוטיוב",
-          switchLabel: "English",
-          footer: "כל הזכויות שמורות ל־DJ Broiti",
-        }
-      : {
-          dir: "ltr",
-          navHome: "Home",
-          navAbout: "About",
-          navMusic: "Music",
-          navVideo: "Trailer",
-          navYoutube: "Videos",
-          navContact: "Contact",
-          heroBadge: "DJ • Producer • AI Creator",
-          heroTitle: "DJ Broiti",
-          heroSubtitle: "Cinematic Electronic Experience",
-          heroText:
-            "DJ Broiti is an AI music artist from Jerusalem creating original electronic music, cinematic visuals, and official music videos for a global audience.",
-          listenNow: "Listen Now",
-          watchTrailer: "Watch Trailer",
-          aboutTitle: "About",
-          aboutText:
-            "DJ Broiti is an AI artist from Jerusalem creating music and videos.",
-          musicTitle: "Music",
-          videoTitle: "Official Trailer",
-          youtubeGalleryTitle: "Official Videos",
-          youtubeGalleryText:
-            "All DJ Broiti songs and videos, played through YouTube.",
-          contactTitle: "Contact",
-          contactText: "For bookings and collaborations:",
-          contactButton: "Send Email",
-          followTitle: "Follow DJ Broiti",
-          spotify: "Spotify",
-          apple: "Apple Music",
-          instagram: "Instagram",
-          tiktok: "TikTok",
-          youtube: "YouTube",
-          fullPlaylist: "Full Playlist",
-          openYoutube: "Open on YouTube",
-          switchLabel: "עברית",
-          footer: "All rights reserved to DJ Broiti",
-        };
-  }, [lang]);
+  const t = content[lang];
+
+  const platformLinks = [
+    {
+      name: "YouTube",
+      href: "https://www.youtube.com/@djbroiti",
+      sub: t.officialVideos,
+      glow: "from-red-500/20 via-transparent to-transparent",
+      border: "hover:border-red-400/30",
+    },
+    {
+      name: "Spotify",
+      href: "https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D",
+      sub: t.streamMusic,
+      glow: "from-green-500/20 via-transparent to-transparent",
+      border: "hover:border-green-400/30",
+    },
+    {
+      name: "Apple Music",
+      href: "https://music.apple.com/il/artist/dj-broiti/1832848545",
+      sub: t.artistPage,
+      glow: "from-white/10 via-transparent to-transparent",
+      border: "hover:border-white/30",
+    },
+    {
+      name: "Amazon Music",
+      href: "https://music.amazon.com/artists/B0FLG5V3TG/dj-broiti",
+      sub: t.artistPage,
+      glow: "from-orange-500/20 via-transparent to-yellow-500/20",
+      border: "hover:border-orange-400/30",
+    },
+    {
+      name: "TIDAL",
+      href: "https://tidal.com/artist/64947741",
+      sub: t.artistPage,
+      glow: "from-cyan-500/20 via-transparent to-blue-500/20",
+      border: "hover:border-cyan-300/30",
+    },
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/djbroiti/",
+      sub: t.visualsUpdates,
+      glow: "from-pink-500/20 via-transparent to-purple-500/20",
+      border: "hover:border-pink-400/30",
+    },
+    {
+      name: "TikTok",
+      href: "https://www.tiktok.com/@djbroiti",
+      sub: t.shortContent,
+      glow: "from-fuchsia-500/20 via-transparent to-cyan-500/20",
+      border: "hover:border-fuchsia-400/30",
+    },
+    {
+      name: "djbroiti.com",
+      href: "https://djbroiti.com",
+      sub: t.officialLink,
+      glow: "from-violet-500/20 via-transparent to-cyan-500/20",
+      border: "hover:border-violet-400/30",
+    },
+    {
+      name: "djbroiti@gmail.com",
+      href: "mailto:djbroiti@gmail.com",
+      sub: t.emailLabel,
+      glow: "from-cyan-500/20 via-transparent to-white/10",
+      border: "hover:border-cyan-300/30",
+    },
+  ];
 
   const youtubeVideos =
     lang === "he"
@@ -320,305 +380,349 @@ export default function App() {
         ];
 
   return (
-    <>
-      <div
-        dir={t.dir}
-        className="relative min-h-screen overflow-x-hidden bg-black text-white"
-      >
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-        >
-          <source src="/bg-video.mp4" type="video/mp4" />
-        </video>
+    <div
+      dir={t.dir}
+      className="relative min-h-screen overflow-x-hidden bg-black text-white"
+    >
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -left-24 top-0 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl" />
+        <div className="absolute right-0 top-40 h-96 w-96 rounded-full bg-fuchsia-600/20 blur-3xl" />
+        <div className="absolute bottom-0 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-violet-500/20 blur-3xl" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_35%)]" />
+      </div>
 
-        <div className="absolute inset-0 bg-black/75" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black" />
-        <div className="absolute -top-20 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-fuchsia-500/20 blur-3xl" />
-        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
+      <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-500 text-lg font-black text-black shadow-[0_0_30px_rgba(34,211,238,0.35)]">
+            DJ
+          </div>
+          <div>
+            <div className="text-lg font-black tracking-[0.25em]">DJ BROITI</div>
+            <div className="text-xs uppercase tracking-[0.25em] text-white/50">
+              AI Music Artist
+            </div>
+          </div>
+        </div>
 
-        <header className="relative z-20 border-b border-white/10 bg-black/20 backdrop-blur-md">
-          <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-            <a href="#home" className="text-xl font-extrabold tracking-wide">
-              DJ Broiti
-            </a>
+        <div className="flex items-center gap-3">
+          <a
+            href="https://djbroiti.com"
+            className="hidden text-sm text-white/60 transition hover:text-white md:block"
+          >
+            djbroiti.com
+          </a>
 
-            <nav className="hidden gap-6 text-sm text-white/80 md:flex">
-              <a href="#home" className="transition hover:text-white">
-                {t.navHome}
-              </a>
-              <a href="#about" className="transition hover:text-white">
-                {t.navAbout}
-              </a>
-              <a href="#music" className="transition hover:text-white">
-                {t.navMusic}
-              </a>
-              <a href="#video" className="transition hover:text-white">
-                {t.navVideo}
-              </a>
-              <a href="#youtube" className="transition hover:text-white">
-                {t.navYoutube}
-              </a>
-              <a href="#contact" className="transition hover:text-white">
-                {t.navContact}
-              </a>
-            </nav>
-
+          <div className="flex rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-xl">
             <button
-              onClick={() => setLang(lang === "he" ? "en" : "he")}
-              className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
+              onClick={() => setLang("he")}
+              className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                lang === "he"
+                  ? "bg-gradient-to-r from-cyan-400 to-violet-500 text-black"
+                  : "text-white/70 hover:text-white"
+              }`}
             >
-              {t.switchLabel}
+              HE
+            </button>
+            <button
+              onClick={() => setLang("en")}
+              className={`rounded-full px-4 py-2 text-sm font-bold transition ${
+                lang === "en"
+                  ? "bg-gradient-to-r from-cyan-400 to-violet-500 text-black"
+                  : "text-white/70 hover:text-white"
+              }`}
+            >
+              EN
             </button>
           </div>
-        </header>
+        </div>
+      </header>
 
-        <main className="relative z-10">
-          <section
-            id="home"
-            className="mx-auto flex min-h-[92vh] max-w-7xl items-center px-6 py-10"
+      <section className="relative z-10 mx-auto max-w-7xl px-4 pb-10 pt-10 text-center sm:px-6 lg:px-8 lg:pt-16">
+        <div className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.25em] text-cyan-300">
+          {t.badge}
+        </div>
+
+        <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl">
+          <span className="block">{t.heroTitle1}</span>
+          <span className="mt-2 block bg-gradient-to-r from-cyan-300 via-white to-violet-400 bg-clip-text text-transparent">
+            {t.heroTitle2}
+          </span>
+        </h1>
+
+        <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/70 sm:text-lg">
+          {t.heroText}
+        </p>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <a
+            href="https://www.youtube.com/@djbroiti"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-7 py-3 text-sm font-extrabold text-black shadow-[0_0_35px_rgba(34,211,238,0.35)] transition hover:scale-[1.02]"
           >
-            <div className="grid w-full items-center gap-12">
-              <div className="mx-auto max-w-2xl text-center">
-                <p className="mb-3 inline-block rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.25em] text-white/70 backdrop-blur-md">
-                  {t.heroBadge}
-                </p>
+            {t.listenNow}
+          </a>
 
-                <h1 className="mb-4 text-5xl font-black leading-[0.95] sm:text-6xl lg:text-7xl">
-                  <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent">
-                    {t.heroTitle}
-                  </span>
-                </h1>
+          <a
+            href="#trailer"
+            className="rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-bold text-white backdrop-blur-xl transition hover:border-white/30 hover:bg-white/10"
+          >
+            {t.watchTrailer}
+          </a>
 
-                <p className="mb-4 text-xl font-semibold text-white/85 sm:text-2xl">
-                  {t.heroSubtitle}
-                </p>
+          <a
+            href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full border border-green-400/20 bg-green-500/10 px-7 py-3 text-sm font-bold text-green-200 backdrop-blur-xl transition hover:border-green-300/40 hover:bg-green-500/15"
+          >
+            {t.spotifyNow}
+          </a>
+        </div>
+      </section>
 
-                <p className="mx-auto mb-8 max-w-xl text-lg leading-8 text-zinc-300">
-                  {t.heroText}
-                </p>
+      <section className="relative z-10 mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="rounded-[30px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl md:p-8">
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-black tracking-tight text-white md:text-4xl">
+              {t.quickLinksTitle}
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/60 md:text-base">
+              {t.quickLinksText}
+            </p>
+          </div>
 
-                <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
+            {platformLinks.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:scale-[1.03] ${item.border}`}
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${item.glow} opacity-0 transition group-hover:opacity-100`}
+                />
+                <div className="relative z-10">
+                  <div className="text-lg font-semibold break-words">{item.name}</div>
+                  <div className="text-sm text-gray-400">{item.sub}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="trailer"
+        className="relative z-10 mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8"
+      >
+        <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_10px_50px_rgba(0,0,0,0.45)] backdrop-blur-xl md:p-6">
+          <div className="mb-5 flex items-center justify-between gap-4">
+            <h2 className="text-2xl font-black tracking-tight text-white md:text-4xl">
+              {t.trailerTitle}
+            </h2>
+            <div className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.25em] text-cyan-300">
+              Trailer
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-[24px] border border-white/10 bg-black">
+            <div className="aspect-video">
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/q8yf6nkUP2k?rel=0"
+                title="DJ Broiti Official Trailer"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-10 text-center">
+          <div className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-300">
+            {t.videosBadge}
+          </div>
+
+          <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
+            {t.videosTitle}
+          </h2>
+
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/65 md:text-base">
+            {t.videosText}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {youtubeVideos.map((video, index) => (
+            <article
+              key={`${video.title}-${index}`}
+              className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-[0_16px_60px_rgba(34,211,238,0.12)]"
+            >
+              <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
+                <div className="absolute -left-16 top-0 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl" />
+                <div className="absolute -right-10 bottom-0 h-32 w-32 rounded-full bg-fuchsia-500/20 blur-3xl" />
+              </div>
+
+              <div className="relative z-10 p-4">
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <div>
+                    <div className="mb-1 text-xs font-bold uppercase tracking-[0.25em] text-cyan-300/80">
+                      {String(index + 1).padStart(2, "0")}
+                    </div>
+                    <h3 className="text-xl font-extrabold leading-tight text-white">
+                      {video.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-white/55">{video.subtitle}</p>
+                  </div>
+
                   <a
-                    href="#music"
-                    className="rounded-full bg-white px-7 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
+                    href={video.watchUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/80 transition hover:border-cyan-300/40 hover:bg-cyan-400/10 hover:text-cyan-200"
                   >
-                    {t.listenNow}
-                  </a>
-
-                  <a
-                    href="#youtube"
-                    className="rounded-full border border-white/20 bg-white/10 px-7 py-3 font-bold text-white transition hover:scale-105 hover:bg-white/20"
-                  >
-                    {lang === "he" ? "צפו בקליפים" : "Watch Videos"}
+                    YouTube
                   </a>
                 </div>
-              </div>
-            </div>
-          </section>
 
-          <section id="about" className="mx-auto max-w-7xl px-6 py-12">
-            <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-              <h2 className="mb-4 text-3xl font-bold">{t.aboutTitle}</h2>
-              <p className="leading-8 text-zinc-300">{t.aboutText}</p>
-            </div>
-          </section>
+                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black">
+                  <div className="pointer-events-none absolute inset-0 z-10 opacity-0 transition duration-300 group-hover:opacity-100">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                    <div className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 shadow-2xl backdrop-blur-md">
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                        className="ml-1 text-white"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                  </div>
 
-          <section id="music" className="mx-auto max-w-7xl px-6 py-12">
-            <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-              <h2 className="mb-4 text-3xl font-bold">{t.musicTitle}</h2>
-              <p className="mb-5 text-zinc-300">
-                {lang === "he"
-                  ? "האזינו ל־DJ Broiti בספוטיפיי דרך האתר הרשמי."
-                  : "Listen to DJ Broiti on Spotify through the official website."}
-              </p>
-              <div className="overflow-hidden rounded-[22px] border border-white/10">
-                <iframe
-                  style={{ borderRadius: "16px" }}
-                  src="https://open.spotify.com/embed/artist/5pfzwmN1A0pYdZZiQGf15D?utm_source=generator"
-                  width="100%"
-                  height="352"
-                  frameBorder="0"
-                  allowFullScreen=""
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  title="Spotify Embed"
-                />
-              </div>
-            </div>
-          </section>
-
-          <section id="video" className="mx-auto max-w-7xl px-6 py-12">
-            <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-              <h2 className="mb-4 text-3xl font-bold">{t.videoTitle}</h2>
-              <p className="mb-5 text-zinc-300">
-                {lang === "he"
-                  ? "צפו בטריילר הרשמי של DJ Broiti ביוטיוב."
-                  : "Watch the official DJ Broiti trailer on YouTube."}
-              </p>
-              <div className="aspect-video overflow-hidden rounded-[22px] border border-white/10">
-                <iframe
-                  className="h-full w-full"
-                  src="https://www.youtube.com/embed/q8yf6nkUP2k?rel=0"
-                  title="DJ Broiti Trailer"
-                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          </section>
-
-          <section id="youtube" className="mx-auto max-w-7xl px-6 py-14">
-            <div className="mb-8 flex items-end justify-between gap-4">
-              <div>
-                <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/50">
-                  YouTube
-                </p>
-                <h2 className="text-3xl font-bold sm:text-4xl">
-                  {t.youtubeGalleryTitle}
-                </h2>
-              </div>
-
-              <a
-                href={`https://www.youtube.com/playlist?list=${youtubePlaylistId}`}
-                target="_blank"
-                rel="noreferrer"
-                className="hidden rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/20 md:inline-flex"
-              >
-                {t.fullPlaylist}
-              </a>
-            </div>
-
-            <p className="mb-8 max-w-3xl text-zinc-300">
-              {t.youtubeGalleryText}
-            </p>
-
-            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-              {youtubeVideos.map((video) => (
-                <div
-                  key={video.title}
-                  className="overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.06] shadow-xl backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-white/20"
-                >
-                  <div className="aspect-video overflow-hidden border-b border-white/10 bg-black">
+                  <div className="aspect-video">
                     <iframe
                       className="h-full w-full"
                       src={video.embedUrl}
                       title={video.title}
-                      loading="lazy"
-                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                     />
                   </div>
+                </div>
 
-                  <div className="p-5">
-                    <h3 className="mb-2 text-2xl font-bold text-white">
-                      {video.title}
-                    </h3>
-                    <p className="mb-3 text-zinc-300">{video.subtitle}</p>
-                    <p className="mb-5 text-sm leading-7 text-zinc-400">
-                      {lang === "he"
-                        ? `צפו ב־${video.title} — קליפ רשמי של DJ Broiti ביוטיוב.`
-                        : `Watch ${video.title}, an official DJ Broiti music video on YouTube.`}
-                    </p>
+                <div className="mt-4 flex items-center justify-between gap-3">
+                  <span className="text-xs uppercase tracking-[0.22em] text-white/35">
+                    DJ Broiti
+                  </span>
 
-                    <a
-                      href={video.watchUrl}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex rounded-full bg-white px-5 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
+                  <a
+                    href={video.watchUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-4 py-2 text-sm font-bold text-black transition hover:scale-[1.02]"
+                  >
+                    {t.watchOnYoutube}
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="stroke-current"
                     >
-                      {t.openYoutube}
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section id="contact" className="mx-auto max-w-7xl px-6 py-12">
-            <div className="grid gap-8 lg:grid-cols-2">
-              <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-                <h2 className="mb-4 text-3xl font-bold">{t.contactTitle}</h2>
-                <p className="mb-5 text-zinc-300">{t.contactText}</p>
-
-                <a
-                  href="mailto:djbroiti@gmail.com"
-                  className="inline-flex rounded-full bg-white px-6 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
-                >
-                  {t.contactButton}
-                </a>
-
-                <div className="mt-6 text-zinc-400">djbroiti@gmail.com</div>
-              </div>
-
-              <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
-                <h2 className="mb-6 text-3xl font-bold">{t.followTitle}</h2>
-
-                <div className="flex flex-wrap gap-4">
-                  <a
-                    href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full bg-green-500 px-6 py-3 font-bold text-black transition hover:scale-105 hover:bg-green-400"
-                  >
-                    {t.spotify}
-                  </a>
-
-                  <a
-                    href="https://music.apple.com/il/artist/dj-broiti/1832848545"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full bg-white px-6 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
-                  >
-                    {t.apple}
-                  </a>
-
-                  <a
-                    href="https://www.instagram.com/djbroiti/"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 font-bold text-white transition hover:scale-105"
-                  >
-                    {t.instagram}
-                  </a>
-
-                  <a
-                    href="https://www.tiktok.com/@djbroiti"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full bg-white px-6 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
-                  >
-                    {t.tiktok}
-                  </a>
-
-                  <a
-                    href={`https://www.youtube.com/playlist?list=${youtubePlaylistId}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="rounded-full bg-red-600 px-6 py-3 font-bold text-white transition hover:scale-105 hover:bg-red-500"
-                  >
-                    {t.youtube}
+                      <path
+                        d="M7 17L17 7M17 7H9M17 7V15"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </a>
                 </div>
               </div>
-            </div>
-          </section>
-        </main>
+            </article>
+          ))}
+        </div>
+      </section>
 
-        <footer className="relative z-10 mt-10 border-t border-white/10 px-6 py-8 text-center">
-          <div className="mx-auto max-w-7xl">
-            <p className="text-lg font-bold tracking-wide text-white">DJ Broiti</p>
-            <p className="mt-2 text-sm text-zinc-400">{t.footer}</p>
+      <section className="relative z-10 mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="rounded-[30px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl md:p-8">
+          <div className="mb-8 text-center">
+            <h2 className="text-3xl font-black tracking-tight text-white md:text-4xl">
+              {t.platformsTitle}
+            </h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/60 md:text-base">
+              {t.platformsText}
+            </p>
           </div>
-        </footer>
-      </div>
 
-      <Analytics />
-    </>
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
+            {platformLinks.map((item) => (
+              <a
+                key={`${item.name}-platform`}
+                href={item.href}
+                target={item.href.startsWith("mailto:") ? undefined : "_blank"}
+                rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
+                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:scale-[1.03] ${item.border}`}
+              >
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${item.glow} opacity-0 transition group-hover:opacity-100`}
+                />
+                <div className="relative z-10">
+                  <div className="text-lg font-semibold break-words">{item.name}</div>
+                  <div className="text-sm text-gray-400">{item.sub}</div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative z-10 mx-auto mt-24 grid max-w-7xl grid-cols-1 gap-6 px-4 pb-20 sm:px-6 lg:grid-cols-3 lg:px-8">
+        <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl lg:col-span-2">
+          <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">
+            {t.aboutTitle}
+          </h2>
+          <p className="mt-4 text-base leading-8 text-white/70">{t.aboutText}</p>
+        </div>
+
+        <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl">
+          <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">
+            {t.contactTitle}
+          </h2>
+          <p className="mt-4 text-base leading-8 text-white/70">{t.contactText}</p>
+          <a
+            href="mailto:djbroiti@gmail.com"
+            className="mt-4 inline-block text-lg font-bold text-cyan-300 transition hover:text-cyan-200"
+          >
+            djbroiti@gmail.com
+          </a>
+
+          <div className="mt-6 border-t border-white/10 pt-6">
+            <div className="text-sm uppercase tracking-[0.25em] text-white/40">
+              {t.siteTitle}
+            </div>
+            <a
+              href="https://djbroiti.com"
+              className="mt-2 inline-block text-base font-semibold text-white transition hover:text-cyan-200"
+            >
+              https://djbroiti.com
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="relative z-10 border-t border-white/10 px-4 py-8 text-center text-sm text-white/45">
+        {t.footer}
+      </footer>
+    </div>
   );
 }
