@@ -19,12 +19,12 @@ export default function App() {
           heroTitle: "DJ Broiti",
           heroSubtitle: "Cinematic Electronic Experience",
           heroText:
-            "DJ Broiti הוא אמן, מפיק ויוצר AI המשלב מוזיקה אלקטרונית מודרנית עם ויזואליים קולנועיים ליצירת חוויה רגשית, עוצמתית וייחודית.",
+            "DJ Broiti הוא אמן, מפיק ויוצר AI מירושלים, המשלב מוזיקה אלקטרונית מודרנית, ויזואליים קולנועיים וקליפים רשמיים ליצירת חוויה עוצמתית וייחודית.",
           listenNow: "האזינו עכשיו",
           watchTrailer: "צפו בטריילר",
           aboutTitle: "אודות",
           aboutText:
-            "DJ Broiti הוא אמן AI מירושלים, יוצר תוכן, וידאו ומוזיקה בעזרת בינה מלאכותית.",
+            "DJ Broiti הוא אמן AI מירושלים, יוצר תוכן, וידאו ומוזיקה בעזרת בינה מלאכותית. באתר הרשמי תוכלו למצוא שירים מקוריים, קליפים רשמיים, קישורים לסטרימינג וחוויה מוזיקלית־ויזואלית ייחודית.",
           musicTitle: "מוזיקה",
           videoTitle: "טריילר רשמי",
           youtubeGalleryTitle: "קליפים רשמיים",
@@ -56,12 +56,12 @@ export default function App() {
           heroTitle: "DJ Broiti",
           heroSubtitle: "Cinematic Electronic Experience",
           heroText:
-            "DJ Broiti is an artist, producer, and AI creator blending modern electronic music with cinematic visuals to craft a powerful and emotionally driven audiovisual experience.",
+            "DJ Broiti is an AI music artist from Jerusalem creating original electronic music, cinematic visuals, and official music videos for a global audience.",
           listenNow: "Listen Now",
           watchTrailer: "Watch Trailer",
           aboutTitle: "About",
           aboutText:
-            "DJ Broiti is an AI artist from Jerusalem, creating content, video, and music with artificial intelligence.",
+            "DJ Broiti is an AI artist from Jerusalem, creating original music, video, and cinematic content with artificial intelligence. On the official website you can explore songs, videos, and streaming links.",
           musicTitle: "Music",
           videoTitle: "Official Trailer",
           youtubeGalleryTitle: "Official Videos",
@@ -428,6 +428,11 @@ export default function App() {
         <section id="music" className="mx-auto max-w-7xl px-6 py-12">
           <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
             <h2 className="mb-4 text-3xl font-bold">{t.musicTitle}</h2>
+            <p className="mb-5 text-zinc-300">
+              {lang === "he"
+                ? "האזינו ל־DJ Broiti בספוטיפיי דרך האתר הרשמי."
+                : "Listen to DJ Broiti on Spotify through the official website."}
+            </p>
             <div className="overflow-hidden rounded-[22px] border border-white/10">
               <iframe
                 style={{ borderRadius: "16px" }}
@@ -447,6 +452,11 @@ export default function App() {
         <section id="video" className="mx-auto max-w-7xl px-6 py-12">
           <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
             <h2 className="mb-4 text-3xl font-bold">{t.videoTitle}</h2>
+            <p className="mb-5 text-zinc-300">
+              {lang === "he"
+                ? "צפו בטריילר הרשמי של DJ Broiti ביוטיוב."
+                : "Watch the official DJ Broiti trailer on YouTube."}
+            </p>
             <div className="aspect-video overflow-hidden rounded-[22px] border border-white/10">
               <iframe
                 className="h-full w-full"
@@ -507,7 +517,12 @@ export default function App() {
                   <h3 className="mb-2 text-2xl font-bold text-white">
                     {video.title}
                   </h3>
-                  <p className="mb-5 text-zinc-300">{video.subtitle}</p>
+                  <p className="mb-3 text-zinc-300">{video.subtitle}</p>
+                  <p className="mb-5 text-sm leading-7 text-zinc-400">
+                    {lang === "he"
+                      ? `צפו ב־${video.title} — קליפ רשמי של DJ Broiti ביוטיוב.`
+                      : `Watch ${video.title}, an official DJ Broiti music video on YouTube.`}
+                  </p>
 
                   <a
                     href={video.watchUrl}
