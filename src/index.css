@@ -1,32 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Montserrat:wght@200;300;400;500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  :root {
+    --onyx: #09090b;
+    --void: #000000;
+    --gold: #c9a96e;
+    --platinum: #e4e4e7;
+    --silver: #a1a1aa;
+  }
+  
+  html { scroll-behavior: smooth; }
+  
+  body {
+    background-color: var(--onyx);
+    color: var(--platinum);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Cinzel', serif;
+  }
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: #000;
+@layer utilities {
+  .text-gold { color: var(--gold); }
+  .text-platinum { color: var(--platinum); }
+  .text-silver { color: var(--silver); }
+  .bg-onyx { background-color: var(--onyx); }
+  .bg-void { background-color: var(--void); }
+  .border-gold { border-color: var(--gold); }
+  .font-body { font-family: 'Montserrat', sans-serif; }
 }
 
-* {
-  box-sizing: border-box;
+@layer components {
+  /* תפריט ניווט */
+  .nav-glass { @apply bg-[#09090b]/80 backdrop-blur-md border-b border-white/5; }
+  .nav-glass-mobile { @apply bg-[#09090b]/95 backdrop-blur-xl border border-white/10 rounded-lg; }
+  
+  /* כפתורים */
+  .btn-primary { @apply bg-[#c9a96e] text-black px-8 py-3 rounded-sm hover:bg-white hover:scale-105 transition-all duration-500 shadow-[0_0_20px_rgba(201,169,110,0.2)]; }
+  .btn-outline { @apply border border-[#c9a96e]/50 text-[#c9a96e] px-8 py-3 rounded-sm hover:bg-[#c9a96e] hover:text-black transition-all duration-500; }
+  .btn-ghost { @apply text-[#c9a96e] hover:text-white hover:translate-x-2 transition-all duration-500; }
+  
+  /* תגיות וטקסטים */
+  .label-tag { @apply text-[10px] tracking-[0.2em] uppercase text-[#c9a96e] border border-[#c9a96e]/30 px-4 py-1.5 rounded-full inline-block bg-[#c9a96e]/5 backdrop-blur-sm; }
+  .label-tag-xs { @apply text-[8px] tracking-widest uppercase text-[#e4e4e7]/60 bg-white/5 px-2 py-1 rounded-sm border border-white/10; }
+  
+  /* אפקטים ורקעים עשירים */
+  .hero-bg { background: radial-gradient(circle at center, #18181b 0%, #09090b 100%); }
+  .release-bg { background: linear-gradient(to bottom, #09090b, #111113); }
+  .lyrics-bg { background: radial-gradient(ellipse at top, #18181b 0%, #09090b 100%); }
+  
+  /* כדורי אור מעוצבים ברקע */
+  .orb { @apply absolute rounded-full blur-[100px] opacity-20 pointer-events-none; }
+  .orb-1 { width: 50vw; height: 50vw; background: var(--gold); top: -20%; left: -10%; animation: pulse 8s infinite alternate; }
+  .orb-2 { width: 40vw; height: 40vw; background: #ffffff; bottom: 10%; right: -10%; opacity: 0.1; }
+  
+  /* כרטיסיות ואלמנטים */
+  .stat-card { @apply flex flex-col items-center justify-center p-6 border border-white/5 bg-white/[0.02] rounded-lg hover:border-[#c9a96e]/30 hover:bg-white/[0.04] transition-all duration-500; }
+  .platform-card { @apply flex flex-col items-center p-6 border border-white/5 bg-white/[0.02] rounded-xl hover:bg-white/5 hover:border-white/20 transition-all duration-500 min-w-[130px] hover:-translate-y-1; }
+  .platform-icon { @apply text-white/70 transition-colors duration-500; }
+  .platform-card:hover .platform-icon { color: var(--accent); }
+  
+  /* וידאו וגלריה */
+  .video-card { @apply cursor-pointer; }
+  .video-card:hover .video-card-thumb { @apply border-[#c9a96e]/50; }
+  .video-card-thumb { @apply rounded-xl border border-white/10 transition-all duration-700 shadow-lg; }
+  .short-card { @apply hover:scale-[1.03] transition-transform duration-500; }
+  .gallery-card-outer { @apply border border-white/10 rounded-xl hover:border-[#c9a96e]/50 transition-all duration-700 overflow-hidden shadow-2xl; }
+  
+  /* פלייסהולדרים לתמונות (עד שתכניס את התמונות האמיתיות) */
+  .video-thumb-1 { background: linear-gradient(45deg, #18181b, #27272a); }
+  .video-thumb-2 { background: linear-gradient(45deg, #09090b, #1f1f22); }
+  .video-thumb-3 { background: linear-gradient(45deg, #111113, #27272a); }
+  .gallery-thumb-g1 { background: #18181b; }
+  .gallery-thumb-g2 { background: #27272a; }
+  .gallery-thumb-g3 { background: #1f1f22; }
+  .gallery-thumb-g4 { background: #09090b; }
+  .gallery-thumb-g5 { background: #111113; }
+  .gallery-thumb-g6 { background: #18181b; }
+  .gallery-thumb-g7 { background: #27272a; }
+  .short-thumb-1 { background: #18181b; }
+  .short-thumb-2 { background: #09090b; }
+  .short-thumb-3 { background: #111113; }
+  .short-thumb-4 { background: #1f1f22; }
 }
 
-html,
-body,
-#root {
-  min-height: 100%;
-}
-
-iframe {
-  display: block;
-}
-
-a,
-button {
-  transition: 0.25s ease;
+@keyframes pulse {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.15; }
+  100% { transform: scale(1.1) translate(2%, 2%); opacity: 0.25; }
 }

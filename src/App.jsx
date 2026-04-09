@@ -1,728 +1,549 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const YoutubeIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 2-2h15a2 2 0 0 1 2 2 24.12 24.12 0 0 1 0 10 2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2Z" />
+    <path d="m10 15 5-3-5-3z" />
+  </svg>
+);
+
+const MusicIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M9 18V5l12-2v13" />
+    <circle cx="6" cy="18" r="3" />
+    <circle cx="18" cy="16" r="3" />
+  </svg>
+);
+
+const GlobeIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10" />
+    <path d="M2 12h20" />
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+  </svg>
+);
+
+const MailIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="5" width="18" height="14" rx="2" />
+    <path d="m3 7 9 6 9-6" />
+  </svg>
+);
+
+const InstagramIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="2" y="2" width="20" height="20" rx="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <path d="M17.5 6.5h.01" />
+  </svg>
+);
+
+const TiktokIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16.5 3c.4 2 1.6 3.5 3.5 4v3.1c-1.2 0-2.4-.3-3.5-.9v6.2c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .7 0 1 .1v3.2c-.3-.1-.6-.1-1-.1-1.5 0-2.8 1.2-2.8 2.8s1.2 2.8 2.8 2.8 2.8-1.2 2.8-2.8V3h3.2z" />
+  </svg>
+);
+
+const SpotifyIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm4.59 14.52a.62.62 0 0 1-.86.2c-2.36-1.44-5.33-1.76-8.84-.95a.62.62 0 1 1-.28-1.21c3.83-.88 7.1-.52 9.77 1.11.3.18.39.56.21.85zm1.23-2.73a.78.78 0 0 1-1.07.26c-2.7-1.66-6.81-2.14-10-1.16a.78.78 0 1 1-.46-1.49c3.64-1.12 8.16-.58 11.28 1.34.37.23.49.71.25 1.05zm.11-2.84c-3.23-1.92-8.56-2.1-11.64-1.16a.94.94 0 0 1-.55-1.79c3.54-1.08 9.43-.87 13.15 1.34a.94.94 0 0 1-.96 1.61z" />
+  </svg>
+);
+
+const AppleIcon = () => (
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+    <path d="M16.37 12.61c.02 2.14 1.88 2.85 1.9 2.86-.02.05-.3 1.03-1 2.04-.6.88-1.24 1.75-2.22 1.77-.96.02-1.27-.57-2.37-.57-1.1 0-1.44.55-2.35.59-.95.03-1.67-.94-2.28-1.82-1.24-1.79-2.18-5.05-.91-7.26.63-1.1 1.76-1.8 2.98-1.82.93-.02 1.81.63 2.37.63.56 0 1.62-.77 2.73-.66.47.02 1.79.19 2.64 1.43-.07.04-1.58.92-1.56 2.81zM14.8 5.8c.5-.61.84-1.46.75-2.3-.72.03-1.58.48-2.1 1.09-.46.53-.86 1.39-.75 2.2.8.06 1.61-.41 2.1-.99z" />
+  </svg>
+);
+
+const ALL_CLIPS = [
+  { title: { en: "Shomer Alay", he: "שומר עליי" }, id: "SBsVm1H1tSM", cat: { en: "Latest Release", he: "הוצאה חדשה" }, featured: true },
+  { title: { en: "Shavirr Shel Shniya", he: "שבריר של שנייה" }, id: "h_ZhlUu9zMc", cat: { en: "Official Video", he: "קליפ רשמי" } },
+  { title: { en: "Ei Sham (Remix)", he: "אי שם (Remix)" }, id: "wAtPoT2rfwg", cat: { en: "Remix", he: "רמיקס" } },
+  { title: { en: "Ei Sham", he: "אי שם" }, id: "zCA2hASBCuo", cat: { en: "Original Song", he: "שיר מקורי" } },
+  { title: { en: "My Second Self (Live)", he: "החצי השני שלי (לייב בכיכר האשליות)" }, id: "8vaVKwRikWw", cat: { en: "Live", he: "לייב" } },
+  { title: { en: "khalamti Alayikh (Club Remix)", he: "חלמתי עלייך (Club Remix)" }, id: "BKioBZHjcZA", cat: { en: "Club Remix", he: "קלאב רמיקס" } },
+  { title: { en: "Khalamti Alayikh", he: "חלמתי עלייך" }, id: "AlRWp4A-snM", cat: { en: "Original Song", he: "שיר מקורי" } },
+  { title: { en: "Levadi", he: "לבדי" }, id: "gNoOEpG1ZY4", cat: { en: "Original Song", he: "שיר מקורי" } },
+  { title: { en: "Here Comes The Storm", he: "Here Comes The Storm" }, id: "j8gr-UhfFj8", cat: { en: "Official Release", he: "הוצאה רשמית" } },
+  { title: { en: "Masa - Cover", he: "מסע - קאבר" }, id: "coYAIaSQupc", cat: { en: "Cover", he: "קאבר" } },
+  { title: { en: "I Don't Feel Real", he: "I Don't Feel Real" }, id: "2Q5z5VLKnoo", cat: { en: "Official Video", he: "קליפ רשמי" } },
+  { title: { en: "And There Was Light", he: "And There Was Light" }, id: "-C7zS5kjZkQ", cat: { en: "Audio Visual", he: "אודיו ויזואלי" } },
+  { title: { en: "My Second Self", he: "My Second Self" }, id: "RB86jrC2yRc", cat: { en: "Original Mix", he: "גרסה מקורית" } },
+  { title: { en: "My Second Self (Live Rock)", he: "My Second Self (Live Rock)" }, id: "MiON30oxUjk", cat: { en: "Live Rock", he: "לייב רוק" } },
+  { title: { en: "Fighting On Her Own", he: "Fighting On Her Own" }, id: "EmDesEEk_sg", cat: { en: "Official Video", he: "קליפ רשמי" } },
+  { title: { en: "Hard to Break", he: "Hard to Break" }, id: "RU7L4FleDlk", cat: { en: "Official Video", he: "קליפ רשמי" } },
+  { title: { en: "Hard to Break (Alternate)", he: "Hard to Break (Alternate)" }, id: "jPPafrSdkf0", cat: { en: "Alternate Version", he: "גרסה חלופית" } },
+  { title: { en: "Somebody Else", he: "Somebody Else" }, id: "rK1GhEbIF-k", cat: { en: "Official Video", he: "קליפ רשמי" } },
+  { title: { en: "Somebody Else (Hebrew)", he: "Somebody Else בעברית" }, id: "ZYq-fRCVc34", cat: { en: "Hebrew Version", he: "גרסה בעברית" } },
+];
+
+const content = {
+  en: {
+    navHome: "Home",
+    navArchive: "Archive",
+    navAbout: "About",
+    navContact: "Contact",
+    brandSub: "Official Archive",
+    heroBadge: "19 Original Creations",
+    heroTitle1: "DJ Broiti",
+    heroTitle2: "Cinematic Music Universe",
+    heroText:
+      "An official destination for original releases, remixes, live versions, and cinematic visual storytelling powered by imagination and AI.",
+    watchFeatured: "Watch Featured",
+    exploreArchive: "Explore Archive",
+    clips: "Clips",
+    official: "Official",
+    cinematic: "Cinematic",
+    featured: "Featured Release",
+    featuredText:
+      "A spotlight release presented with a premium visual layout designed to feel like a luxury international artist page.",
+    openClip: "Open Clip",
+    fullCollection: "Full Collection",
+    exploreAll: "Explore All Clips",
+    collectionText:
+      "Every release in one elegant archive, optimized for desktop and mobile.",
+    watchYoutube: "Watch on YouTube",
+    aboutTitle: "About",
+    aboutText:
+      "DJ Broiti is an AI artist from Jerusalem, creating music, visuals, and cinematic digital experiences through imagination and artificial intelligence.",
+    aboutText2:
+      "This official site brings together original songs, visual storytelling, and premium access to the full archive.",
+    contactTitle: "Contact",
+    contactText: "For collaborations, music, official inquiries, and creative projects:",
+    followTitle: "Follow",
+    footer: "Official Music Archive · 2026",
+    emailButton: "Send Email",
+  },
+  he: {
+    navHome: "בית",
+    navArchive: "ארכיון",
+    navAbout: "אודות",
+    navContact: "יצירת קשר",
+    brandSub: "הארכיון הרשמי",
+    heroBadge: "19 יצירות מקוריות",
+    heroTitle1: "DJ Broiti",
+    heroTitle2: "יקום מוזיקלי קולנועי",
+    heroText:
+      "בית רשמי לכל ההוצאות המקוריות, הרמיקסים, גרסאות הלייב והסיפור הוויזואלי הקולנועי שנוצר בדמיון ובבינה מלאכותית.",
+    watchFeatured: "צפה בקטע הנבחר",
+    exploreArchive: "לארכיון",
+    clips: "קליפים",
+    official: "רשמי",
+    cinematic: "קולנועי",
+    featured: "קטע נבחר",
+    featuredText:
+      "קטע מרכזי מתוך הארכיון, מוצג בפריסה יוקרתית שמרגישה כמו עמוד אמן בינלאומי.",
+    openClip: "פתח קליפ",
+    fullCollection: "האוסף המלא",
+    exploreAll: "לכל הקליפים",
+    collectionText:
+      "כל ההוצאות במקום אחד, בעיצוב אלגנטי שמותאם גם למחשב וגם למובייל.",
+    watchYoutube: "צפה ביוטיוב",
+    aboutTitle: "אודות",
+    aboutText:
+      "DJ Broiti הוא אמן AI מירושלים, היוצר מוזיקה, ויז'ואלים וחוויות דיגיטל קולנועיות באמצעות דמיון ובינה מלאכותית.",
+    aboutText2:
+      "האתר הרשמי מרכז במקום אחד את השירים המקוריים, הסיפור הוויזואלי והגישה המלאה לארכיון.",
+    contactTitle: "יצירת קשר",
+    contactText: "לשיתופי פעולה, מוזיקה, פניות רשמיות ופרויקטים יצירתיים:",
+    followTitle: "עקבו אחרי",
+    footer: "ארכיון מוזיקה רשמי · 2026",
+    emailButton: "שלח מייל",
+  },
+};
+
+const featuredClip = ALL_CLIPS.find((clip) => clip.featured) || ALL_CLIPS[0];
+
+function scrollToId(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+}
 
 export default function App() {
+  const [loaded, setLoaded] = useState(false);
   const [lang, setLang] = useState("he");
-
-  const content = {
-    he: {
-      dir: "rtl",
-      badge: "האתר הרשמי",
-      heroTitle1: "זה לא רק מוזיקה.",
-      heroTitle2: "זה העתיד של הרגש.",
-      heroText:
-        "DJ Broiti הוא אמן מוזיקה מבוסס בינה מלאכותית מירושלים, היוצר מוזיקה אלקטרונית רגשית, דיפ האוס, סאונד פרוגרסיבי וקליפים קולנועיים בעזרת AI.",
-      listenNow: "האזנה ביוטיוב",
-      watchTrailer: "לצפייה בטריילר",
-      spotifyNow: "Spotify",
-      quickLinksTitle: "קישורים מהירים",
-      quickLinksText: "כל המקומות הרשמיים של DJ Broiti במקום אחד.",
-      trailerTitle: "הטריילר הרשמי",
-      videosBadge: "כל הקליפים",
-      videosTitle: "הקליפים הרשמיים",
-      videosText:
-        "כל הקליפים הרשמיים של DJ Broiti במקום אחד — חוויית צפייה יוקרתית עם גישה ישירה ליוטיוב.",
-      platformsTitle: "האזינו בכל הפלטפורמות",
-      platformsText: "כל המוזיקה של DJ Broiti זמינה בפלטפורמות המובילות.",
-      aboutTitle: "אודות",
-      aboutText:
-        "DJ Broiti משלב שירים מקוריים, סיפור קולנועי וויזואלים מבוססי AI לחוויה מוזיקלית ייחודית. הפרויקט מחבר בין רגש, טכנולוגיה וסאונד אלקטרוני מודרני בעברית ובאנגלית.",
-      contactTitle: "יצירת קשר",
-      contactText: "לשיתופי פעולה, פניות ויצירת קשר רשמית:",
-      siteTitle: "האתר הרשמי",
-      watchOnYoutube: "לצפייה ביוטיוב",
-      footer: "DJ Broiti — האתר הרשמי",
-      officialVideos: "קליפים רשמיים",
-      streamMusic: "האזנה למוזיקה",
-      artistPage: "עמוד אמן רשמי",
-      visualsUpdates: "ויזואלים ועדכונים",
-      shortContent: "תוכן קצר",
-      officialLink: "קישור רשמי",
-      emailLabel: "מייל רשמי",
-    },
-    en: {
-      dir: "ltr",
-      badge: "OFFICIAL WEBSITE",
-      heroTitle1: "This is not just music.",
-      heroTitle2: "This is the future of emotion.",
-      heroText:
-        "DJ Broiti is an AI-generated music artist from Jerusalem, creating emotional electronic music, deep house, progressive sound, and cinematic AI-powered visuals.",
-      listenNow: "Listen on YouTube",
-      watchTrailer: "Watch Trailer",
-      spotifyNow: "Spotify",
-      quickLinksTitle: "Quick Links",
-      quickLinksText: "All official DJ Broiti destinations in one place.",
-      trailerTitle: "Official Trailer",
-      videosBadge: "All Music Videos",
-      videosTitle: "Official Music Videos",
-      videosText:
-        "All official DJ Broiti music videos in one premium gallery, with direct access to YouTube.",
-      platformsTitle: "Listen Everywhere",
-      platformsText: "Stream DJ Broiti across the leading music platforms.",
-      aboutTitle: "About",
-      aboutText:
-        "DJ Broiti blends original songs, cinematic storytelling, and AI-generated visuals into a unique music experience. The project combines emotion, technology, and modern electronic sound in both Hebrew and English.",
-      contactTitle: "Contact",
-      contactText: "For collaborations, inquiries, and official contact:",
-      siteTitle: "Official Website",
-      watchOnYoutube: "Watch on YouTube",
-      footer: "DJ Broiti — Official Website",
-      officialVideos: "Official videos",
-      streamMusic: "Stream the music",
-      artistPage: "Official artist page",
-      visualsUpdates: "Visuals & updates",
-      shortContent: "Short-form content",
-      officialLink: "Official link",
-      emailLabel: "Official email",
-    },
-  };
-
+  const isHebrew = lang === "he";
   const t = content[lang];
 
-  const platformLinks = [
-    {
-      name: "YouTube",
-      href: "https://www.youtube.com/@djbroiti",
-      sub: t.officialVideos,
-      glow: "from-red-500/20 via-transparent to-transparent",
-      border: "hover:border-red-400/30",
-    },
-    {
-      name: "Spotify",
-      href: "https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D",
-      sub: t.streamMusic,
-      glow: "from-green-500/20 via-transparent to-transparent",
-      border: "hover:border-green-400/30",
-    },
-    {
-      name: "Apple Music",
-      href: "https://music.apple.com/il/artist/dj-broiti/1832848545",
-      sub: t.artistPage,
-      glow: "from-white/10 via-transparent to-transparent",
-      border: "hover:border-white/30",
-    },
-    {
-      name: "Amazon Music",
-      href: "https://music.amazon.com/artists/B0FLG5V3TG/dj-broiti",
-      sub: t.artistPage,
-      glow: "from-orange-500/20 via-transparent to-yellow-500/20",
-      border: "hover:border-orange-400/30",
-    },
-    {
-      name: "TIDAL",
-      href: "https://tidal.com/artist/64947741",
-      sub: t.artistPage,
-      glow: "from-cyan-500/20 via-transparent to-blue-500/20",
-      border: "hover:border-cyan-300/30",
-    },
-    {
-      name: "Instagram",
-      href: "https://www.instagram.com/djbroiti/",
-      sub: t.visualsUpdates,
-      glow: "from-pink-500/20 via-transparent to-purple-500/20",
-      border: "hover:border-pink-400/30",
-    },
-    {
-      name: "TikTok",
-      href: "https://www.tiktok.com/@djbroiti",
-      sub: t.shortContent,
-      glow: "from-fuchsia-500/20 via-transparent to-cyan-500/20",
-      border: "hover:border-fuchsia-400/30",
-    },
-    {
-      name: "djbroiti.com",
-      href: "https://djbroiti.com",
-      sub: t.officialLink,
-      glow: "from-violet-500/20 via-transparent to-cyan-500/20",
-      border: "hover:border-violet-400/30",
-    },
-    {
-      name: "djbroiti@gmail.com",
-      href: "mailto:djbroiti@gmail.com",
-      sub: t.emailLabel,
-      glow: "from-cyan-500/20 via-transparent to-white/10",
-      border: "hover:border-cyan-300/30",
-    },
-  ];
-
-  const youtubeVideos =
-    lang === "he"
-      ? [
-          {
-            title: "שומר עליי",
-            subtitle: "קליפ רשמי",
-            watchUrl: "https://youtu.be/SBsVm1H1tSM",
-            embedUrl: "https://www.youtube.com/embed/SBsVm1H1tSM?rel=0",
-          },
-          {
-            title: "שבריר של שנייה",
-            subtitle: "קליפ רשמי",
-            watchUrl: "https://youtu.be/h_ZhlUu9zMc",
-            embedUrl: "https://www.youtube.com/embed/h_ZhlUu9zMc?rel=0",
-          },
-          {
-            title: "אי שם (Remix)",
-            subtitle: "קליפ רשמי",
-            watchUrl: "https://youtu.be/wAtPoT2rfwg",
-            embedUrl: "https://www.youtube.com/embed/wAtPoT2rfwg?rel=0",
-          },
-          {
-            title: "אי שם",
-            subtitle: "קליפ רשמי",
-            watchUrl: "https://youtu.be/zCA2hASBCuo",
-            embedUrl: "https://www.youtube.com/embed/zCA2hASBCuo?rel=0",
-          },
-          {
-            title: "החצי השני שלי",
-            subtitle: "לייב בכיכר האשליות",
-            watchUrl: "https://youtu.be/8vaVKwRikWw",
-            embedUrl: "https://www.youtube.com/embed/8vaVKwRikWw?rel=0",
-          },
-          {
-            title: "חלמתי עלייך (Club Remix)",
-            subtitle: "קליפ רשמי",
-            watchUrl: "https://youtu.be/BKioBZHjcZA",
-            embedUrl: "https://www.youtube.com/embed/BKioBZHjcZA?rel=0",
-          },
-          {
-            title: "חלמתי עלייך",
-            subtitle: "קליפ רשמי",
-            watchUrl: "https://youtu.be/AlRWp4A-snM",
-            embedUrl: "https://www.youtube.com/embed/AlRWp4A-snM?rel=0",
-          },
-          {
-            title: "לבדי",
-            subtitle: "קליפ רשמי",
-            watchUrl: "https://youtu.be/gNoOEpG1ZY4",
-            embedUrl: "https://www.youtube.com/embed/gNoOEpG1ZY4?rel=0",
-          },
-          {
-            title: "Hard to Break (Alternate Version)",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/jPPafrSdkf0",
-            embedUrl: "https://www.youtube.com/embed/jPPafrSdkf0?rel=0",
-          },
-          {
-            title: "Fighting on Her Own",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/EmDesEEk_sg",
-            embedUrl: "https://www.youtube.com/embed/EmDesEEk_sg?rel=0",
-          },
-          {
-            title: "And There Was Light",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/-C7zS5kjZkQ",
-            embedUrl: "https://www.youtube.com/embed/-C7zS5kjZkQ?rel=0",
-          },
-          {
-            title: "Hard to Break",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/RU7L4FleDlk",
-            embedUrl: "https://www.youtube.com/embed/RU7L4FleDlk?rel=0",
-          },
-          {
-            title: "I Don't Feel Real",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/2Q5z5VLKnoo",
-            embedUrl: "https://www.youtube.com/embed/2Q5z5VLKnoo?rel=0",
-          },
-          {
-            title: "Somebody Else",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/rK1GhEbIF-k",
-            embedUrl: "https://www.youtube.com/embed/rK1GhEbIF-k?rel=0",
-          },
-          {
-            title: "Somebody Else (עברית)",
-            subtitle: "קליפ רשמי",
-            watchUrl: "https://youtu.be/ZYq-fRCVc34",
-            embedUrl: "https://www.youtube.com/embed/ZYq-fRCVc34?rel=0",
-          },
-          {
-            title: "החצי השני שלי - My Second Self",
-            subtitle: "קליפ רשמי",
-            watchUrl: "https://youtu.be/RB86jrC2yRc",
-            embedUrl: "https://www.youtube.com/embed/RB86jrC2yRc?rel=0",
-          },
-          {
-            title: "החצי השני שלי - My Second Self (Live Rock Version)",
-            subtitle: "גרסת לייב",
-            watchUrl: "https://youtu.be/MiON30oxUjk",
-            embedUrl: "https://www.youtube.com/embed/MiON30oxUjk?rel=0",
-          },
-          {
-            title: "Here Comes The Storm",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/j8gr-UhfFj8",
-            embedUrl: "https://www.youtube.com/embed/j8gr-UhfFj8?rel=0",
-          },
-          {
-            title: "מסע - קאבר (אליעד)",
-            subtitle: "קליפ רשמי",
-            watchUrl: "https://youtu.be/coYAIaSQupc",
-            embedUrl: "https://www.youtube.com/embed/coYAIaSQupc?rel=0",
-          },
-        ]
-      : [
-          {
-            title: "Protects Me (Shomer Alai)",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/SBsVm1H1tSM",
-            embedUrl: "https://www.youtube.com/embed/SBsVm1H1tSM?rel=0",
-          },
-          {
-            title: "In a Split Second (Shavrir Shel Shnia)",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/h_ZhlUu9zMc",
-            embedUrl: "https://www.youtube.com/embed/h_ZhlUu9zMc?rel=0",
-          },
-          {
-            title: "Somewhere (Ei Sham Remix)",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/wAtPoT2rfwg",
-            embedUrl: "https://www.youtube.com/embed/wAtPoT2rfwg?rel=0",
-          },
-          {
-            title: "Somewhere (Ei Sham)",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/zCA2hASBCuo",
-            embedUrl: "https://www.youtube.com/embed/zCA2hASBCuo?rel=0",
-          },
-          {
-            title: "My Second Self (Live Performance)",
-            subtitle: "Live Performance",
-            watchUrl: "https://youtu.be/8vaVKwRikWw",
-            embedUrl: "https://www.youtube.com/embed/8vaVKwRikWw?rel=0",
-          },
-          {
-            title: "I Dreamed of You (Khalamti Alayikh) – Club Remix",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/BKioBZHjcZA",
-            embedUrl: "https://www.youtube.com/embed/BKioBZHjcZA?rel=0",
-          },
-          {
-            title: "I Dreamed of You (Khalamti Alayikh)",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/AlRWp4A-snM",
-            embedUrl: "https://www.youtube.com/embed/AlRWp4A-snM?rel=0",
-          },
-          {
-            title: "Alone (Levadi)",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/gNoOEpG1ZY4",
-            embedUrl: "https://www.youtube.com/embed/gNoOEpG1ZY4?rel=0",
-          },
-          {
-            title: "Hard to Break (Alternate Version)",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/jPPafrSdkf0",
-            embedUrl: "https://www.youtube.com/embed/jPPafrSdkf0?rel=0",
-          },
-          {
-            title: "Fighting on Her Own",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/EmDesEEk_sg",
-            embedUrl: "https://www.youtube.com/embed/EmDesEEk_sg?rel=0",
-          },
-          {
-            title: "And There Was Light",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/-C7zS5kjZkQ",
-            embedUrl: "https://www.youtube.com/embed/-C7zS5kjZkQ?rel=0",
-          },
-          {
-            title: "Hard to Break",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/RU7L4FleDlk",
-            embedUrl: "https://www.youtube.com/embed/RU7L4FleDlk?rel=0",
-          },
-          {
-            title: "I Don't Feel Real (Lo Margish Kayam)",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/2Q5z5VLKnoo",
-            embedUrl: "https://www.youtube.com/embed/2Q5z5VLKnoo?rel=0",
-          },
-          {
-            title: "Somebody Else",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/rK1GhEbIF-k",
-            embedUrl: "https://www.youtube.com/embed/rK1GhEbIF-k?rel=0",
-          },
-          {
-            title: "Somebody Else (Hebrew Version)",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/ZYq-fRCVc34",
-            embedUrl: "https://www.youtube.com/embed/ZYq-fRCVc34?rel=0",
-          },
-          {
-            title: "My Second Self",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/RB86jrC2yRc",
-            embedUrl: "https://www.youtube.com/embed/RB86jrC2yRc?rel=0",
-          },
-          {
-            title: "My Second Self (Live Rock Version)",
-            subtitle: "Live Version",
-            watchUrl: "https://youtu.be/MiON30oxUjk",
-            embedUrl: "https://www.youtube.com/embed/MiON30oxUjk?rel=0",
-          },
-          {
-            title: "Here Comes The Storm",
-            subtitle: "Official Video",
-            watchUrl: "https://youtu.be/j8gr-UhfFj8",
-            embedUrl: "https://www.youtube.com/embed/j8gr-UhfFj8?rel=0",
-          },
-          {
-            title: "Masa (Eliad Cover)",
-            subtitle: "Official Cover Video",
-            watchUrl: "https://youtu.be/coYAIaSQupc",
-            embedUrl: "https://www.youtube.com/embed/coYAIaSQupc?rel=0",
-          },
-        ];
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   return (
     <div
-      dir={t.dir}
-      className="relative min-h-screen overflow-x-hidden bg-black text-white"
+      dir={isHebrew ? "rtl" : "ltr"}
+      className="min-h-screen bg-[#050505] text-white overflow-x-hidden scroll-smooth"
+      style={{ fontFamily: "Montserrat, sans-serif" }}
     >
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -left-24 top-0 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl" />
-        <div className="absolute right-0 top-40 h-96 w-96 rounded-full bg-fuchsia-600/20 blur-3xl" />
-        <div className="absolute bottom-0 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-violet-500/20 blur-3xl" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_35%)]" />
+      {/* background */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[34rem] h-[34rem] rounded-full bg-[#c9a96e]/10 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[30rem] h-[30rem] rounded-full bg-[#7a5a2d]/10 blur-[120px]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.06),transparent_34%)]" />
+        <div className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(rgba(255,255,255,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.3)_1px,transparent_1px)] [background-size:70px_70px]" />
       </div>
 
-      <header className="relative z-20 mx-auto flex max-w-7xl items-center justify-between px-4 py-6 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 to-violet-500 text-lg font-black text-black shadow-[0_0_30px_rgba(34,211,238,0.35)]">
-            DJ
-          </div>
-          <div>
-            <div className="text-lg font-black tracking-[0.25em]">DJ BROITI</div>
-            <div className="text-xs uppercase tracking-[0.25em] text-white/50">
-              AI Music Artist
-            </div>
-          </div>
+    <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/45 backdrop-blur-xl">
+  <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-4">
+    <div className={`flex items-center gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
+      <div className="w-10 h-10 rounded-full border border-[#c9a96e]/35 text-[#c9a96e] flex items-center justify-center font-semibold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
+        B
+      </div>
+      <div className={isHebrew ? "text-right" : "text-left"}>
+        <div className="text-[13px] uppercase tracking-[0.35em] text-white/90 font-semibold">
+          DJ Broiti
         </div>
-
-        <div className="flex items-center gap-3">
-          <a
-            href="https://djbroiti.com"
-            className="hidden text-sm text-white/60 transition hover:text-white md:block"
-          >
-            djbroiti.com
-          </a>
-
-          <div className="flex rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-xl">
-            <button
-              onClick={() => setLang("he")}
-              className={`rounded-full px-4 py-2 text-sm font-bold transition ${
-                lang === "he"
-                  ? "bg-gradient-to-r from-cyan-400 to-violet-500 text-black"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              HE
-            </button>
-            <button
-              onClick={() => setLang("en")}
-              className={`rounded-full px-4 py-2 text-sm font-bold transition ${
-                lang === "en"
-                  ? "bg-gradient-to-r from-cyan-400 to-violet-500 text-black"
-                  : "text-white/70 hover:text-white"
-              }`}
-            >
-              EN
-            </button>
-          </div>
+        <div className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+          {t.brandSub}
         </div>
-      </header>
+      </div>
+    </div>
 
-      <section className="relative z-10 mx-auto max-w-7xl px-4 pb-10 pt-10 text-center sm:px-6 lg:px-8 lg:pt-16">
-        <div className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.25em] text-cyan-300">
-          {t.badge}
-        </div>
+    <div className={`hidden md:flex items-center gap-6 text-sm text-white/70 ${isHebrew ? "flex-row-reverse" : ""}`}>
+      <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors">
+        {t.navHome}
+      </button>
+      <button onClick={() => scrollToId("archive")} className="hover:text-[#c9a96e] transition-colors">
+        {t.navArchive}
+      </button>
+      <button onClick={() => scrollToId("about")} className="hover:text-[#c9a96e] transition-colors">
+        {t.navAbout}
+      </button>
+      <button onClick={() => scrollToId("contact")} className="hover:text-[#c9a96e] transition-colors">
+        {t.navContact}
+      </button>
+    </div>
 
-        <h1 className="mx-auto mt-6 max-w-5xl text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl lg:text-7xl">
-          <span className="block">{t.heroTitle1}</span>
-          <span className="mt-2 block bg-gradient-to-r from-cyan-300 via-white to-violet-400 bg-clip-text text-transparent">
-            {t.heroTitle2}
-          </span>
-        </h1>
-
-        <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-white/70 sm:text-lg">
-          {t.heroText}
-        </p>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="https://www.youtube.com/@djbroiti"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-7 py-3 text-sm font-extrabold text-black shadow-[0_0_35px_rgba(34,211,238,0.35)] transition hover:scale-[1.02]"
-          >
-            {t.listenNow}
-          </a>
-
-          <a
-            href="#trailer"
-            className="rounded-full border border-white/15 bg-white/5 px-7 py-3 text-sm font-bold text-white backdrop-blur-xl transition hover:border-white/30 hover:bg-white/10"
-          >
-            {t.watchTrailer}
-          </a>
-
-          <a
-            href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-full border border-green-400/20 bg-green-500/10 px-7 py-3 text-sm font-bold text-green-200 backdrop-blur-xl transition hover:border-green-300/40 hover:bg-green-500/15"
-          >
-            {t.spotifyNow}
-          </a>
-        </div>
-      </section>
-
-      <section className="relative z-10 mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-[30px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl md:p-8">
-          <div className="mb-8 text-center">
-            <h2 className="text-3xl font-black tracking-tight text-white md:text-4xl">
-              {t.quickLinksTitle}
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/60 md:text-base">
-              {t.quickLinksText}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
-            {platformLinks.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                target={item.href.startsWith("mailto:") ? undefined : "_blank"}
-                rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
-                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:scale-[1.03] ${item.border}`}
-              >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${item.glow} opacity-0 transition group-hover:opacity-100`}
-                />
-                <div className="relative z-10">
-                  <div className="text-lg font-semibold break-words">{item.name}</div>
-                  <div className="text-sm text-gray-400">{item.sub}</div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section
-        id="trailer"
-        className="relative z-10 mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8"
+    <div className={`flex items-center gap-2 md:gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
+      <a
+        href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A"
+        target="_blank"
+        rel="noreferrer"
+        className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all"
       >
-        <div className="overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.04] p-4 shadow-[0_10px_50px_rgba(0,0,0,0.45)] backdrop-blur-xl md:p-6">
-          <div className="mb-5 flex items-center justify-between gap-4">
-            <h2 className="text-2xl font-black tracking-tight text-white md:text-4xl">
-              {t.trailerTitle}
-            </h2>
-            <div className="rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1 text-xs font-bold uppercase tracking-[0.25em] text-cyan-300">
-              Trailer
-            </div>
-          </div>
+        <YoutubeIcon />
+      </a>
 
-          <div className="overflow-hidden rounded-[24px] border border-white/10 bg-black">
-            <div className="aspect-video">
-              <iframe
-                className="h-full w-full"
-                src="https://www.youtube.com/embed/q8yf6nkUP2k?rel=0"
-                title="DJ Broiti Official Trailer"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <a
+        href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si"
+        target="_blank"
+        rel="noreferrer"
+        className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all"
+      >
+        <SpotifyIcon />
+      </a>
 
-      <section className="relative z-10 mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 text-center">
-          <div className="inline-flex items-center rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-cyan-300">
-            {t.videosBadge}
-          </div>
+      <a
+        href="https://music.apple.com/il/artist/dj-broiti/1832848545"
+        target="_blank"
+        rel="noreferrer"
+        className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all"
+      >
+        <AppleIcon />
+      </a>
 
-          <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
-            {t.videosTitle}
-          </h2>
+      <a
+        href="https://www.instagram.com/djbroiti/"
+        target="_blank"
+        rel="noreferrer"
+        className="hidden sm:flex w-10 h-10 rounded-full border border-white/10 bg-white/5 items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all"
+      >
+        <InstagramIcon />
+      </a>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-white/65 md:text-base">
-            {t.videosText}
-          </p>
-        </div>
+      <a
+        href="https://www.tiktok.com/@djbroiti"
+        target="_blank"
+        rel="noreferrer"
+        className="hidden sm:flex w-10 h-10 rounded-full border border-white/10 bg-white/5 items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all"
+      >
+        <TiktokIcon />
+      </a>
 
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-          {youtubeVideos.map((video, index) => (
-            <article
-              key={`${video.title}-${index}`}
-              className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/[0.04] shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-cyan-300/30 hover:shadow-[0_16px_60px_rgba(34,211,238,0.12)]"
-            >
-              <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100">
-                <div className="absolute -left-16 top-0 h-40 w-40 rounded-full bg-cyan-400/20 blur-3xl" />
-                <div className="absolute -right-10 bottom-0 h-32 w-32 rounded-full bg-fuchsia-500/20 blur-3xl" />
+      <button
+        onClick={() => setLang(lang === "he" ? "en" : "he")}
+        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all ml-1"
+      >
+        <GlobeIcon />
+        {lang === "he" ? "English" : "עברית"}
+      </button>
+    </div>
+  </div>
+</nav>
+
+      <main className="relative z-10">
+        {/* hero */}
+        <section id="home" className="px-6 pt-32 md:pt-40 pb-16 md:pb-20">
+          <div
+            className={`max-w-7xl mx-auto transition-all duration-1000 ${
+              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div className={`max-w-4xl ${isHebrew ? "mr-0 ml-auto text-right" : "text-left"}`}>
+              <div className="inline-flex items-center gap-2 mb-6 rounded-full border border-[#c9a96e]/25 bg-[#c9a96e]/10 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-[#e5c98c]">
+                <MusicIcon />
+                {t.heroBadge}
               </div>
 
-              <div className="relative z-10 p-4">
-                <div className="mb-4 flex items-start justify-between gap-4">
-                  <div>
-                    <div className="mb-1 text-xs font-bold uppercase tracking-[0.25em] text-cyan-300/80">
-                      {String(index + 1).padStart(2, "0")}
-                    </div>
-                    <h3 className="text-xl font-extrabold leading-tight text-white">
-                      {video.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-white/55">{video.subtitle}</p>
-                  </div>
+              <h1 className="text-5xl sm:text-6xl md:text-8xl font-semibold leading-[0.92] tracking-[-0.04em]">
+                {t.heroTitle1}
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
+                  {t.heroTitle2}
+                </span>
+              </h1>
 
-                  <a
-                    href={video.watchUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/80 transition hover:border-cyan-300/40 hover:bg-cyan-400/10 hover:text-cyan-200"
-                  >
-                    YouTube
-                  </a>
-                </div>
+              <p className="mt-6 max-w-2xl text-sm md:text-lg leading-7 text-white/65">
+                {t.heroText}
+              </p>
 
-                <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-black">
-                  <div className="pointer-events-none absolute inset-0 z-10 opacity-0 transition duration-300 group-hover:opacity-100">
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                    <div className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-white/10 shadow-2xl backdrop-blur-md">
-                      <svg
-                        width="22"
-                        height="22"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="ml-1 text-white"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                  </div>
+              <div className={`mt-8 flex flex-wrap gap-4 ${isHebrew ? "justify-start" : ""}`}>
+                <a
+                  href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-6 py-3 font-semibold hover:scale-[1.03] transition-all shadow-[0_0_40px_rgba(201,169,110,0.28)]"
+                >
+                  <YoutubeIcon />
+                  {t.watchFeatured}
+                </a>
 
-                  <div className="aspect-video">
-                    <iframe
-                      className="h-full w-full"
-                      src={video.embedUrl}
-                      title={video.title}
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                    />
+                <button
+                  onClick={() => scrollToId("archive")}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-white/85 hover:bg-white/10 hover:border-white/25 transition-all"
+                >
+                  {t.exploreArchive}
+                </button>
+              </div>
+
+              <div className="mt-10 grid grid-cols-3 gap-3 max-w-xl">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                  <div className="text-2xl md:text-3xl font-semibold text-[#e9d4ac]">19</div>
+                  <div className="text-[11px] uppercase tracking-[0.25em] text-white/45 mt-1">
+                    {t.clips}
                   </div>
                 </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                  <div className="text-2xl md:text-3xl font-semibold text-[#e9d4ac]">100%</div>
+                  <div className="text-[11px] uppercase tracking-[0.25em] text-white/45 mt-1">
+                    {t.official}
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
+                  <div className="text-2xl md:text-3xl font-semibold text-[#e9d4ac]">AI</div>
+                  <div className="text-[11px] uppercase tracking-[0.25em] text-white/45 mt-1">
+                    {t.cinematic}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-                <div className="mt-4 flex items-center justify-between gap-3">
-                  <span className="text-xs uppercase tracking-[0.22em] text-white/35">
-                    DJ Broiti
-                  </span>
+        {/* featured */}
+        <section className="px-6 pb-10">
+          <div className="max-w-7xl mx-auto">
+            <div className="rounded-[30px] border border-white/10 bg-gradient-to-br from-white/8 to-white/[0.03] overflow-hidden shadow-[0_20px_90px_rgba(0,0,0,0.5)]">
+              <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
+                <a
+                  href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group relative block min-h-[300px]"
+                >
+                  <img
+                    src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`}
+                    alt={featuredClip.title[lang]}
+                    className="w-full h-full object-cover min-h-[300px] lg:min-h-[430px] group-hover:scale-[1.03] transition-all duration-700"
+                    onError={(e) => {
+                      e.currentTarget.src = `https://i.ytimg.com/vi/${featuredClip.id}/hqdefault.jpg`;
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/10 to-transparent" />
+                  <div className="absolute inset-0 flex items-end p-6">
+                    <div className="inline-flex items-center gap-2 rounded-full bg-black/50 border border-white/10 px-4 py-2 text-sm text-white/90 backdrop-blur-md">
+                      <YoutubeIcon />
+                      {t.watchYoutube}
+                    </div>
+                  </div>
+                </a>
 
-                  <a
-                    href={video.watchUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-4 py-2 text-sm font-bold text-black transition hover:scale-[1.02]"
-                  >
-                    {t.watchOnYoutube}
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      className="stroke-current"
+                <div className={`p-6 md:p-8 lg:p-10 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
+                  <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
+                    {t.featured}
+                  </div>
+                  <h2 className="text-3xl md:text-5xl font-semibold leading-tight">
+                    {featuredClip.title[lang]}
+                  </h2>
+                  <p className="mt-5 text-white/65 leading-7">
+                    {t.featuredText}
+                  </p>
+
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <a
+                      href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-5 py-3 font-semibold hover:scale-[1.03] transition-all"
                     >
-                      <path
-                        d="M7 17L17 7M17 7H9M17 7V15"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </a>
+                      <YoutubeIcon />
+                      {t.openClip}
+                    </a>
+                  </div>
                 </div>
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="relative z-10 mx-auto mt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="rounded-[30px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl md:p-8">
-          <div className="mb-8 text-center">
-            <h2 className="text-3xl font-black tracking-tight text-white md:text-4xl">
-              {t.platformsTitle}
-            </h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/60 md:text-base">
-              {t.platformsText}
-            </p>
+            </div>
           </div>
+        </section>
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-5">
-            {platformLinks.map((item) => (
+        {/* archive heading */}
+        <section id="archive" className="px-6 pt-8 pb-6">
+          <div className={`max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-4 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
+            <div className={isHebrew ? "text-right" : "text-left"}>
+              <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-3">
+                {t.fullCollection}
+              </div>
+              <h2 className="text-3xl md:text-5xl font-semibold leading-tight">
+                {t.exploreAll}
+              </h2>
+            </div>
+
+            <div className={`text-sm text-white/45 max-w-md ${isHebrew ? "text-right" : "text-left"}`}>
+              {t.collectionText}
+            </div>
+          </div>
+        </section>
+
+        {/* cards */}
+        <section className="px-6 pb-24">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+            {ALL_CLIPS.map((clip, i) => (
               <a
-                key={`${item.name}-platform`}
-                href={item.href}
-                target={item.href.startsWith("mailto:") ? undefined : "_blank"}
-                rel={item.href.startsWith("mailto:") ? undefined : "noreferrer"}
-                className={`group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 transition hover:scale-[1.03] ${item.border}`}
+                key={`${clip.id}-${i}`}
+                href={`https://www.youtube.com/watch?v=${clip.id}`}
+                target="_blank"
+                rel="noreferrer"
+                className="group block"
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${item.glow} opacity-0 transition group-hover:opacity-100`}
-                />
-                <div className="relative z-10">
-                  <div className="text-lg font-semibold break-words">{item.name}</div>
-                  <div className="text-sm text-gray-400">{item.sub}</div>
-                </div>
+                <article className="h-full rounded-[24px] border border-white/10 bg-white/[0.04] overflow-hidden backdrop-blur-sm hover:border-[#c9a96e]/35 hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-1 shadow-[0_12px_50px_rgba(0,0,0,0.35)]">
+                  <div className="relative aspect-video overflow-hidden bg-[#111]">
+                    <img
+                      src={`https://i.ytimg.com/vi/${clip.id}/maxresdefault.jpg`}
+                      alt={clip.title[lang]}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
+                      onError={(e) => {
+                        e.currentTarget.src = `https://i.ytimg.com/vi/${clip.id}/hqdefault.jpg`;
+                      }}
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                    <div className={`absolute top-4 ${isHebrew ? "right-4" : "left-4"}`}>
+                      <span className="inline-flex rounded-full border border-[#c9a96e]/30 bg-black/50 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-[#e9d4ac]">
+                        {clip.cat[lang]}
+                      </span>
+                    </div>
+
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400">
+                      <div className="w-16 h-16 rounded-full bg-[#c9a96e]/95 text-black flex items-center justify-center shadow-[0_0_40px_rgba(201,169,110,0.35)]">
+                        <YoutubeIcon />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`p-5 md:p-6 ${isHebrew ? "text-right" : "text-left"}`}>
+                    <div className="text-[10px] uppercase tracking-[0.28em] text-white/35 mb-3">
+                      DJ Broiti
+                    </div>
+                    <h3 className="text-xl leading-tight font-medium text-white group-hover:text-[#e9d4ac] transition-colors duration-300">
+                      {clip.title[lang]}
+                    </h3>
+                    <div className={`mt-5 inline-flex items-center gap-2 text-sm text-white/55 group-hover:text-[#c9a96e] transition-colors duration-300`}>
+                      <YoutubeIcon />
+                      {t.watchYoutube}
+                    </div>
+                  </div>
+                </article>
               </a>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="relative z-10 mx-auto mt-24 grid max-w-7xl grid-cols-1 gap-6 px-4 pb-20 sm:px-6 lg:grid-cols-3 lg:px-8">
-        <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl lg:col-span-2">
-          <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">
-            {t.aboutTitle}
-          </h2>
-          <p className="mt-4 text-base leading-8 text-white/70">{t.aboutText}</p>
-        </div>
+                {/* about + contact */}
+        <section className="px-6 pb-12">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+            <div
+              id="about"
+              className={`rounded-[28px] border border-white/10 bg-white/[0.04] p-8 md:p-10 ${isHebrew ? "text-right" : "text-left"}`}
+            >
+              <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
+                {t.aboutTitle}
+              </div>
+              <h2 className="text-3xl md:text-4xl font-semibold mb-5">
+                {t.aboutTitle}
+              </h2>
+              <p className="text-white/70 leading-8">{t.aboutText}</p>
+              <p className="text-white/55 leading-8 mt-4">{t.aboutText2}</p>
+            </div>
 
-        <div className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl">
-          <h2 className="text-2xl font-black tracking-tight text-white md:text-3xl">
-            {t.contactTitle}
-          </h2>
-          <p className="mt-4 text-base leading-8 text-white/70">{t.contactText}</p>
+            <div
+              id="contact"
+              className={`rounded-[28px] border border-white/10 bg-white/[0.04] p-8 md:p-10 ${isHebrew ? "text-right" : "text-left"}`}
+            >
+              <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
+                {t.contactTitle}
+              </div>
+              <h2 className="text-3xl md:text-4xl font-semibold mb-5">
+                {t.contactTitle}
+              </h2>
+              <p className="text-white/70 leading-8">{t.contactText}</p>
+
+              <div className={`mt-6 flex flex-wrap gap-3 ${isHebrew ? "justify-start" : ""}`}>
+                <a
+                  href="mailto:djbroiti@gmail.com"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-5 py-3 font-semibold hover:scale-[1.03] transition-all"
+                >
+                  <MailIcon />
+                  {t.emailButton}
+                </a>
+
+                <a
+                  href="mailto:djbroiti@gmail.com"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-white/80 hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
+                >
+                  <MailIcon />
+                  djbroiti@gmail.com
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="relative z-10 border-t border-white/10 px-6 py-10">
+        <div className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
+          <div className={isHebrew ? "text-right" : "text-left"}>
+            <div className="text-sm tracking-[0.25em] uppercase text-white/75">
+              DJ Broiti
+            </div>
+            <div className="text-xs tracking-[0.2em] uppercase text-white/35 mt-1">
+              {t.footer}
+            </div>
+          </div>
+
           <a
             href="mailto:djbroiti@gmail.com"
-            className="mt-4 inline-block text-lg font-bold text-cyan-300 transition hover:text-cyan-200"
+            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-white/75 hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
           >
+            <MailIcon />
             djbroiti@gmail.com
           </a>
-
-          <div className="mt-6 border-t border-white/10 pt-6">
-            <div className="text-sm uppercase tracking-[0.25em] text-white/40">
-              {t.siteTitle}
-            </div>
-            <a
-              href="https://djbroiti.com"
-              className="mt-2 inline-block text-base font-semibold text-white transition hover:text-cyan-200"
-            >
-              https://djbroiti.com
-            </a>
-          </div>
         </div>
-      </section>
-
-      <footer className="relative z-10 border-t border-white/10 px-4 py-8 text-center text-sm text-white/45">
-        {t.footer}
       </footer>
     </div>
   );
 }
+
+             
+
+      
