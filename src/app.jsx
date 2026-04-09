@@ -1,9 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import DjBroitiSite from "./App.jsx";
-
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <DjBroitiSite />
-  </React.StrictMode>
-);
+export default function DjBroitiSite() {
+  return (
+    <div style={{ textAlign: "center", padding: "50px" }}>
+      <h1>DJ Broiti 🎧</h1>
+      <p>Welcome to my official site</p>
+    </div>
+  );
+}
