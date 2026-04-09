@@ -58,12 +58,12 @@ const AppleIcon = () => (
 
 const ALL_CLIPS = [
   { title: { en: "Shomer Alay", he: "שומר עליי" }, id: "SBsVm1H1tSM", cat: { en: "Latest Release", he: "הוצאה חדשה" }, featured: true },
-  { title: { en: "Shavirr Shel Shniya", he: "שבריר של שנייה" }, id: "h_ZhlUu9zMc", cat: { en: "Official Video", he: "קליפ רשמי" } },
+  { title: { en: "Shvir Shel Shniya", he: "שבריר של שנייה" }, id: "h_ZhlUu9zMc", cat: { en: "Official Video", he: "קליפ רשמי" } },
   { title: { en: "Ei Sham (Remix)", he: "אי שם (Remix)" }, id: "wAtPoT2rfwg", cat: { en: "Remix", he: "רמיקס" } },
   { title: { en: "Ei Sham", he: "אי שם" }, id: "zCA2hASBCuo", cat: { en: "Original Song", he: "שיר מקורי" } },
-  { title: { en: "My Second Self (Live)", he: "החצי השני שלי (לייב בכיכר האשליות)" }, id: "8vaVKwRikWw", cat: { en: "Live", he: "לייב" } },
-  { title: { en: "khalamti Alayikh (Club Remix)", he: "חלמתי עלייך (Club Remix)" }, id: "BKioBZHjcZA", cat: { en: "Club Remix", he: "קלאב רמיקס" } },
-  { title: { en: "Khalamti Alayikh", he: "חלמתי עלייך" }, id: "AlRWp4A-snM", cat: { en: "Original Song", he: "שיר מקורי" } },
+  { title: { en: "My Second Half (Live)", he: "החצי השני שלי (לייב בכיכר האשליות)" }, id: "8vaVKwRikWw", cat: { en: "Live", he: "לייב" } },
+  { title: { en: "Chalamti Alayich (Club Remix)", he: "חלמתי עלייך (Club Remix)" }, id: "BKioBZHjcZA", cat: { en: "Club Remix", he: "קלאב רמיקס" } },
+  { title: { en: "Chalamti Alayich", he: "חלמתי עלייך" }, id: "AlRWp4A-snM", cat: { en: "Original Song", he: "שיר מקורי" } },
   { title: { en: "Levadi", he: "לבדי" }, id: "gNoOEpG1ZY4", cat: { en: "Original Song", he: "שיר מקורי" } },
   { title: { en: "Here Comes The Storm", he: "Here Comes The Storm" }, id: "j8gr-UhfFj8", cat: { en: "Official Release", he: "הוצאה רשמית" } },
   { title: { en: "Masa - Cover", he: "מסע - קאבר" }, id: "coYAIaSQupc", cat: { en: "Cover", he: "קאבר" } },
@@ -89,28 +89,24 @@ const content = {
     heroTitle1: "DJ Broiti",
     heroTitle2: "Cinematic Music Universe",
     heroText:
-      "An official destination for original releases, remixes, live versions, and cinematic visual storytelling powered by imagination and AI.",
+      "Original releases, remixes, live versions, and visual storytelling — brought together in one premium official destination.",
     watchFeatured: "Watch Featured",
     exploreArchive: "Explore Archive",
     clips: "Clips",
     official: "Official",
     cinematic: "Cinematic",
     featured: "Featured Release",
-    featuredText:
-      "A spotlight release presented with a premium visual layout designed to feel like a luxury international artist page.",
     openClip: "Open Clip",
     fullCollection: "Full Collection",
     exploreAll: "Explore All Clips",
-    collectionText:
-      "Every release in one elegant archive, optimized for desktop and mobile.",
     watchYoutube: "Watch on YouTube",
     aboutTitle: "About",
     aboutText:
       "DJ Broiti is an AI artist from Jerusalem, creating music, visuals, and cinematic digital experiences through imagination and artificial intelligence.",
     aboutText2:
-      "This official site brings together original songs, visual storytelling, and premium access to the full archive.",
+      "This official site brings together original songs, visual storytelling, and direct access to the full archive.",
     contactTitle: "Contact",
-    contactText: "For collaborations, music, official inquiries, and creative projects:",
+    contactText: "For collaborations, music, and official inquiries:",
     followTitle: "Follow",
     footer: "Official Music Archive · 2026",
     emailButton: "Send Email",
@@ -125,20 +121,16 @@ const content = {
     heroTitle1: "DJ Broiti",
     heroTitle2: "יקום מוזיקלי קולנועי",
     heroText:
-      "בית רשמי לכל ההוצאות המקוריות, הרמיקסים, גרסאות הלייב והסיפור הוויזואלי הקולנועי שנוצר בדמיון ובבינה מלאכותית.",
+      "שירים מקוריים, רמיקסים, גרסאות לייב וסיפור ויזואלי — כולם במקום רשמי אחד ויוקרתי.",
     watchFeatured: "צפה בקטע הנבחר",
     exploreArchive: "לארכיון",
     clips: "קליפים",
     official: "רשמי",
     cinematic: "קולנועי",
     featured: "קטע נבחר",
-    featuredText:
-      "קטע מרכזי מתוך הארכיון, מוצג בפריסה יוקרתית שמרגישה כמו עמוד אמן בינלאומי.",
     openClip: "פתח קליפ",
     fullCollection: "האוסף המלא",
     exploreAll: "לכל הקליפים",
-    collectionText:
-      "כל ההוצאות במקום אחד, בעיצוב אלגנטי שמותאם גם למחשב וגם למובייל.",
     watchYoutube: "צפה ביוטיוב",
     aboutTitle: "אודות",
     aboutText:
@@ -146,7 +138,7 @@ const content = {
     aboutText2:
       "האתר הרשמי מרכז במקום אחד את השירים המקוריים, הסיפור הוויזואלי והגישה המלאה לארכיון.",
     contactTitle: "יצירת קשר",
-    contactText: "לשיתופי פעולה, מוזיקה, פניות רשמיות ופרויקטים יצירתיים:",
+    contactText: "לשיתופי פעולה, מוזיקה ופניות רשמיות:",
     followTitle: "עקבו אחרי",
     footer: "ארכיון מוזיקה רשמי · 2026",
     emailButton: "שלח מייל",
@@ -158,6 +150,19 @@ const featuredClip = ALL_CLIPS.find((clip) => clip.featured) || ALL_CLIPS[0];
 function scrollToId(id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: "smooth" });
+}
+
+function SocialIconLink({ href, children, hideOnMobile = false }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className={`${hideOnMobile ? "hidden sm:flex" : "flex"} w-10 h-10 rounded-full border border-white/10 bg-white/5 items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all`}
+    >
+      {children}
+    </a>
+  );
 }
 
 export default function App() {
@@ -173,10 +178,9 @@ export default function App() {
   return (
     <div
       dir={isHebrew ? "rtl" : "ltr"}
-      className="min-h-screen bg-[#050505] text-white overflow-x-hidden scroll-smooth"
+      className="min-h-screen bg-[#050505] text-white overflow-x-hidden"
       style={{ fontFamily: "Montserrat, sans-serif" }}
     >
-      {/* background */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[34rem] h-[34rem] rounded-full bg-[#c9a96e]/10 blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[30rem] h-[30rem] rounded-full bg-[#7a5a2d]/10 blur-[120px]" />
@@ -184,97 +188,72 @@ export default function App() {
         <div className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(rgba(255,255,255,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.3)_1px,transparent_1px)] [background-size:70px_70px]" />
       </div>
 
-    <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/45 backdrop-blur-xl">
-  <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-4">
-    <div className={`flex items-center gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
-      <div className="w-10 h-10 rounded-full border border-[#c9a96e]/35 text-[#c9a96e] flex items-center justify-center font-semibold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
-        B
-      </div>
-      <div className={isHebrew ? "text-right" : "text-left"}>
-        <div className="text-[13px] uppercase tracking-[0.35em] text-white/90 font-semibold">
-          DJ Broiti
+      <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/45 backdrop-blur-xl">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-4">
+          <div className={`flex items-center gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
+            <div className="w-10 h-10 rounded-full border border-[#c9a96e]/35 text-[#c9a96e] flex items-center justify-center font-semibold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
+              B
+            </div>
+            <div className={isHebrew ? "text-right" : "text-left"}>
+              <div className="text-[13px] uppercase tracking-[0.35em] text-white/90 font-semibold">
+                DJ Broiti
+              </div>
+              <div className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+                {t.brandSub}
+              </div>
+            </div>
+          </div>
+
+          <div className={`hidden md:flex items-center gap-6 text-sm text-white/70 ${isHebrew ? "flex-row-reverse" : ""}`}>
+            <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors">
+              {t.navHome}
+            </button>
+            <button onClick={() => scrollToId("archive")} className="hover:text-[#c9a96e] transition-colors">
+              {t.navArchive}
+            </button>
+            <button onClick={() => scrollToId("about")} className="hover:text-[#c9a96e] transition-colors">
+              {t.navAbout}
+            </button>
+            <button onClick={() => scrollToId("contact")} className="hover:text-[#c9a96e] transition-colors">
+              {t.navContact}
+            </button>
+          </div>
+
+          <div className={`flex items-center gap-2 md:gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
+            <SocialIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A">
+              <YoutubeIcon />
+            </SocialIconLink>
+
+            <SocialIconLink href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si">
+              <SpotifyIcon />
+            </SocialIconLink>
+
+            <SocialIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545">
+              <AppleIcon />
+            </SocialIconLink>
+
+            <SocialIconLink href="https://www.instagram.com/djbroiti/" hideOnMobile>
+              <InstagramIcon />
+            </SocialIconLink>
+
+            <SocialIconLink href="https://www.tiktok.com/@djbroiti" hideOnMobile>
+              <TiktokIcon />
+            </SocialIconLink>
+
+            <button
+              onClick={() => setLang(lang === "he" ? "en" : "he")}
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-[9px] text-sm font-medium text-white/80 whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
+            >
+              <GlobeIcon />
+              <span className="tracking-wide">
+                {lang === "he" ? "EN" : "עב"}
+              </span>
+            </button>
+          </div>
         </div>
-        <div className="text-[10px] uppercase tracking-[0.3em] text-white/40">
-          {t.brandSub}
-        </div>
-      </div>
-    </div>
-
-    <div className={`hidden md:flex items-center gap-6 text-sm text-white/70 ${isHebrew ? "flex-row-reverse" : ""}`}>
-      <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors">
-        {t.navHome}
-      </button>
-      <button onClick={() => scrollToId("archive")} className="hover:text-[#c9a96e] transition-colors">
-        {t.navArchive}
-      </button>
-      <button onClick={() => scrollToId("about")} className="hover:text-[#c9a96e] transition-colors">
-        {t.navAbout}
-      </button>
-      <button onClick={() => scrollToId("contact")} className="hover:text-[#c9a96e] transition-colors">
-        {t.navContact}
-      </button>
-    </div>
-
-    <div className={`flex items-center gap-2 md:gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
-      <a
-        href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A"
-        target="_blank"
-        rel="noreferrer"
-        className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all"
-      >
-        <YoutubeIcon />
-      </a>
-
-      <a
-        href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si"
-        target="_blank"
-        rel="noreferrer"
-        className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all"
-      >
-        <SpotifyIcon />
-      </a>
-
-      <a
-        href="https://music.apple.com/il/artist/dj-broiti/1832848545"
-        target="_blank"
-        rel="noreferrer"
-        className="w-10 h-10 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all"
-      >
-        <AppleIcon />
-      </a>
-
-      <a
-        href="https://www.instagram.com/djbroiti/"
-        target="_blank"
-        rel="noreferrer"
-        className="hidden sm:flex w-10 h-10 rounded-full border border-white/10 bg-white/5 items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all"
-      >
-        <InstagramIcon />
-      </a>
-
-      <a
-        href="https://www.tiktok.com/@djbroiti"
-        target="_blank"
-        rel="noreferrer"
-        className="hidden sm:flex w-10 h-10 rounded-full border border-white/10 bg-white/5 items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all"
-      >
-        <TiktokIcon />
-      </a>
-<button
-  onClick={() => setLang(lang === "he" ? "en" : "he")}
-  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-[9px] text-sm font-medium text-white/80 whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
->
-  <GlobeIcon />
-  <span className="tracking-wide">
-    {lang === "he" ? "EN" : "עב"}
-  </span>
-</button>
-    </div>
-  </div>
-</nav>
+      </nav>
 
       <main className="relative z-10">
-               {/* hero */}
         <section id="home" className="px-6 pt-32 md:pt-40 pb-16 md:pb-20">
           <div
             className={`max-w-7xl mx-auto transition-all duration-1000 ${
@@ -293,6 +272,8 @@ export default function App() {
                   {t.heroTitle2}
                 </span>
               </h1>
+
+              <div className="mt-6 w-20 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
 
               <p className="mt-6 max-w-2xl text-sm md:text-lg leading-7 text-white/65">
                 {t.heroText}
@@ -343,7 +324,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* featured */}
         <section className="px-6 pb-10">
           <div className="max-w-7xl mx-auto">
             <div className="rounded-[30px] border border-white/10 bg-gradient-to-br from-white/8 to-white/[0.03] overflow-hidden shadow-[0_20px_90px_rgba(0,0,0,0.5)]">
@@ -375,12 +355,12 @@ export default function App() {
                   <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
                     {t.featured}
                   </div>
+
                   <h2 className="text-3xl md:text-5xl font-semibold leading-tight">
                     {featuredClip.title[lang]}
                   </h2>
-                  <p className="mt-5 text-white/65 leading-7">
-                    {t.featuredText}
-                  </p>
+
+                  <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-60" />
 
                   <div className="mt-8 flex flex-wrap gap-3">
                     <a
@@ -399,7 +379,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* archive heading */}
         <section id="archive" className="px-6 pt-8 pb-6">
           <div className={`max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-4 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
             <div className={isHebrew ? "text-right" : "text-left"}>
@@ -411,13 +390,10 @@ export default function App() {
               </h2>
             </div>
 
-            <div className={`text-sm text-white/45 max-w-md ${isHebrew ? "text-right" : "text-left"}`}>
-              {t.collectionText}
-            </div>
+            <div className="w-24 h-[1px] bg-white/10 mt-4 md:mt-0" />
           </div>
         </section>
 
-        {/* cards */}
         <section className="px-6 pb-24">
           <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
             {ALL_CLIPS.map((clip, i) => (
@@ -455,13 +431,11 @@ export default function App() {
                   </div>
 
                   <div className={`p-5 md:p-6 ${isHebrew ? "text-right" : "text-left"}`}>
-                    <div className="text-[10px] uppercase tracking-[0.28em] text-white/35 mb-3">
-                      DJ Broiti
-                    </div>
+                    <div className="w-10 h-[1px] bg-white/10 mb-4" />
                     <h3 className="text-xl leading-tight font-medium text-white group-hover:text-[#e9d4ac] transition-colors duration-300">
                       {clip.title[lang]}
                     </h3>
-                    <div className={`mt-5 inline-flex items-center gap-2 text-sm text-white/55 group-hover:text-[#c9a96e] transition-colors duration-300`}>
+                    <div className="mt-5 inline-flex items-center gap-2 text-sm text-white/55 group-hover:text-[#c9a96e] transition-colors duration-300">
                       <YoutubeIcon />
                       {t.watchYoutube}
                     </div>
@@ -472,7 +446,6 @@ export default function App() {
           </div>
         </section>
 
-                {/* about + contact */}
         <section className="px-6 pb-12">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
             <div
@@ -486,7 +459,8 @@ export default function App() {
                 {t.aboutTitle}
               </h2>
               <p className="text-white/70 leading-8">{t.aboutText}</p>
-              <p className="text-white/55 leading-8 mt-4">{t.aboutText2}</p>
+              <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-60" />
+              <p className="text-white/50 leading-8 mt-6">{t.aboutText2}</p>
             </div>
 
             <div
@@ -546,7 +520,3 @@ export default function App() {
     </div>
   );
 }
-
-             
-
-      
