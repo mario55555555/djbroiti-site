@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-
+import { Analytics } from "@vercel/analytics/next"
 export default function App() {
   const [lang, setLang] = useState("he");
 
@@ -608,12 +608,15 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="relative z-10 mt-10 border-t border-white/10 px-6 py-8 text-center">
+          <footer className="relative z-10 mt-10 border-t border-white/10 px-6 py-8 text-center">
         <div className="mx-auto max-w-7xl">
           <p className="text-lg font-bold tracking-wide text-white">DJ Broiti</p>
           <p className="mt-2 text-sm text-zinc-400">{t.footer}</p>
         </div>
       </footer>
     </div>
+
+    <Analytics />
+  </>
   );
 }
