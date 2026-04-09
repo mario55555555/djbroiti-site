@@ -1,11 +1,22 @@
 import { useMemo, useState } from "react";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react";
 export default function App() {
   const [lang, setLang] = useState("he");
 
   const youtubePlaylistId = "PLqNi4ilGBqeCX3zVNTRPxsmK3O7hKoEIx";
 
   const t = useMemo(() => {
+const t = useMemo(() => {
+  return lang === "he"
+    ? {
+        dir: "rtl",
+        ...
+      }
+    : {
+        dir: "ltr",
+        ...
+      };
+}, [lang]);
     return lang === "he"
       ? {
           dir: "rtl",
