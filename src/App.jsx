@@ -203,49 +203,49 @@ export default function App() {
         ]
       : [
           {
-            title: "Shomer Alai",
+            title: "Protects Me(Shomer Alai)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/SBsVm1H1tSM",
             embedUrl: "https://www.youtube.com/embed/SBsVm1H1tSM?rel=0",
           },
           {
-            title: "Shavir Shel Shniya",
+            title: "In a Split Second (Shavrir Shel Shnia)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/h_ZhlUu9zMc",
             embedUrl: "https://www.youtube.com/embed/h_ZhlUu9zMc?rel=0",
           },
           {
-            title: "Ei Sham (Remix)",
+            title: "Somwehere (Ei Sham Remix)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/wAtPoT2rfwg",
             embedUrl: "https://www.youtube.com/embed/wAtPoT2rfwg?rel=0",
           },
           {
-            title: "Ei Sham",
+            title: "Somewhere (Ei Sham)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/zCA2hASBCuo",
             embedUrl: "https://www.youtube.com/embed/zCA2hASBCuo?rel=0",
           },
           {
-            title: "My Second Half (Live)",
+            title: "My Second Self (Live)",
             subtitle: "Live Performance",
             watchUrl: "https://youtu.be/8vaVKwRikWw",
             embedUrl: "https://www.youtube.com/embed/8vaVKwRikWw?rel=0",
           },
           {
-            title: "Chalamti Alayich (Club Remix)",
+            title: "I Dreamed of you(Khalamti Alayiykh)(Club Remix)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/BKioBZHjcZA",
             embedUrl: "https://www.youtube.com/embed/BKioBZHjcZA?rel=0",
           },
           {
-            title: "Chalamti Alayich",
+            title: "I Dreamed of you (Khalamti Alayikh)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/AlRWp4A-snM",
             embedUrl: "https://www.youtube.com/embed/AlRWp4A-snM?rel=0",
           },
           {
-            title: "Levadi",
+            title: "Alone(Levadi)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/gNoOEpG1ZY4",
             embedUrl: "https://www.youtube.com/embed/gNoOEpG1ZY4?rel=0",
@@ -275,7 +275,7 @@ export default function App() {
             embedUrl: "https://www.youtube.com/embed/RU7L4FleDlk?rel=0",
           },
           {
-            title: "I Don't Feel Real",
+            title: "I Don't Feel Real (Lo Margish Kayam)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/2Q5z5VLKnoo",
             embedUrl: "https://www.youtube.com/embed/2Q5z5VLKnoo?rel=0",
