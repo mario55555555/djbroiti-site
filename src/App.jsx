@@ -153,7 +153,7 @@ export default function App() {
             embedUrl: "https://www.youtube.com/embed/-C7zS5kjZkQ?rel=0",
           },
           {
-            title: "Hard To Break",
+            title: "Hard to Break",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/RU7L4FleDlk",
             embedUrl: "https://www.youtube.com/embed/RU7L4FleDlk?rel=0",
@@ -183,7 +183,7 @@ export default function App() {
             embedUrl: "https://www.youtube.com/embed/RB86jrC2yRc?rel=0",
           },
           {
-            title: "החצי השני שלי My Second Self (Live Rock Version)",
+            title: "החצי השני שלי - My Second Self (Live Rock Version)",
             subtitle: "גרסת לייב",
             watchUrl: "https://youtu.be/MiON30oxUjk",
             embedUrl: "https://www.youtube.com/embed/MiON30oxUjk?rel=0",
@@ -203,7 +203,7 @@ export default function App() {
         ]
       : [
           {
-            title: "Protects Me(Shomer Alai)",
+            title: "Protects Me (Shomer Alai)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/SBsVm1H1tSM",
             embedUrl: "https://www.youtube.com/embed/SBsVm1H1tSM?rel=0",
@@ -215,7 +215,7 @@ export default function App() {
             embedUrl: "https://www.youtube.com/embed/h_ZhlUu9zMc?rel=0",
           },
           {
-            title: "Somwehere (Ei Sham Remix)",
+            title: "Somewhere (Ei Sham Remix)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/wAtPoT2rfwg",
             embedUrl: "https://www.youtube.com/embed/wAtPoT2rfwg?rel=0",
@@ -227,25 +227,25 @@ export default function App() {
             embedUrl: "https://www.youtube.com/embed/zCA2hASBCuo?rel=0",
           },
           {
-            title: "My Second Self (Live)",
+            title: "My Second Self (Live Performance)",
             subtitle: "Live Performance",
             watchUrl: "https://youtu.be/8vaVKwRikWw",
             embedUrl: "https://www.youtube.com/embed/8vaVKwRikWw?rel=0",
           },
           {
-            title: "I Dreamed of you(Khalamti Alayiykh)(Club Remix)",
+            title: "I Dreamed of You (Khalamti Alayikh) – Club Remix",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/BKioBZHjcZA",
             embedUrl: "https://www.youtube.com/embed/BKioBZHjcZA?rel=0",
           },
           {
-            title: "I Dreamed of you (Khalamti Alayikh)",
+            title: "I Dreamed of You (Khalamti Alayikh)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/AlRWp4A-snM",
             embedUrl: "https://www.youtube.com/embed/AlRWp4A-snM?rel=0",
           },
           {
-            title: "Alone(Levadi)",
+            title: "Alone (Levadi)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/gNoOEpG1ZY4",
             embedUrl: "https://www.youtube.com/embed/gNoOEpG1ZY4?rel=0",
@@ -269,7 +269,7 @@ export default function App() {
             embedUrl: "https://www.youtube.com/embed/-C7zS5kjZkQ?rel=0",
           },
           {
-            title: "Hard To Break",
+            title: "Hard to Break",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/RU7L4FleDlk",
             embedUrl: "https://www.youtube.com/embed/RU7L4FleDlk?rel=0",
@@ -287,7 +287,7 @@ export default function App() {
             embedUrl: "https://www.youtube.com/embed/rK1GhEbIF-k?rel=0",
           },
           {
-            title: "Somebody Else (Hebrew)",
+            title: "Somebody Else (Hebrew Version)",
             subtitle: "Official Video",
             watchUrl: "https://youtu.be/ZYq-fRCVc34",
             embedUrl: "https://www.youtube.com/embed/ZYq-fRCVc34?rel=0",
@@ -379,8 +379,8 @@ export default function App() {
           id="home"
           className="mx-auto flex min-h-[92vh] max-w-7xl items-center px-6 py-10"
         >
-          <div className="grid w-full items-center gap-12 lg:grid-cols-2">
-            <div className="max-w-2xl">
+          <div className="grid w-full items-center gap-12">
+            <div className="mx-auto max-w-2xl text-center">
               <p className="mb-3 inline-block rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.25em] text-white/70 backdrop-blur-md">
                 {t.heroBadge}
               </p>
@@ -395,11 +395,11 @@ export default function App() {
                 {t.heroSubtitle}
               </p>
 
-              <p className="mb-8 max-w-xl text-lg leading-8 text-zinc-300">
+              <p className="mx-auto mb-8 max-w-xl text-lg leading-8 text-zinc-300">
                 {t.heroText}
               </p>
 
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap justify-center gap-4">
                 <a
                   href="#music"
                   className="rounded-full bg-white px-7 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
@@ -413,25 +413,6 @@ export default function App() {
                 >
                   {lang === "he" ? "צפו בקליפים" : "Watch Videos"}
                 </a>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="absolute -inset-3 rounded-[36px] bg-gradient-to-r from-fuchsia-500/20 to-cyan-500/20 blur-2xl" />
-              <div className="relative rounded-[32px] border border-white/15 bg-white/10 p-4 shadow-2xl backdrop-blur-xl">
-                <div className="overflow-hidden rounded-[24px] border border-white/10 bg-black/40">
-                  <iframe
-                    style={{ borderRadius: "24px" }}
-                    src="https://open.spotify.com/embed/artist/5pfzwmN1A0pYdZZiQGf15D?utm_source=generator"
-                    width="100%"
-                    height="380"
-                    frameBorder="0"
-                    allowFullScreen=""
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"
-                    title="Spotify Player"
-                  />
-                </div>
               </div>
             </div>
           </div>
