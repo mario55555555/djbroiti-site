@@ -1,496 +1,623 @@
-import React from "react";
+import { useMemo, useState } from "react";
 
-export default function DjBroitiSite() {
-  const containerStyle = {
-    minHeight: "100vh",
-    background:
-      "radial-gradient(circle at top, #1f2340 0%, #0c0c12 45%, #050507 100%)",
-    color: "white",
-    fontFamily:
-      "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
-    direction: "rtl",
-  };
+export default function App() {
+  const [lang, setLang] = useState("he");
 
-  const overlayStyle = {
-    minHeight: "100vh",
-    background:
-      "linear-gradient(to bottom, rgba(0,0,0,0.25), rgba(0,0,0,0.75))",
-  };
+  const youtubePlaylistId = "PLqNi4ilGBqeCX3zVNTRPxsmK3O7hKoEIx";
 
-  const navStyle = {
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "24px 20px",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "16px",
-    flexWrap: "wrap",
-  };
+  const t = useMemo(() => {
+    return lang === "he"
+      ? {
+          dir: "rtl",
+          navHome: "בית",
+          navAbout: "אודות",
+          navMusic: "מוזיקה",
+          navVideo: "טריילר",
+          navYoutube: "קליפים",
+          navContact: "יצירת קשר",
+          heroBadge: "DJ • Producer • AI Creator",
+          heroTitle: "DJ Broiti",
+          heroSubtitle: "Cinematic Electronic Experience",
+          heroText:
+            "DJ Broiti הוא אמן, מפיק ויוצר AI המשלב מוזיקה אלקטרונית מודרנית עם ויזואליים קולנועיים ליצירת חוויה רגשית, עוצמתית וייחודית.",
+          listenNow: "האזינו עכשיו",
+          watchTrailer: "צפו בטריילר",
+          aboutTitle: "אודות",
+          aboutText:
+            "DJ Broiti הוא אמן ומפיק מוזיקלי היוצר מוזיקה ווידאו באמצעות AI, ומשלב בין סאונד אלקטרוני מודרני, רגש עמוק, ויזואל קולנועי וחדשנות יצירתית.",
+          musicTitle: "מוזיקה",
+          videoTitle: "טריילר רשמי",
+          youtubeGalleryTitle: "קליפים רשמיים",
+          youtubeGalleryText:
+            "כל השירים והקליפים של DJ Broiti, בנגן YouTube רשמי בתוך האתר.",
+          contactTitle: "יצירת קשר",
+          contactText: "להופעות, שיתופי פעולה ויצירת קשר:",
+          contactButton: "שלחו מייל",
+          followTitle: "עקבו אחרי DJ Broiti",
+          spotify: "ספוטיפיי",
+          apple: "אפל מיוזיק",
+          instagram: "אינסטגרם",
+          tiktok: "טיקטוק",
+          youtube: "יוטיוב",
+          fullPlaylist: "לפלייליסט המלא",
+          openYoutube: "פתח ביוטיוב",
+          switchLabel: "English",
+          footer: "כל הזכויות שמורות ל־DJ Broiti",
+        }
+      : {
+          dir: "ltr",
+          navHome: "Home",
+          navAbout: "About",
+          navMusic: "Music",
+          navVideo: "Trailer",
+          navYoutube: "Videos",
+          navContact: "Contact",
+          heroBadge: "DJ • Producer • AI Creator",
+          heroTitle: "DJ Broiti",
+          heroSubtitle: "Cinematic Electronic Experience",
+          heroText:
+            "DJ Broiti is an artist, producer, and AI creator blending modern electronic music with cinematic visuals to craft a powerful and emotionally driven audiovisual experience.",
+          listenNow: "Listen Now",
+          watchTrailer: "Watch Trailer",
+          aboutTitle: "About",
+          aboutText:
+            "DJ Broiti is a music producer and AI creator crafting music and video through a fusion of modern electronic sound, deep emotion, cinematic visuals, and creative innovation.",
+          musicTitle: "Music",
+          videoTitle: "Official Trailer",
+          youtubeGalleryTitle: "Official Videos",
+          youtubeGalleryText:
+            "All DJ Broiti songs and videos, played through the official YouTube player on the site.",
+          contactTitle: "Contact",
+          contactText: "For bookings, collaborations, and contact:",
+          contactButton: "Send Email",
+          followTitle: "Follow DJ Broiti",
+          spotify: "Spotify",
+          apple: "Apple Music",
+          instagram: "Instagram",
+          tiktok: "TikTok",
+          youtube: "YouTube",
+          fullPlaylist: "Full Playlist",
+          openYoutube: "Open on YouTube",
+          switchLabel: "עברית",
+          footer: "All rights reserved to DJ Broiti",
+        };
+  }, [lang]);
 
-  const logoStyle = {
-    fontSize: "28px",
-    fontWeight: "800",
-    letterSpacing: "1px",
-    color: "#ffffff",
-  };
-
-  const logoAccent = {
-    color: "#9f7aea",
-  };
-
-  const navLinksStyle = {
-    display: "flex",
-    gap: "12px",
-    flexWrap: "wrap",
-  };
-
-  const linkStyle = {
-    color: "#e9e9f2",
-    textDecoration: "none",
-    padding: "10px 16px",
-    border: "1px solid rgba(255,255,255,0.12)",
-    borderRadius: "999px",
-    background: "rgba(255,255,255,0.04)",
-    fontSize: "14px",
-    transition: "0.2s ease",
-  };
-
-  const heroStyle = {
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "70px 20px 40px",
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-    gap: "40px",
-    alignItems: "center",
-  };
-
-  const badgeStyle = {
-    display: "inline-block",
-    marginBottom: "18px",
-    padding: "8px 14px",
-    borderRadius: "999px",
-    background: "rgba(159, 122, 234, 0.18)",
-    border: "1px solid rgba(159, 122, 234, 0.35)",
-    color: "#d8c4ff",
-    fontSize: "13px",
-    fontWeight: "600",
-  };
-
-  const titleStyle = {
-    fontSize: "clamp(38px, 7vw, 82px)",
-    lineHeight: "1.02",
-    margin: "0 0 18px",
-    fontWeight: "900",
-  };
-
-  const subtitleStyle = {
-    fontSize: "clamp(17px, 2vw, 22px)",
-    lineHeight: "1.8",
-    color: "#d4d4df",
-    marginBottom: "28px",
-    maxWidth: "620px",
-  };
-
-  const buttonsRow = {
-    display: "flex",
-    gap: "14px",
-    flexWrap: "wrap",
-    marginBottom: "26px",
-  };
-
-  const primaryButton = {
-    background: "linear-gradient(135deg, #9f7aea, #6b46c1)",
-    color: "white",
-    textDecoration: "none",
-    padding: "14px 24px",
-    borderRadius: "14px",
-    fontWeight: "700",
-    boxShadow: "0 12px 30px rgba(107, 70, 193, 0.35)",
-    border: "1px solid rgba(255,255,255,0.08)",
-  };
-
-  const secondaryButton = {
-    background: "rgba(255,255,255,0.05)",
-    color: "white",
-    textDecoration: "none",
-    padding: "14px 24px",
-    borderRadius: "14px",
-    fontWeight: "700",
-    border: "1px solid rgba(255,255,255,0.14)",
-  };
-
-  const statsRow = {
-    display: "flex",
-    gap: "14px",
-    flexWrap: "wrap",
-    marginTop: "10px",
-  };
-
-  const statCard = {
-    background: "rgba(255,255,255,0.05)",
-    border: "1px solid rgba(255,255,255,0.1)",
-    borderRadius: "18px",
-    padding: "16px 20px",
-    minWidth: "130px",
-    backdropFilter: "blur(10px)",
-  };
-
-  const statNumber = {
-    fontSize: "22px",
-    fontWeight: "800",
-    marginBottom: "4px",
-  };
-
-  const statLabel = {
-    color: "#c7c7d3",
-    fontSize: "14px",
-  };
-
-  const visualCard = {
-    position: "relative",
-    background:
-      "linear-gradient(180deg, rgba(159,122,234,0.22), rgba(255,255,255,0.04))",
-    border: "1px solid rgba(255,255,255,0.12)",
-    borderRadius: "28px",
-    padding: "28px",
-    minHeight: "420px",
-    boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
-    overflow: "hidden",
-  };
-
-  const glowOne = {
-    position: "absolute",
-    width: "220px",
-    height: "220px",
-    background: "rgba(159, 122, 234, 0.22)",
-    borderRadius: "50%",
-    filter: "blur(30px)",
-    top: "-40px",
-    left: "-40px",
-  };
-
-  const glowTwo = {
-    position: "absolute",
-    width: "180px",
-    height: "180px",
-    background: "rgba(66, 153, 225, 0.18)",
-    borderRadius: "50%",
-    filter: "blur(26px)",
-    bottom: "-30px",
-    right: "-20px",
-  };
-
-  const visualInner = {
-    position: "relative",
-    zIndex: 2,
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    gap: "24px",
-  };
-
-  const featuredLabel = {
-    color: "#d8c4ff",
-    fontWeight: "700",
-    letterSpacing: "1px",
-    fontSize: "13px",
-  };
-
-  const featuredTitle = {
-    fontSize: "34px",
-    fontWeight: "900",
-    margin: "0 0 10px",
-  };
-
-  const featuredText = {
-    color: "#dedee8",
-    lineHeight: "1.8",
-    fontSize: "16px",
-    maxWidth: "420px",
-  };
-
-  const miniCardsWrap = {
-    display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    gap: "14px",
-  };
-
-  const miniCard = {
-    background: "rgba(255,255,255,0.07)",
-    border: "1px solid rgba(255,255,255,0.1)",
-    borderRadius: "18px",
-    padding: "18px",
-  };
-
-  const sectionStyle = {
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "20px 20px 80px",
-  };
-
-  const sectionTitle = {
-    fontSize: "34px",
-    fontWeight: "900",
-    marginBottom: "14px",
-  };
-
-  const sectionText = {
-    color: "#cfcfda",
-    fontSize: "17px",
-    lineHeight: "1.8",
-    maxWidth: "760px",
-    marginBottom: "30px",
-  };
-
-  const cardsGrid = {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-    gap: "18px",
-  };
-
-  const featureCard = {
-    background: "rgba(255,255,255,0.05)",
-    border: "1px solid rgba(255,255,255,0.1)",
-    borderRadius: "24px",
-    padding: "24px",
-    boxShadow: "0 12px 30px rgba(0,0,0,0.18)",
-  };
-
-  const featureTitle = {
-    fontSize: "20px",
-    fontWeight: "800",
-    marginBottom: "10px",
-  };
-
-  const featureText = {
-    color: "#d1d1db",
-    lineHeight: "1.7",
-    fontSize: "15px",
-  };
-
-  const videoSection = {
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "0 20px 90px",
-  };
-
-  const videoWrap = {
-    position: "relative",
-    overflow: "hidden",
-    borderRadius: "28px",
-    border: "1px solid rgba(255,255,255,0.12)",
-    boxShadow: "0 20px 60px rgba(0,0,0,0.35)",
-  };
-
-  const iframeStyle = {
-    width: "100%",
-    aspectRatio: "16 / 9",
-    border: "none",
-    display: "block",
-  };
-
-  const footerStyle = {
-    borderTop: "1px solid rgba(255,255,255,0.08)",
-    maxWidth: "1200px",
-    margin: "0 auto",
-    padding: "24px 20px 34px",
-    color: "#b9b9c6",
-    display: "flex",
-    justifyContent: "space-between",
-    gap: "16px",
-    flexWrap: "wrap",
-    fontSize: "14px",
-  };
+  const youtubeVideos =
+    lang === "he"
+      ? [
+          {
+            title: "שומר עליי",
+            subtitle: "קליפ רשמי",
+            watchUrl: "https://youtu.be/SBsVm1H1tSM",
+            embedUrl: "https://www.youtube.com/embed/SBsVm1H1tSM?rel=0",
+          },
+          {
+            title: "שבריר של שנייה",
+            subtitle: "קליפ רשמי",
+            watchUrl: "https://youtu.be/h_ZhlUu9zMc",
+            embedUrl: "https://www.youtube.com/embed/h_ZhlUu9zMc?rel=0",
+          },
+          {
+            title: "אי שם (Remix)",
+            subtitle: "קליפ רשמי",
+            watchUrl: "https://youtu.be/wAtPoT2rfwg",
+            embedUrl: "https://www.youtube.com/embed/wAtPoT2rfwg?rel=0",
+          },
+          {
+            title: "אי שם",
+            subtitle: "קליפ רשמי",
+            watchUrl: "https://youtu.be/zCA2hASBCuo",
+            embedUrl: "https://www.youtube.com/embed/zCA2hASBCuo?rel=0",
+          },
+          {
+            title: "החצי השני שלי",
+            subtitle: "לייב בכיכר האשליות",
+            watchUrl: "https://youtu.be/8vaVKwRikWw",
+            embedUrl: "https://www.youtube.com/embed/8vaVKwRikWw?rel=0",
+          },
+          {
+            title: "חלמתי עלייך (Club Remix)",
+            subtitle: "קליפ רשמי",
+            watchUrl: "https://youtu.be/BKioBZHjcZA",
+            embedUrl: "https://www.youtube.com/embed/BKioBZHjcZA?rel=0",
+          },
+          {
+            title: "חלמתי עלייך",
+            subtitle: "קליפ רשמי",
+            watchUrl: "https://youtu.be/AlRWp4A-snM",
+            embedUrl: "https://www.youtube.com/embed/AlRWp4A-snM?rel=0",
+          },
+          {
+            title: "לבדי",
+            subtitle: "קליפ רשמי",
+            watchUrl: "https://youtu.be/gNoOEpG1ZY4",
+            embedUrl: "https://www.youtube.com/embed/gNoOEpG1ZY4?rel=0",
+          },
+          {
+            title: "Hard to Break (Alternate Version)",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/jPPafrSdkf0",
+            embedUrl: "https://www.youtube.com/embed/jPPafrSdkf0?rel=0",
+          },
+          {
+            title: "Fighting on Her Own",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/EmDesEEk_sg",
+            embedUrl: "https://www.youtube.com/embed/EmDesEEk_sg?rel=0",
+          },
+          {
+            title: "And There Was Light",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/-C7zS5kjZkQ",
+            embedUrl: "https://www.youtube.com/embed/-C7zS5kjZkQ?rel=0",
+          },
+          {
+            title: "Hard To Break",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/RU7L4FleDlk",
+            embedUrl: "https://www.youtube.com/embed/RU7L4FleDlk?rel=0",
+          },
+          {
+            title: "I Don't Feel Real",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/2Q5z5VLKnoo",
+            embedUrl: "https://www.youtube.com/embed/2Q5z5VLKnoo?rel=0",
+          },
+          {
+            title: "Somebody Else",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/rK1GhEbIF-k",
+            embedUrl: "https://www.youtube.com/embed/rK1GhEbIF-k?rel=0",
+          },
+          {
+            title: "Somebody Else (עברית)",
+            subtitle: "קליפ רשמי",
+            watchUrl: "https://youtu.be/ZYq-fRCVc34",
+            embedUrl: "https://www.youtube.com/embed/ZYq-fRCVc34?rel=0",
+          },
+          {
+            title: "החצי השני שלי - My Second Self",
+            subtitle: "קליפ רשמי",
+            watchUrl: "https://youtu.be/RB86jrC2yRc",
+            embedUrl: "https://www.youtube.com/embed/RB86jrC2yRc?rel=0",
+          },
+          {
+            title: "החצי השני שלי My Second Self (Live Rock Version)",
+            subtitle: "גרסת לייב",
+            watchUrl: "https://youtu.be/MiON30oxUjk",
+            embedUrl: "https://www.youtube.com/embed/MiON30oxUjk?rel=0",
+          },
+          {
+            title: "Here Comes The Storm",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/j8gr-UhfFj8",
+            embedUrl: "https://www.youtube.com/embed/j8gr-UhfFj8?rel=0",
+          },
+          {
+            title: "מסע - קאבר (אליעד)",
+            subtitle: "קליפ רשמי",
+            watchUrl: "https://youtu.be/coYAIaSQupc",
+            embedUrl: "https://www.youtube.com/embed/coYAIaSQupc?rel=0",
+          },
+        ]
+      : [
+          {
+            title: "Shomer Alai",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/SBsVm1H1tSM",
+            embedUrl: "https://www.youtube.com/embed/SBsVm1H1tSM?rel=0",
+          },
+          {
+            title: "Shavir Shel Shniya",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/h_ZhlUu9zMc",
+            embedUrl: "https://www.youtube.com/embed/h_ZhlUu9zMc?rel=0",
+          },
+          {
+            title: "Ei Sham (Remix)",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/wAtPoT2rfwg",
+            embedUrl: "https://www.youtube.com/embed/wAtPoT2rfwg?rel=0",
+          },
+          {
+            title: "Ei Sham",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/zCA2hASBCuo",
+            embedUrl: "https://www.youtube.com/embed/zCA2hASBCuo?rel=0",
+          },
+          {
+            title: "My Second Half (Live)",
+            subtitle: "Live Performance",
+            watchUrl: "https://youtu.be/8vaVKwRikWw",
+            embedUrl: "https://www.youtube.com/embed/8vaVKwRikWw?rel=0",
+          },
+          {
+            title: "Chalamti Alayich (Club Remix)",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/BKioBZHjcZA",
+            embedUrl: "https://www.youtube.com/embed/BKioBZHjcZA?rel=0",
+          },
+          {
+            title: "Chalamti Alayich",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/AlRWp4A-snM",
+            embedUrl: "https://www.youtube.com/embed/AlRWp4A-snM?rel=0",
+          },
+          {
+            title: "Levadi",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/gNoOEpG1ZY4",
+            embedUrl: "https://www.youtube.com/embed/gNoOEpG1ZY4?rel=0",
+          },
+          {
+            title: "Hard to Break (Alternate Version)",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/jPPafrSdkf0",
+            embedUrl: "https://www.youtube.com/embed/jPPafrSdkf0?rel=0",
+          },
+          {
+            title: "Fighting on Her Own",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/EmDesEEk_sg",
+            embedUrl: "https://www.youtube.com/embed/EmDesEEk_sg?rel=0",
+          },
+          {
+            title: "And There Was Light",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/-C7zS5kjZkQ",
+            embedUrl: "https://www.youtube.com/embed/-C7zS5kjZkQ?rel=0",
+          },
+          {
+            title: "Hard To Break",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/RU7L4FleDlk",
+            embedUrl: "https://www.youtube.com/embed/RU7L4FleDlk?rel=0",
+          },
+          {
+            title: "I Don't Feel Real",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/2Q5z5VLKnoo",
+            embedUrl: "https://www.youtube.com/embed/2Q5z5VLKnoo?rel=0",
+          },
+          {
+            title: "Somebody Else",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/rK1GhEbIF-k",
+            embedUrl: "https://www.youtube.com/embed/rK1GhEbIF-k?rel=0",
+          },
+          {
+            title: "Somebody Else (Hebrew)",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/ZYq-fRCVc34",
+            embedUrl: "https://www.youtube.com/embed/ZYq-fRCVc34?rel=0",
+          },
+          {
+            title: "My Second Self",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/RB86jrC2yRc",
+            embedUrl: "https://www.youtube.com/embed/RB86jrC2yRc?rel=0",
+          },
+          {
+            title: "My Second Self (Live Rock Version)",
+            subtitle: "Live Version",
+            watchUrl: "https://youtu.be/MiON30oxUjk",
+            embedUrl: "https://www.youtube.com/embed/MiON30oxUjk?rel=0",
+          },
+          {
+            title: "Here Comes The Storm",
+            subtitle: "Official Video",
+            watchUrl: "https://youtu.be/j8gr-UhfFj8",
+            embedUrl: "https://www.youtube.com/embed/j8gr-UhfFj8?rel=0",
+          },
+          {
+            title: "Masa (Eliad Cover)",
+            subtitle: "Official Cover Video",
+            watchUrl: "https://youtu.be/coYAIaSQupc",
+            embedUrl: "https://www.youtube.com/embed/coYAIaSQupc?rel=0",
+          },
+        ];
 
   return (
-    <div style={containerStyle}>
-      <div style={overlayStyle}>
-        <nav style={navStyle}>
-          <div style={logoStyle}>
-            DJ <span style={logoAccent}>Broiti</span>
-          </div>
+    <div
+      dir={t.dir}
+      className="relative min-h-screen overflow-x-hidden bg-black text-white"
+    >
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+      >
+        <source src="/bg-video.mp4" type="video/mp4" />
+      </video>
 
-          <div style={navLinksStyle}>
-            <a
-              href="https://www.instagram.com/djbroiti/"
-              target="_blank"
-              rel="noreferrer"
-              style={linkStyle}
-            >
-              Instagram
+      <div className="absolute inset-0 bg-black/75" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black" />
+      <div className="absolute -top-20 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-fuchsia-500/20 blur-3xl" />
+      <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-cyan-500/10 blur-3xl" />
+
+      <header className="relative z-20 border-b border-white/10 bg-black/20 backdrop-blur-md">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+          <a href="#home" className="text-xl font-extrabold tracking-wide">
+            DJ Broiti
+          </a>
+
+          <nav className="hidden gap-6 text-sm text-white/80 md:flex">
+            <a href="#home" className="transition hover:text-white">
+              {t.navHome}
             </a>
-            <a
-              href="https://www.tiktok.com/@djbroiti"
-              target="_blank"
-              rel="noreferrer"
-              style={linkStyle}
-            >
-              TikTok
+            <a href="#about" className="transition hover:text-white">
+              {t.navAbout}
             </a>
-            <a
-              href="https://youtu.be/q8yf6nkUP2k"
-              target="_blank"
-              rel="noreferrer"
-              style={linkStyle}
-            >
-              YouTube
+            <a href="#music" className="transition hover:text-white">
+              {t.navMusic}
             </a>
-          </div>
-        </nav>
+            <a href="#video" className="transition hover:text-white">
+              {t.navVideo}
+            </a>
+            <a href="#youtube" className="transition hover:text-white">
+              {t.navYoutube}
+            </a>
+            <a href="#contact" className="transition hover:text-white">
+              {t.navContact}
+            </a>
+          </nav>
 
-        <section style={heroStyle}>
-          <div>
-            <div style={badgeStyle}>DJ • Producer • Cinematic Vision</div>
+          <button
+            onClick={() => setLang(lang === "he" ? "en" : "he")}
+            className="rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white backdrop-blur-md transition hover:bg-white/20"
+          >
+            {t.switchLabel}
+          </button>
+        </div>
+      </header>
 
-            <h1 style={titleStyle}>
-              מוזיקה, רגש,
-              <br />
-              וחוויה ברמה אחרת
-            </h1>
+      <main className="relative z-10">
+        <section
+          id="home"
+          className="mx-auto flex min-h-[92vh] max-w-7xl items-center px-6 py-10"
+        >
+          <div className="grid w-full items-center gap-12 lg:grid-cols-2">
+            <div className="max-w-2xl">
+              <p className="mb-3 inline-block rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.25em] text-white/70 backdrop-blur-md">
+                {t.heroBadge}
+              </p>
 
-            <p style={subtitleStyle}>
-              ברוכים הבאים לעולם של DJ Broiti — יצירה מוזיקלית עם סאונד מודרני,
-              זהות חזקה, ויזואליות יוקרתית ואנרגיה שנשארת איתך.
-            </p>
+              <h1 className="mb-4 text-5xl font-black leading-[0.95] sm:text-6xl lg:text-7xl">
+                <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-500 bg-clip-text text-transparent">
+                  {t.heroTitle}
+                </span>
+              </h1>
 
-            <div style={buttonsRow}>
-              <a
-                href="https://youtu.be/q8yf6nkUP2k"
-                target="_blank"
-                rel="noreferrer"
-                style={primaryButton}
-              >
-                לצפייה בטריילר
-              </a>
+              <p className="mb-4 text-xl font-semibold text-white/85 sm:text-2xl">
+                {t.heroSubtitle}
+              </p>
 
-              <a
-                href="https://www.instagram.com/djbroiti/"
-                target="_blank"
-                rel="noreferrer"
-                style={secondaryButton}
-              >
-                לעמוד האינסטגרם
-              </a>
+              <p className="mb-8 max-w-xl text-lg leading-8 text-zinc-300">
+                {t.heroText}
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="#music"
+                  className="rounded-full bg-white px-7 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
+                >
+                  {t.listenNow}
+                </a>
+
+                <a
+                  href="#youtube"
+                  className="rounded-full border border-white/20 bg-white/10 px-7 py-3 font-bold text-white transition hover:scale-105 hover:bg-white/20"
+                >
+                  {lang === "he" ? "צפו בקליפים" : "Watch Videos"}
+                </a>
+              </div>
             </div>
 
-            <div style={statsRow}>
-              <div style={statCard}>
-                <div style={statNumber}>AI</div>
-                <div style={statLabel}>Creative Vision</div>
-              </div>
-
-              <div style={statCard}>
-                <div style={statNumber}>Pro</div>
-                <div style={statLabel}>Music & Visuals</div>
-              </div>
-
-              <div style={statCard}>
-                <div style={statNumber}>RTL</div>
-                <div style={statLabel}>Hebrew Experience</div>
-              </div>
-            </div>
-          </div>
-
-          <div style={visualCard}>
-            <div style={glowOne}></div>
-            <div style={glowTwo}></div>
-
-            <div style={visualInner}>
-              <div>
-                <div style={featuredLabel}>FEATURED ARTIST PROFILE</div>
-                <h2 style={featuredTitle}>DJ Broiti</h2>
-                <p style={featuredText}>
-                  שילוב של מוזיקה, סיפור, טכנולוגיה ואסתטיקה קולנועית — מותג
-                  מוזיקלי עם נוכחות מודרנית, אפלה, יוקרתית ובלתי נשכחת.
-                </p>
-              </div>
-
-              <div style={miniCardsWrap}>
-                <div style={miniCard}>
-                  <div style={{ ...featureTitle, fontSize: "17px" }}>
-                    Sound Identity
-                  </div>
-                  <div style={featureText}>
-                    סגנון חד, רגשי ומדויק עם נגיעה עתידנית.
-                  </div>
-                </div>
-
-                <div style={miniCard}>
-                  <div style={{ ...featureTitle, fontSize: "17px" }}>
-                    Visual Impact
-                  </div>
-                  <div style={featureText}>
-                    עיצוב יוקרתי שמתאים לאמן מודרני עם נוכחות.
-                  </div>
+            <div className="relative">
+              <div className="absolute -inset-3 rounded-[36px] bg-gradient-to-r from-fuchsia-500/20 to-cyan-500/20 blur-2xl" />
+              <div className="relative rounded-[32px] border border-white/15 bg-white/10 p-4 shadow-2xl backdrop-blur-xl">
+                <div className="overflow-hidden rounded-[24px] border border-white/10 bg-black/40">
+                  <iframe
+                    style={{ borderRadius: "24px" }}
+                    src="https://open.spotify.com/embed/artist/5pfzwmN1A0pYdZZiQGf15D?utm_source=generator"
+                    width="100%"
+                    height="380"
+                    frameBorder="0"
+                    allowFullScreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"
+                    title="Spotify Player"
+                  />
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section style={sectionStyle}>
-          <h2 style={sectionTitle}>למה לבחור ב־DJ Broiti</h2>
-          <p style={sectionText}>
-            זה לא רק שיר. זו חבילה של סאונד, אופי, אווירה ונראות — חוויה שלמה
-            שמחברת בין מוזיקה מקורית, סיפור אישי ועיצוב ברמה גבוהה.
-          </p>
+        <section id="about" className="mx-auto max-w-7xl px-6 py-12">
+          <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+            <h2 className="mb-4 text-3xl font-bold">{t.aboutTitle}</h2>
+            <p className="leading-8 text-zinc-300">{t.aboutText}</p>
+          </div>
+        </section>
 
-          <div style={cardsGrid}>
-            <div style={featureCard}>
-              <div style={featureTitle}>מוזיקה מקורית</div>
-              <div style={featureText}>
-                יצירה עם כיוון ברור, רגש אמיתי וחתימה מוזיקלית ייחודית.
-              </div>
-            </div>
-
-            <div style={featureCard}>
-              <div style={featureTitle}>שפה ויזואלית יוקרתית</div>
-              <div style={featureText}>
-                אתר, מיתוג ותוכן עם מראה מקצועי, עשיר ומרשים.
-              </div>
-            </div>
-
-            <div style={featureCard}>
-              <div style={featureTitle}>נוכחות דיגיטלית</div>
-              <div style={featureText}>
-                חיבור ישיר לקהל דרך YouTube, Instagram ו־TikTok.
-              </div>
-            </div>
-
-            <div style={featureCard}>
-              <div style={featureTitle}>חזון יצירתי</div>
-              <div style={featureText}>
-                שילוב בין סאונד מתקדם, אמנות דיגיטלית וחשיבה חדשנית.
-              </div>
+        <section id="music" className="mx-auto max-w-7xl px-6 py-12">
+          <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+            <h2 className="mb-4 text-3xl font-bold">{t.musicTitle}</h2>
+            <div className="overflow-hidden rounded-[22px] border border-white/10">
+              <iframe
+                style={{ borderRadius: "16px" }}
+                src="https://open.spotify.com/embed/artist/5pfzwmN1A0pYdZZiQGf15D?utm_source=generator"
+                width="100%"
+                height="352"
+                frameBorder="0"
+                allowFullScreen=""
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title="Spotify Embed"
+              />
             </div>
           </div>
         </section>
 
-        <section style={videoSection}>
-          <h2 style={sectionTitle}>צפו בטריילר</h2>
-          <p style={sectionText}>
-            הצצה לעולם היצירה, הסטייל והאנרגיה של DJ Broiti.
-          </p>
-
-          <div style={videoWrap}>
-            <iframe
-              style={iframeStyle}
-              src="https://www.youtube.com/embed/q8yf6nkUP2k"
-              title="DJ Broiti Trailer"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+        <section id="video" className="mx-auto max-w-7xl px-6 py-12">
+          <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+            <h2 className="mb-4 text-3xl font-bold">{t.videoTitle}</h2>
+            <div className="aspect-video overflow-hidden rounded-[22px] border border-white/10">
+              <iframe
+                className="h-full w-full"
+                src="https://www.youtube.com/embed/q8yf6nkUP2k?rel=0"
+                title="DJ Broiti Trailer"
+                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
           </div>
         </section>
 
-        <footer style={footerStyle}>
-          <div>© 2026 DJ Broiti. All rights reserved.</div>
-          <div>Designed for a premium music brand experience.</div>
-        </footer>
-      </div>
+        <section id="youtube" className="mx-auto max-w-7xl px-6 py-14">
+          <div className="mb-8 flex items-end justify-between gap-4">
+            <div>
+              <p className="mb-2 text-sm uppercase tracking-[0.25em] text-white/50">
+                YouTube
+              </p>
+              <h2 className="text-3xl font-bold sm:text-4xl">
+                {t.youtubeGalleryTitle}
+              </h2>
+            </div>
+
+            <a
+              href={`https://www.youtube.com/playlist?list=${youtubePlaylistId}`}
+              target="_blank"
+              rel="noreferrer"
+              className="hidden rounded-full border border-white/20 bg-white/10 px-5 py-3 text-sm font-bold text-white transition hover:bg-white/20 md:inline-flex"
+            >
+              {t.fullPlaylist}
+            </a>
+          </div>
+
+          <p className="mb-8 max-w-3xl text-zinc-300">
+            {t.youtubeGalleryText}
+          </p>
+
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {youtubeVideos.map((video) => (
+              <div
+                key={video.title}
+                className="overflow-hidden rounded-[26px] border border-white/10 bg-white/[0.06] shadow-xl backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-white/20"
+              >
+                <div className="aspect-video overflow-hidden border-b border-white/10 bg-black">
+                  <iframe
+                    className="h-full w-full"
+                    src={video.embedUrl}
+                    title={video.title}
+                    loading="lazy"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                </div>
+
+                <div className="p-5">
+                  <h3 className="mb-2 text-2xl font-bold text-white">
+                    {video.title}
+                  </h3>
+                  <p className="mb-5 text-zinc-300">{video.subtitle}</p>
+
+                  <a
+                    href={video.watchUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex rounded-full bg-white px-5 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
+                  >
+                    {t.openYoutube}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="contact" className="mx-auto max-w-7xl px-6 py-12">
+          <div className="grid gap-8 lg:grid-cols-2">
+            <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+              <h2 className="mb-4 text-3xl font-bold">{t.contactTitle}</h2>
+              <p className="mb-5 text-zinc-300">{t.contactText}</p>
+
+              <a
+                href="mailto:djbroiti@gmail.com"
+                className="inline-flex rounded-full bg-white px-6 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
+              >
+                {t.contactButton}
+              </a>
+
+              <div className="mt-6 text-zinc-400">djbroiti@gmail.com</div>
+            </div>
+
+            <div className="rounded-[28px] border border-white/15 bg-white/10 p-6 backdrop-blur-xl">
+              <h2 className="mb-6 text-3xl font-bold">{t.followTitle}</h2>
+
+              <div className="flex flex-wrap gap-4">
+                <a
+                  href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-green-500 px-6 py-3 font-bold text-black transition hover:scale-105 hover:bg-green-400"
+                >
+                  {t.spotify}
+                </a>
+
+                <a
+                  href="https://music.apple.com/il/artist/dj-broiti/1832848545"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-white px-6 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
+                >
+                  {t.apple}
+                </a>
+
+                <a
+                  href="https://www.instagram.com/djbroiti/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-gradient-to-r from-pink-500 to-purple-500 px-6 py-3 font-bold text-white transition hover:scale-105"
+                >
+                  {t.instagram}
+                </a>
+
+                <a
+                  href="https://www.tiktok.com/@djbroiti"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-white px-6 py-3 font-bold text-black transition hover:scale-105 hover:bg-zinc-200"
+                >
+                  {t.tiktok}
+                </a>
+
+                <a
+                  href={`https://www.youtube.com/playlist?list=${youtubePlaylistId}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="rounded-full bg-red-600 px-6 py-3 font-bold text-white transition hover:scale-105 hover:bg-red-500"
+                >
+                  {t.youtube}
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="relative z-10 mt-10 border-t border-white/10 px-6 py-8 text-center">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-lg font-bold tracking-wide text-white">DJ Broiti</p>
+          <p className="mt-2 text-sm text-zinc-400">{t.footer}</p>
+        </div>
+      </footer>
     </div>
   );
 }
