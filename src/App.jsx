@@ -5,19 +5,83 @@ export default function App() {
 
   const youtubePlaylistId = "PLqNi4ilGBqeCX3zVNTRPxsmK3O7hKoEIx";
 
-  const t = useMemo(() => {
 const t = useMemo(() => {
   return lang === "he"
     ? {
         dir: "rtl",
-        ...
+        navHome: "בית",
+        navAbout: "אודות",
+        navMusic: "מוזיקה",
+        navVideo: "טריילר",
+        navYoutube: "קליפים",
+        navContact: "יצירת קשר",
+        heroBadge: "DJ • Producer • AI Creator",
+        heroTitle: "DJ Broiti",
+        heroSubtitle: "Cinematic Electronic Experience",
+        heroText:
+          "DJ Broiti הוא אמן, מפיק ויוצר AI מירושלים, המשלב מוזיקה אלקטרונית מודרנית, ויזואליים קולנועיים וקליפים רשמיים ליצירת חוויה עוצמתית וייחודית.",
+        listenNow: "האזינו עכשיו",
+        watchTrailer: "צפו בטריילר",
+        aboutTitle: "אודות",
+        aboutText:
+          "DJ Broiti הוא אמן AI מירושלים, יוצר תוכן, וידאו ומוזיקה בעזרת בינה מלאכותית.",
+        musicTitle: "מוזיקה",
+        videoTitle: "טריילר רשמי",
+        youtubeGalleryTitle: "קליפים רשמיים",
+        youtubeGalleryText:
+          "כל השירים והקליפים של DJ Broiti, בנגן YouTube רשמי בתוך האתר.",
+        contactTitle: "יצירת קשר",
+        contactText: "להופעות, שיתופי פעולה ויצירת קשר:",
+        contactButton: "שלחו מייל",
+        followTitle: "עקבו אחרי DJ Broiti",
+        spotify: "ספוטיפיי",
+        apple: "אפל מיוזיק",
+        instagram: "אינסטגרם",
+        tiktok: "טיקטוק",
+        youtube: "יוטיוב",
+        fullPlaylist: "לפלייליסט המלא",
+        openYoutube: "פתח ביוטיוב",
+        switchLabel: "English",
+        footer: "כל הזכויות שמורות ל־DJ Broiti",
       }
     : {
         dir: "ltr",
-        ...
+        navHome: "Home",
+        navAbout: "About",
+        navMusic: "Music",
+        navVideo: "Trailer",
+        navYoutube: "Videos",
+        navContact: "Contact",
+        heroBadge: "DJ • Producer • AI Creator",
+        heroTitle: "DJ Broiti",
+        heroSubtitle: "Cinematic Electronic Experience",
+        heroText:
+          "DJ Broiti is an AI music artist from Jerusalem creating original electronic music.",
+        listenNow: "Listen Now",
+        watchTrailer: "Watch Trailer",
+        aboutTitle: "About",
+        aboutText:
+          "DJ Broiti is an AI artist from Jerusalem creating music and videos.",
+        musicTitle: "Music",
+        videoTitle: "Official Trailer",
+        youtubeGalleryTitle: "Official Videos",
+        youtubeGalleryText:
+          "All DJ Broiti songs and videos, played through YouTube.",
+        contactTitle: "Contact",
+        contactText: "For bookings and collaborations:",
+        contactButton: "Send Email",
+        followTitle: "Follow DJ Broiti",
+        spotify: "Spotify",
+        apple: "Apple Music",
+        instagram: "Instagram",
+        tiktok: "TikTok",
+        youtube: "YouTube",
+        fullPlaylist: "Full Playlist",
+        openYoutube: "Open on YouTube",
+        switchLabel: "עברית",
+        footer: "All rights reserved to DJ Broiti",
       };
 }, [lang]);
-    return lang === "he"
       ? {
           dir: "rtl",
           navHome: "בית",
@@ -55,7 +119,7 @@ const t = useMemo(() => {
           switchLabel: "English",
           footer: "כל הזכויות שמורות ל־DJ Broiti",
         }
-      : {
+      : 
           dir: "ltr",
           navHome: "Home",
           navAbout: "About",
