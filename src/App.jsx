@@ -58,12 +58,12 @@ const AppleIcon = () => (
 
 const ALL_CLIPS = [
   { title: { en: "Shomer Alay", he: "שומר עליי" }, id: "SBsVm1H1tSM", cat: { en: "Latest Release", he: "הוצאה חדשה" }, featured: true },
-  { title: { en: "Shvir Shel Shniya", he: "שבריר של שנייה" }, id: "h_ZhlUu9zMc", cat: { en: "Official Video", he: "קליפ רשמי" } },
-  { title: { en: "Ei Sham (Remix)", he: "אי שם (Remix)" }, id: "wAtPoT2rfwg", cat: { en: "Remix", he: "רמיקס" } },
-  { title: { en: "Ei Sham", he: "אי שם" }, id: "zCA2hASBCuo", cat: { en: "Original Song", he: "שיר מקורי" } },
-  { title: { en: "My Second Half (Live)", he: "החצי השני שלי (לייב בכיכר האשליות)" }, id: "8vaVKwRikWw", cat: { en: "Live", he: "לייב" } },
-  { title: { en: "Chalamti Alayich (Club Remix)", he: "חלמתי עלייך (Club Remix)" }, id: "BKioBZHjcZA", cat: { en: "Club Remix", he: "קלאב רמיקס" } },
-  { title: { en: "Chalamti Alayich", he: "חלמתי עלייך" }, id: "AlRWp4A-snM", cat: { en: "Original Song", he: "שיר מקורי" } },
+  { title: { en: "Sharvir Shel Shniya", he: "שבריר של שנייה" }, id: "h_ZhlUu9zMc", cat: { en: "Official Video", he: "קליפ רשמי" } },
+  { title: { en: "Ey Sham (Remix)", he: "אי שם (Remix)" }, id: "wAtPoT2rfwg", cat: { en: "Remix", he: "רמיקס" } },
+  { title: { en: "Ey Sham", he: "אי שם" }, id: "zCA2hASBCuo", cat: { en: "Original Song", he: "שיר מקורי" } },
+  { title: { en: "My Second Half (Live @ Illusions Square)", he: "החצי השני שלי (לייב בכיכר האשליות)" }, id: "8vaVKwRikWw", cat: { en: "Live", he: "לייב" } },
+  { title: { en: "Khalamti Alayich (Club Remix)", he: "חלמתי עלייך (Club Remix)" }, id: "BKioBZHjcZA", cat: { en: "Club Remix", he: "קלאב רמיקס" } },
+  { title: { en: "Khalamti Alayich", he: "חלמתי עלייך" }, id: "AlRWp4A-snM", cat: { en: "Original Song", he: "שיר מקורי" } },
   { title: { en: "Levadi", he: "לבדי" }, id: "gNoOEpG1ZY4", cat: { en: "Original Song", he: "שיר מקורי" } },
   { title: { en: "Here Comes The Storm", he: "Here Comes The Storm" }, id: "j8gr-UhfFj8", cat: { en: "Official Release", he: "הוצאה רשמית" } },
   { title: { en: "Masa - Cover", he: "מסע - קאבר" }, id: "coYAIaSQupc", cat: { en: "Cover", he: "קאבר" } },
@@ -75,7 +75,7 @@ const ALL_CLIPS = [
   { title: { en: "Hard to Break", he: "Hard to Break" }, id: "RU7L4FleDlk", cat: { en: "Official Video", he: "קליפ רשמי" } },
   { title: { en: "Hard to Break (Alternate)", he: "Hard to Break (Alternate)" }, id: "jPPafrSdkf0", cat: { en: "Alternate Version", he: "גרסה חלופית" } },
   { title: { en: "Somebody Else", he: "Somebody Else" }, id: "rK1GhEbIF-k", cat: { en: "Official Video", he: "קליפ רשמי" } },
-  { title: { en: "Somebody Else (Hebrew)", he: "Somebody Else בעברית" }, id: "ZYq-fRCVc34", cat: { en: "Hebrew Version", he: "גרסה בעברית" } },
+  { title: { en: "Mishu Akher", he: "Somebody Else בעברית" }, id: "ZYq-fRCVc34", cat: { en: "Hebrew Version", he: "גרסה בעברית" } },
 ];
 
 const content = {
@@ -85,13 +85,14 @@ const content = {
     navAbout: "About",
     navContact: "Contact",
     brandSub: "Official Archive",
-    heroBadge: "19 Original Creations",
+    brandHebrew: "ברויטי",
+    heroBadge: "Official Website Live",
     heroTitle1: "DJ Broiti",
-    heroTitle2: "Cinematic Music Universe",
+    heroTitle2: "Music That Feels Like Cinema",
     heroText:
-      "Original releases, remixes, live versions, and visual storytelling — brought together in one premium official destination.",
-    watchFeatured: "Watch Featured",
-    exploreArchive: "Explore Archive",
+      "All the music, visuals, and world of DJ Broiti — in one place.",
+    watchFeatured: "Play Now",
+    exploreArchive: "Explore All Clips",
     clips: "Clips",
     official: "Official",
     cinematic: "Cinematic",
@@ -107,8 +108,8 @@ const content = {
       "This official site brings together original songs, visual storytelling, and direct access to the full archive.",
     contactTitle: "Contact",
     contactText: "For collaborations, music, and official inquiries:",
-    followTitle: "Follow",
-    footer: "Official Music Archive · 2026",
+    footerLine: "Cinematic Music · © 2026 DJ Broiti",
+    footerTag: "Official Archive",
     emailButton: "Send Email",
   },
   he: {
@@ -117,13 +118,14 @@ const content = {
     navAbout: "אודות",
     navContact: "יצירת קשר",
     brandSub: "הארכיון הרשמי",
-    heroBadge: "19 יצירות מקוריות",
+    brandHebrew: "ברויטי",
+    heroBadge: "האתר הרשמי עלה לאוויר",
     heroTitle1: "DJ Broiti",
-    heroTitle2: "יקום מוזיקלי קולנועי",
+    heroTitle2: "מוזיקה שנשמעת כמו סרט",
     heroText:
-      "שירים מקוריים, רמיקסים, גרסאות לייב וסיפור ויזואלי — כולם במקום רשמי אחד ויוקרתי.",
-    watchFeatured: "צפה בקטע הנבחר",
-    exploreArchive: "לארכיון",
+      "כל המוזיקה, הקליפים והעולם של DJ Broiti — במקום אחד.",
+    watchFeatured: "הפעל עכשיו",
+    exploreArchive: "לכל הקליפים",
     clips: "קליפים",
     official: "רשמי",
     cinematic: "קולנועי",
@@ -139,8 +141,8 @@ const content = {
       "האתר הרשמי מרכז במקום אחד את השירים המקוריים, הסיפור הוויזואלי והגישה המלאה לארכיון.",
     contactTitle: "יצירת קשר",
     contactText: "לשיתופי פעולה, מוזיקה ופניות רשמיות:",
-    followTitle: "עקבו אחרי",
-    footer: "ארכיון מוזיקה רשמי · 2026",
+    footerLine: "ברויטי · מוזיקה קולנועית · © 2026 כל הזכויות שמורות",
+    footerTag: "הארכיון הרשמי",
     emailButton: "שלח מייל",
   },
 };
@@ -159,6 +161,20 @@ function SocialIconLink({ href, children, hideOnMobile = false }) {
       target="_blank"
       rel="noreferrer"
       className={`${hideOnMobile ? "hidden sm:flex" : "flex"} w-10 h-10 rounded-full border border-white/10 bg-white/5 items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all`}
+    >
+      {children}
+    </a>
+  );
+}
+
+function FooterIconLink({ href, children }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="text-white/40 hover:text-[#c9a96e] hover:scale-110 transition-all duration-300"
+      aria-label="social-link"
     >
       {children}
     </a>
@@ -194,12 +210,13 @@ export default function App() {
             <div className="w-10 h-10 rounded-full border border-[#c9a96e]/35 text-[#c9a96e] flex items-center justify-center font-semibold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
               B
             </div>
+
             <div className={isHebrew ? "text-right" : "text-left"}>
               <div className="text-[13px] uppercase tracking-[0.35em] text-white/90 font-semibold">
-                DJ Broiti
+                DJ BROITI
               </div>
-              <div className="text-[10px] uppercase tracking-[0.3em] text-white/40">
-                {t.brandSub}
+              <div className={`text-[10px] tracking-[0.28em] text-white/38 ${isHebrew ? "" : "uppercase"}`}>
+                {isHebrew ? `${t.brandSub} · ${t.brandHebrew}` : t.brandSub}
               </div>
             </div>
           </div>
@@ -266,12 +283,18 @@ export default function App() {
                 {t.heroBadge}
               </div>
 
-              <h1 className="text-5xl sm:text-6xl md:text-8xl font-semibold leading-[0.92] tracking-[-0.04em]">
+              <h1 className="text-5xl sm:text-6xl md:text-8xl font-semibold leading-[0.92] tracking-[-0.04em] drop-shadow-[0_0_40px_rgba(201,169,110,0.18)]">
                 {t.heroTitle1}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
                   {t.heroTitle2}
                 </span>
               </h1>
+
+              {isHebrew && (
+                <div className="mt-4 text-sm md:text-base text-white/35 tracking-[0.35em]">
+                  ברויטי
+                </div>
+              )}
 
               <div className="mt-6 w-20 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
 
@@ -449,21 +472,6 @@ export default function App() {
         <section className="px-6 pb-12">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
             <div
-              id="about"
-              className={`rounded-[28px] border border-white/10 bg-white/[0.04] p-8 md:p-10 ${isHebrew ? "text-right" : "text-left"}`}
-            >
-              <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
-                {t.aboutTitle}
-              </div>
-              <h2 className="text-3xl md:text-4xl font-semibold mb-5">
-                {t.aboutTitle}
-              </h2>
-              <p className="text-white/70 leading-8">{t.aboutText}</p>
-              <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-60" />
-              <p className="text-white/50 leading-8 mt-6">{t.aboutText2}</p>
-            </div>
-
-            <div
               id="contact"
               className={`rounded-[28px] border border-white/10 bg-white/[0.04] p-8 md:p-10 ${isHebrew ? "text-right" : "text-left"}`}
             >
@@ -493,28 +501,49 @@ export default function App() {
                 </a>
               </div>
             </div>
+
+            <div
+              id="about"
+              className={`rounded-[28px] border border-white/10 bg-white/[0.04] p-8 md:p-10 ${isHebrew ? "text-right" : "text-left"}`}
+            >
+              <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
+                {t.aboutTitle}
+              </div>
+              <h2 className="text-3xl md:text-4xl font-semibold mb-5">
+                {t.aboutTitle}
+              </h2>
+              <p className="text-white/70 leading-8">{t.aboutText}</p>
+              <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-60" />
+              <p className="text-white/50 leading-8 mt-6">{t.aboutText2}</p>
+            </div>
           </div>
         </section>
       </main>
 
-      <footer className="relative z-10 border-t border-white/10 px-6 py-10">
-        <div className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
+      <footer className="relative z-10 border-t border-white/10 px-6 py-12 mt-8">
+        <div className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
           <div className={isHebrew ? "text-right" : "text-left"}>
-            <div className="text-sm tracking-[0.25em] uppercase text-white/75">
-              DJ Broiti
+            <div className="text-sm tracking-[0.3em] uppercase text-white/80">
+              DJ BROITI
             </div>
-            <div className="text-xs tracking-[0.2em] uppercase text-white/35 mt-1">
-              {t.footer}
+            <div className="text-xs text-white/38 mt-2">
+              {t.footerLine}
             </div>
           </div>
 
-          <a
-            href="mailto:djbroiti@gmail.com"
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-white/75 hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
-          >
-            <MailIcon />
-            djbroiti@gmail.com
-          </a>
+          <div className="flex items-center gap-5">
+            <FooterIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545">
+              <AppleIcon />
+            </FooterIconLink>
+
+            <FooterIconLink href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si">
+              <SpotifyIcon />
+            </FooterIconLink>
+
+            <FooterIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A">
+              <YoutubeIcon />
+            </FooterIconLink>
+          </div>
         </div>
       </footer>
     </div>
