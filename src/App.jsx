@@ -262,17 +262,19 @@ export default function App() {
       </a>
 <button
   onClick={() => setLang(lang === "he" ? "en" : "he")}
-  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 min-w-[110px] px-4 py-2 text-sm text-white/80 whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
+  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-[9px] text-sm font-medium text-white/80 whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
 >
   <GlobeIcon />
-  <span>{lang === "he" ? "English" : "עברית"}</span>
+  <span className="tracking-wide">
+    {lang === "he" ? "EN" : "עב"}
+  </span>
 </button>
     </div>
   </div>
 </nav>
 
       <main className="relative z-10">
-        {/* hero */}
+               {/* hero */}
         <section id="home" className="px-6 pt-32 md:pt-40 pb-16 md:pb-20">
           <div
             className={`max-w-7xl mx-auto transition-all duration-1000 ${
@@ -322,12 +324,14 @@ export default function App() {
                     {t.clips}
                   </div>
                 </div>
+
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
                   <div className="text-2xl md:text-3xl font-semibold text-[#e9d4ac]">100%</div>
                   <div className="text-[11px] uppercase tracking-[0.25em] text-white/45 mt-1">
                     {t.official}
                   </div>
                 </div>
+
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
                   <div className="text-2xl md:text-3xl font-semibold text-[#e9d4ac]">AI</div>
                   <div className="text-[11px] uppercase tracking-[0.25em] text-white/45 mt-1">
