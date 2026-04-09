@@ -260,14 +260,13 @@ export default function App() {
       >
         <TiktokIcon />
       </a>
-
-      <button
-        onClick={() => setLang(lang === "he" ? "en" : "he")}
-        className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/80 hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all ml-1"
-      >
-        <GlobeIcon />
-        {lang === "he" ? "English" : "עברית"}
-      </button>
+<button
+  onClick={() => setLang(lang === "he" ? "en" : "he")}
+  className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 min-w-[110px] px-4 py-2 text-sm text-white/80 whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
+>
+  <GlobeIcon />
+  <span>{lang === "he" ? "English" : "עברית"}</span>
+</button>
     </div>
   </div>
 </nav>
