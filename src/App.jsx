@@ -24,7 +24,7 @@ export default function App() {
           watchTrailer: "צפו בטריילר",
           aboutTitle: "אודות",
           aboutText:
-            "DJ Broiti הוא אמן ומפיק מוזיקלי היוצר מוזיקה ווידאו באמצעות AI, ומשלב בין סאונד אלקטרוני מודרני, רגש עמוק, ויזואל קולנועי וחדשנות יצירתית.",
+            "DJ Broiti הוא אמן AI מירושלים, יוצר תוכן, וידאו ומוזיקה בעזרת בינה מלאכותית.",
           musicTitle: "מוזיקה",
           videoTitle: "טריילר רשמי",
           youtubeGalleryTitle: "קליפים רשמיים",
@@ -61,7 +61,7 @@ export default function App() {
           watchTrailer: "Watch Trailer",
           aboutTitle: "About",
           aboutText:
-            "DJ Broiti is a music producer and AI creator crafting music and video through a fusion of modern electronic sound, deep emotion, cinematic visuals, and creative innovation.",
+            "DJ Broiti is an AI artist from Jerusalem, creating content, video, and music with artificial intelligence.",
           musicTitle: "Music",
           videoTitle: "Official Trailer",
           youtubeGalleryTitle: "Official Videos",
