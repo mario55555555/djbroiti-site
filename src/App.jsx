@@ -58,19 +58,19 @@ const AppleIcon = () => (
 
 const ALL_CLIPS = [
   { title: { en: "Shomer Alay", he: "שומר עליי" }, id: "SBsVm1H1tSM", cat: { en: "Latest Release", he: "הוצאה חדשה" }, featured: true },
-  { title: { en: "Sharvir Shel Shniya", he: "שבריר של שנייה" }, id: "h_ZhlUu9zMc", cat: { en: "Official Video", he: "קליפ רשמי" } },
+  { title: { en: "Shavrir Shel Shniya", he: "שבריר של שנייה" }, id: "h_ZhlUu9zMc", cat: { en: "Official Video", he: "קליפ רשמי" } },
   { title: { en: "Ey Sham (Remix)", he: "אי שם (Remix)" }, id: "wAtPoT2rfwg", cat: { en: "Remix", he: "רמיקס" } },
   { title: { en: "Ey Sham", he: "אי שם" }, id: "zCA2hASBCuo", cat: { en: "Original Song", he: "שיר מקורי" } },
   { title: { en: "My Second Half (Live @ Illusions Square)", he: "החצי השני שלי (לייב בכיכר האשליות)" }, id: "8vaVKwRikWw", cat: { en: "Live", he: "לייב" } },
-  { title: { en: "Khalamti Alayich (Club Remix)", he: "חלמתי עלייך (Club Remix)" }, id: "BKioBZHjcZA", cat: { en: "Club Remix", he: "קלאב רמיקס" } },
-  { title: { en: "Khalamti Alayich", he: "חלמתי עלייך" }, id: "AlRWp4A-snM", cat: { en: "Original Song", he: "שיר מקורי" } },
+  { title: { en: "Khalamti Alayikh (Club Remix)", he: "חלמתי עלייך (Club Remix)" }, id: "BKioBZHjcZA", cat: { en: "Club Remix", he: "קלאב רמיקס" } },
+  { title: { en: "Khalamti Alayikh", he: "חלמתי עלייך" }, id: "AlRWp4A-snM", cat: { en: "Original Song", he: "שיר מקורי" } },
   { title: { en: "Levadi", he: "לבדי" }, id: "gNoOEpG1ZY4", cat: { en: "Original Song", he: "שיר מקורי" } },
   { title: { en: "Here Comes The Storm", he: "Here Comes The Storm" }, id: "j8gr-UhfFj8", cat: { en: "Official Release", he: "הוצאה רשמית" } },
   { title: { en: "Masa - Cover", he: "מסע - קאבר" }, id: "coYAIaSQupc", cat: { en: "Cover", he: "קאבר" } },
-  { title: { en: "I Don't Feel Real", he: "I Don't Feel Real" }, id: "2Q5z5VLKnoo", cat: { en: "Official Video", he: "קליפ רשמי" } },
+  { title: { en: "I Don't Feel Real", he: "לא מרגיש קיים" }, id: "2Q5z5VLKnoo", cat: { en: "Official Video", he: "קליפ רשמי" } },
   { title: { en: "And There Was Light", he: "And There Was Light" }, id: "-C7zS5kjZkQ", cat: { en: "Audio Visual", he: "אודיו ויזואלי" } },
-  { title: { en: "My Second Self", he: "My Second Self" }, id: "RB86jrC2yRc", cat: { en: "Original Mix", he: "גרסה מקורית" } },
-  { title: { en: "My Second Self (Live Rock)", he: "My Second Self (Live Rock)" }, id: "MiON30oxUjk", cat: { en: "Live Rock", he: "לייב רוק" } },
+  { title: { en: "My Second Self", he: "החצי השני שלי" }, id: "RB86jrC2yRc", cat: { en: "Original Mix", he: "גרסה מקורית" } },
+  { title: { en: "My Second Self (Live Rock)", he: "החצי השני שלי (לייב)" }, id: "MiON30oxUjk", cat: { en: "Live Rock", he: "לייב רוק" } },
   { title: { en: "Fighting On Her Own", he: "Fighting On Her Own" }, id: "EmDesEEk_sg", cat: { en: "Official Video", he: "קליפ רשמי" } },
   { title: { en: "Hard to Break", he: "Hard to Break" }, id: "RU7L4FleDlk", cat: { en: "Official Video", he: "קליפ רשמי" } },
   { title: { en: "Hard to Break (Alternate)", he: "Hard to Break (Alternate)" }, id: "jPPafrSdkf0", cat: { en: "Alternate Version", he: "גרסה חלופית" } },
@@ -89,8 +89,7 @@ const content = {
     heroBadge: "Official Website Live",
     heroTitle1: "DJ Broiti",
     heroTitle2: "Music That Feels Like Cinema",
-    heroText:
-      "All the music, visuals, and world of DJ Broiti — in one place.",
+    heroText: "All the music, visuals, and world of DJ Broiti — in one place.",
     watchFeatured: "Play Now",
     exploreArchive: "Explore All Clips",
     clips: "Clips",
@@ -102,10 +101,8 @@ const content = {
     exploreAll: "Explore All Clips",
     watchYoutube: "Watch on YouTube",
     aboutTitle: "About",
-    aboutText:
-      "DJ Broiti is an AI artist from Jerusalem, creating music, visuals, and cinematic digital experiences through imagination and artificial intelligence.",
-    aboutText2:
-      "This official site brings together original songs, visual storytelling, and direct access to the full archive.",
+    aboutText: "DJ Broiti is an AI artist from Jerusalem, creating music, visuals, and cinematic digital experiences through imagination and artificial intelligence.",
+    aboutText2: "This official site brings together original songs, visual storytelling, and direct access to the full archive.",
     contactTitle: "Contact",
     contactText: "For collaborations, music, and official inquiries:",
     footerLine: "Cinematic Music · © 2026 DJ Broiti",
@@ -122,8 +119,7 @@ const content = {
     heroBadge: "האתר הרשמי עלה לאוויר",
     heroTitle1: "DJ Broiti",
     heroTitle2: "מוזיקה שנשמעת כמו סרט",
-    heroText:
-      "כל המוזיקה, הקליפים והעולם של DJ Broiti — במקום אחד.",
+    heroText: "כל המוזיקה, הקליפים והעולם של DJ Broiti — במקום אחד.",
     watchFeatured: "הפעל עכשיו",
     exploreArchive: "לכל הקליפים",
     clips: "קליפים",
@@ -135,10 +131,8 @@ const content = {
     exploreAll: "לכל הקליפים",
     watchYoutube: "צפה ביוטיוב",
     aboutTitle: "אודות",
-    aboutText:
-      "DJ Broiti הוא אמן AI מירושלים, היוצר מוזיקה, ויז'ואלים וחוויות דיגיטל קולנועיות באמצעות דמיון ובינה מלאכותית.",
-    aboutText2:
-      "האתר הרשמי מרכז במקום אחד את השירים המקוריים, הסיפור הוויזואלי והגישה המלאה לארכיון.",
+    aboutText: "DJ Broiti הוא אמן AI מירושלים, היוצר מוזיקה, ויז'ואלים וחוויות דיגיטל קולנועיות באמצעות דמיון ובינה מלאכותית.",
+    aboutText2: "האתר הרשמי מרכז במקום אחד את השירים המקוריים, הסיפור הוויזואלי והגישה המלאה לארכיון.",
     contactTitle: "יצירת קשר",
     contactText: "לשיתופי פעולה, מוזיקה ופניות רשמיות:",
     footerLine: "ברויטי · מוזיקה קולנועית · © 2026 כל הזכויות שמורות",
@@ -321,10 +315,7 @@ export default function App() {
                 </button>
               </div>
 
-              <div className="mt-10 grid grid-cols-3 gap-3 max-w-xl">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                 
-
+              <div className="mt-10 grid grid-cols-2 gap-3 max-w-xl">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
                   <div className="text-2xl md:text-3xl font-semibold text-[#e9d4ac]">100%</div>
                   <div className="text-[11px] uppercase tracking-[0.25em] text-white/45 mt-1">
