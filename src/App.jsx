@@ -120,24 +120,25 @@ const content = {
     heroTitle1: "DJ Broiti",
     heroTitle2: "מוזיקה שנשמעת כמו סרט",
     heroText: "כל המוזיקה, הקליפים והעולם של DJ Broiti — במקום אחד.",
-    watchFeatured: "הפעל עכשיו",
-    exploreArchive: "לכל הקליפים",
-    clips: "קליפים",
-    official: "רשמי",
-    cinematic: "קולנועי",
-    featured: "קטע נבחר",
-    openClip: "פתח קליפ",
-    fullCollection: "האוסף המלא",
-    exploreAll: "לכל הקליפים",
-    watchYoutube: "צפה ביוטיוב",
-    aboutTitle: "אודות",
-    aboutText: "DJ Broiti הוא אמן AI מירושלים, היוצר מוזיקה, ויז'ואלים וחוויות דיגיטל קולנועיות באמצעות דמיון ובינה מלאכותית.",
-    aboutText2: "האתר הרשמי מרכז במקום אחד את השירים המקוריים, הסיפור הוויזואלי והגישה המלאה לארכיון.",
-    contactTitle: "יצירת קשר",
-    contactText: "לשיתופי פעולה, מוזיקה ופניות רשמיות:",
-    footerLine: "ברויטי · מוזיקה קולנועית · © 2026 כל הזכויות שמורות",
-    footerTag: "הארכיון הרשמי",
-    emailButton: "שלח מייל",
+		watchFeatured: "הפעל עכשיו",
+exploreArchive: "לכל הקליפים",
+clips: "קליפים",
+official: "רשמי",
+cinematic: "קולנועי",
+featured: "קטע נבחר",
+openClip: "צפה ביוטיוב",
+fullCollection: "האוסף המלא",
+exploreAll: "לכל הקליפים",
+watchYoutube: "צפה ביוטיוב",
+aboutTitle: "אודות",
+	
+		aboutText: "DJ Broiti הוא אמן AI מירושלים, היוצר מוזיקה, ויז'ואלים וחוויות דיגיטל קולנועיות באמצעות דמיון ובינה מלאכותית.",
+		aboutText2: "האתר הרשמי מרכז במקום אחד את השירים המקוריים, הסיפור הוויזואלי והגישה המלאה לארכיון.",
+		contactTitle: "יצירת קשר",
+		contactText: "לשיתופי פעולה, מוזיקה ופניות רשמיות:",
+		footerLine: "ברויטי · מוזיקה קולנועית · © 2026 כל הזכויות שמורות",
+		footerTag: "הארכיון הרשמי",
+		emailButton: "שלח מייל",
   },
 };
 
@@ -266,131 +267,119 @@ export default function App() {
 
       <main className="relative z-10">
         <section id="home" className="px-6 pt-32 md:pt-40 pb-16 md:pb-20">
-          <div
-            className={`max-w-7xl mx-auto transition-all duration-1000 ${
-              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
-            <div className={`max-w-4xl ${isHebrew ? "mr-0 ml-auto text-right" : "text-left"}`}>
-              <div className="inline-flex items-center gap-2 mb-6 rounded-full border border-[#c9a96e]/25 bg-[#c9a96e]/10 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-[#e5c98c]">
-                <MusicIcon />
-                {t.heroBadge}
-              </div>
+  <div
+    className={`max-w-7xl mx-auto transition-all duration-1000 ${
+      loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+    }`}
+  >
+    <div className={`max-w-4xl ${isHebrew ? "mr-0 ml-auto text-right" : "text-left"}`}>
+      <div className="inline-flex items-center gap-2 mb-6 rounded-full border border-[#c9a96e]/25 bg-[#c9a96e]/10 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-[#e5c98c]">
+        <MusicIcon />
+        {t.heroBadge}
+      </div>
 
-              <h1 className="text-5xl sm:text-6xl md:text-8xl font-semibold leading-[0.92] tracking-[-0.04em] drop-shadow-[0_0_40px_rgba(201,169,110,0.18)]">
-                {t.heroTitle1}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
-                  {t.heroTitle2}
-                </span>
-              </h1>
+      <h1 className="text-5xl sm:text-6xl md:text-8xl font-semibold leading-[0.92] tracking-[-0.04em] drop-shadow-[0_0_40px_rgba(201,169,110,0.18)]">
+        {t.heroTitle1}
+        <span className="block text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
+          {t.heroTitle2}
+        </span>
+      </h1>
 
-              {isHebrew && (
-                <div className="mt-4 text-sm md:text-base text-white/35 tracking-[0.35em]">
-                  ברויטי
-                </div>
-              )}
+      {isHebrew && (
+        <div className="mt-4 text-sm md:text-base text-white/35 tracking-[0.35em]">
+          ברויטי
+        </div>
+      )}
 
-              <div className="mt-6 w-20 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
+      <div className="mt-6 w-20 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
 
-              <p className="mt-6 max-w-2xl text-sm md:text-lg leading-7 text-white/65">
-                {t.heroText}
-              </p>
+      <p className="mt-6 max-w-2xl text-sm md:text-lg leading-7 text-white/65">
+        {t.heroText}
+      </p>
 
-              <div className={`mt-8 flex flex-wrap gap-4 ${isHebrew ? "justify-start" : ""}`}>
-                <a
-                  href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-6 py-3 font-semibold hover:scale-[1.03] transition-all shadow-[0_0_40px_rgba(201,169,110,0.28)]"
-                >
-                  <YoutubeIcon />
-                  {t.watchFeatured}
-                </a>
+      {/* 🔥 SEO BLOCK */}
+      <div className="mt-10 max-w-2xl text-sm text-white/40 leading-6">
+        <p>
+          DJ Broiti is an AI music artist creating electronic music, cinematic sound,
+          and visual storytelling experiences.
+        </p>
 
-                <button
-                  onClick={() => scrollToId("archive")}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-white/85 hover:bg-white/10 hover:border-white/25 transition-all"
-                >
-                  {t.exploreArchive}
-                </button>
-              </div>
+        <p className="mt-2">
+          דיג'י ברויטי הוא אמן מוזיקה אלקטרונית מבוססת בינה מלאכותית מירושלים.
+        </p>
+      </div>
 
-              <div className="mt-10 grid grid-cols-2 gap-3 max-w-xl">
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                  <div className="text-2xl md:text-3xl font-semibold text-[#e9d4ac]">100%</div>
-                  <div className="text-[11px] uppercase tracking-[0.25em] text-white/45 mt-1">
-                    {t.official}
-                  </div>
-                </div>
+      <div className={`mt-8 flex flex-wrap gap-4 ${isHebrew ? "justify-start" : ""}`}>
+        <a
+          href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-6 py-3 font-semibold hover:scale-[1.03] transition-all shadow-[0_0_40px_rgba(201,169,110,0.28)]"
+        >
+          <YoutubeIcon />
+          {t.watchFeatured}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
-                <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm">
-                  <div className="text-2xl md:text-3xl font-semibold text-[#e9d4ac]">AI</div>
-                  <div className="text-[11px] uppercase tracking-[0.25em] text-white/45 mt-1">
-                    {t.cinematic}
-                  </div>
-                </div>
-              </div>
-            </div>
+<section className="px-6 pb-10">
+  <div className="max-w-7xl mx-auto">
+    <div className="rounded-[30px] border border-white/10 bg-gradient-to-br from-white/8 to-white/[0.03] overflow-hidden shadow-[0_20px_90px_rgba(0,0,0,0.5)]">
+      <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
+        <a
+          href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative block min-h-[300px]"
+        >
+          <img
+            src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`}
+            alt={featuredClip.title[lang]}
+            className="w-full h-full object-cover min-h-[300px] lg:min-h-[430px] group-hover:scale-[1.03] transition-all duration-700"
+            onError={(e) => {
+              e.currentTarget.src = `https://i.ytimg.com/vi/${featuredClip.id}/hqdefault.jpg`;
+            }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/10 to-transparent" />
+         
+        </a>
+
+        <div className={`p-6 md:p-8 lg:p-10 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
+          <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
+            {t.featured}
           </div>
+
+          <h2 className="text-3xl md:text-5xl font-semibold leading-tight">
+            {featuredClip.title[lang]}
+          </h2>
+
+          <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-60" />
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-5 py-3 font-semibold transition hover:scale-105"
+            >
+              <YoutubeIcon />
+              {t.openClip}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="archive" className="px-6 pt-8 pb-6">
+
         </section>
 
-        <section className="px-6 pb-10">
-          <div className="max-w-7xl mx-auto">
-            <div className="rounded-[30px] border border-white/10 bg-gradient-to-br from-white/8 to-white/[0.03] overflow-hidden shadow-[0_20px_90px_rgba(0,0,0,0.5)]">
-              <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
-                <a
-                  href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group relative block min-h-[300px]"
-                >
-                  <img
-                    src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`}
-                    alt={featuredClip.title[lang]}
-                    className="w-full h-full object-cover min-h-[300px] lg:min-h-[430px] group-hover:scale-[1.03] transition-all duration-700"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://i.ytimg.com/vi/${featuredClip.id}/hqdefault.jpg`;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/10 to-transparent" />
-                  <div className="absolute inset-0 flex items-end p-6">
-                    <div className="inline-flex items-center gap-2 rounded-full bg-black/50 border border-white/10 px-4 py-2 text-sm text-white/90 backdrop-blur-md">
-                      <YoutubeIcon />
-                      {t.watchYoutube}
-                    </div>
-                  </div>
-                </a>
-
-                <div className={`p-6 md:p-8 lg:p-10 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
-                  <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
-                    {t.featured}
-                  </div>
-
-                  <h2 className="text-3xl md:text-5xl font-semibold leading-tight">
-                    {featuredClip.title[lang]}
-                  </h2>
-
-                  <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-60" />
-
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <a
-                      href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-5 py-3 font-semibold hover:scale-[1.03] transition-all"
-                    >
-                      <YoutubeIcon />
-                      {t.openClip}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="archive" className="px-6 pt-8 pb-6">
-          <div className={`max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-4 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
+<section id="archive" className="px-6 pt-8 pb-6">
+  <div className={`max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-4 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
             <div className={isHebrew ? "text-right" : "text-left"}>
               <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-3">
                 {t.fullCollection}
@@ -508,7 +497,7 @@ export default function App() {
       </main>
 
       <footer className="relative z-10 border-t border-white/10 px-6 py-12 mt-8">
-        <div className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
+<div className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
           <div className={isHebrew ? "text-right" : "text-left"}>
             <div className="text-sm tracking-[0.3em] uppercase text-white/80">
               DJ BROITI

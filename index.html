@@ -4,97 +4,71 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>DJ Broiti Official Website | AI Music Artist from Jerusalem</title>
+    <title>DJ Broiti | דיג'יי ברויטי - Official AI Music Artist</title>
 
     <meta
       name="description"
-      content="Official website of DJ Broiti, an AI music artist from Jerusalem. Explore original music, official videos, cinematic visuals, and streaming links."
+      content="DJ Broiti הוא אמן מוזיקה מבוסס בינה מלאכותית מירושלים. מוזיקה אלקטרונית, קליפים רשמיים, סאונד קולנועי וחוויות ויזואליות."
     />
-
     <meta
       name="keywords"
-      content="DJ Broiti, AI music artist, electronic music, cinematic music, Jerusalem artist, official music videos"
+      content="DJ Broiti, דיג'יי ברויטי, AI music artist, electronic music, cinematic music, Jerusalem DJ, מוזיקה אלקטרונית, מוזיקה קולנועית"
     />
-
     <meta name="author" content="DJ Broiti" />
+    <meta name="theme-color" content="#050505" />
 
-    <!-- CANONICAL -->
-    <link rel="canonical" href="https://djbroiti.com/" />
-
-    <!-- OPEN GRAPH -->
-    <meta property="og:title" content="DJ Broiti Official Website" />
+    <meta property="og:locale" content="he_IL" />
+    <meta property="og:site_name" content="DJ Broiti" />
+    <meta property="og:title" content="DJ Broiti - Official Website" />
     <meta
       property="og:description"
-      content="Original music, official videos, cinematic visuals, and streaming links by DJ Broiti."
+      content="מוזיקה שנשמעת כמו סרט — האתר הרשמי של DJ Broiti."
     />
-    <meta property="og:url" content="https://djbroiti.com/" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="DJ Broiti" />
-    <meta property="og:locale" content="he_IL" />
-
-    <!-- OG IMAGE (FIXED) -->
-    <meta property="og:image" content="https://djbroiti.com/og-image.jpg" />
+    <meta property="og:url" content="https://djbroiti.com" />
+    <meta property="og:image" content="https://djbroiti.com/preview.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="DJ Broiti Official Website" />
-    <meta property="og:image:type" content="image/jpeg" />
 
-    <!-- TWITTER -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="DJ Broiti Official Website" />
+    <meta name="twitter:title" content="DJ Broiti - Official Website" />
     <meta
       name="twitter:description"
-      content="Original music, official videos, cinematic visuals, and streaming links by DJ Broiti."
+      content="מוזיקה שנשמעת כמו סרט — האתר הרשמי של DJ Broiti."
     />
-    <meta name="twitter:image" content="https://djbroiti.com/og-image.jpg" />
+    <meta name="twitter:image" content="https://djbroiti.com/preview.jpg" />
 
-    <!-- STRUCTURED DATA -->
+    <link rel="canonical" href="https://djbroiti.com" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "MusicGroup",
         "name": "DJ Broiti",
-        "url": "https://djbroiti.com/",
+        "url": "https://djbroiti.com",
+        "image": "https://djbroiti.com/preview.jpg",
+        "genre": ["Electronic", "Cinematic", "AI Music"],
         "sameAs": [
-          "https://www.youtube.com/@DJBroiti",
+          "https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A",
+          "https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si",
+          "https://music.apple.com/il/artist/dj-broiti/1832848545",
           "https://www.instagram.com/djbroiti/",
-          "https://www.tiktok.com/@djbroiti",
-          "https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D",
-          "https://music.apple.com/il/artist/dj-broiti/1832848545"
-        ],
-        "genre": ["AI Music", "Electronic Music", "Cinematic Music"],
-        "foundingLocation": {
-          "@type": "Place",
-          "name": "Jerusalem, Israel"
-        }
+          "https://www.tiktok.com/@djbroiti"
+        ]
       }
     </script>
   </head>
 
-  <body>
-    <!-- SEO TEXT FOR GOOGLE -->
-    <div
-      style="
-        position: absolute;
-        left: -9999px;
-        width: 1px;
-        height: 1px;
-        overflow: hidden;
-      "
-    >
-      <h1>DJ Broiti Official Website</h1>
-      <p>
-        DJ Broiti is an AI music artist from Jerusalem creating original songs,
-        cinematic visuals, official music videos, and electronic music experiences.
-      </p>
-      <p>
-        Listen to DJ Broiti music on YouTube, Spotify, Apple Music and follow on
-        Instagram and TikTok.
-      </p>
-    </div>
-
+  <body style="margin: 0; background: #050505;">
     <div id="root"></div>
-
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
