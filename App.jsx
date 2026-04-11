@@ -101,28 +101,6 @@ const AppleIcon = () => (
   </svg>
 );
 
-const ALL_CLIPS = [
-  { title: { en: "Shomer Alay", he: "שומר עליי" }, id: "SBsVm1H1tSM", cat: { en: "Latest Release", he: "קטע נבחר" }, featured: true },
-  { title: { en: "Sharvir Shel Shniya", he: "שבריר של שנייה" }, id: "h_ZhlUu9zMc", cat: { en: "Official Video", he: "קליפ רשמי" } },
-  { title: { en: "Ey Sham (Remix)", he: "אי שם (Remix)" }, id: "wAtPoT2rfwg", cat: { en: "Remix", he: "רמיקס" } },
-  { title: { en: "Ey Sham", he: "אי שם" }, id: "zCA2hASBCuo", cat: { en: "Original Song", he: "שיר מקורי" } },
-  { title: { en: "My Second Half (Live @ Illusions Square)", he: "החצי השני שלי (לייב בכיכר האשליות)" }, id: "8vaVKwRikWw", cat: { en: "Live", he: "לייב" } },
-  { title: { en: "Khalamti Alayich (Club Remix)", he: "חלמתי עלייך (Club Remix)" }, id: "BKioBZHjcZA", cat: { en: "Club Remix", he: "קלאב רמיקס" } },
-  { title: { en: "Khalamti Alayich", he: "חלמתי עלייך" }, id: "AlRWp4A-snM", cat: { en: "Original Song", he: "שיר מקורי" } },
-  { title: { en: "Levadi", he: "לבדי" }, id: "gNoOEpG1ZY4", cat: { en: "Original Song", he: "שיר מקורי" } },
-  { title: { en: "Here Comes The Storm", he: "Here Comes The Storm" }, id: "j8gr-UhfFj8", cat: { en: "Official Release", he: "הוצאה רשמית" } },
-  { title: { en: "Masa - Cover", he: "מסע - קאבר" }, id: "coYAIaSQupc", cat: { en: "Cover", he: "קאבר" } },
-  { title: { en: "I Don't Feel Real", he: "I Don't Feel Real" }, id: "2Q5z5VLKnoo", cat: { en: "Official Video", he: "קליפ רשמי" } },
-  { title: { en: "And There Was Light", he: "And There Was Light" }, id: "-C7zS5kjZkQ", cat: { en: "Audio Visual", he: "אודיו ויזואלי" } },
-  { title: { en: "My Second Self", he: "My Second Self" }, id: "RB86jrC2yRc", cat: { en: "Original Mix", he: "גרסה מקורית" } },
-  { title: { en: "My Second Self (Live Rock)", he: "My Second Self (Live Rock)" }, id: "MiON30oxUjk", cat: { en: "Live Rock", he: "לייב רוק" } },
-  { title: { en: "Fighting On Her Own", he: "Fighting On Her Own" }, id: "EmDesEEk_sg", cat: { en: "Official Video", he: "קליפ רשמי" } },
-  { title: { en: "Hard to Break", he: "Hard to Break" }, id: "RU7L4FleDlk", cat: { en: "Official Video", he: "קליפ רשמי" } },
-  { title: { en: "Hard to Break (Alternate)", he: "Hard to Break (Alternate)" }, id: "jPPafrSdkf0", cat: { en: "Alternate Version", he: "גרסה חלופית" } },
-  { title: { en: "Somebody Else", he: "Somebody Else" }, id: "rK1GhEbIF-k", cat: { en: "Official Video", he: "קליפ רשמי" } },
-  { title: { en: "Mishu Akher", he: "Somebody Else בעברית" }, id: "ZYq-fRCVc34", cat: { en: "Hebrew Version", he: "גרסה בעברית" } },
-];
-
 const content = {
   en: {
     navHome: "Home",
@@ -190,8 +168,6 @@ const content = {
   },
 };
 
-const featuredClip = ALL_CLIPS.find((clip) => clip.featured) || ALL_CLIPS[0];
-
 function scrollToId(id) {
   const el = document.getElementById(id);
   if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -242,11 +218,56 @@ function StatCard({ value, label }) {
 export default function App() {
   const [loaded, setLoaded] = useState(false);
   const [lang, setLang] = useState("he");
+  const [videos, setVideos] = useState([]);
+  const [featuredClip, setFeaturedClip] = useState(null);
+
   const isHebrew = lang === "he";
   const t = content[lang];
 
+  // ==========================================
+  // הכנס את הנתונים שלך כאן:
+  // ==========================================
+  const API_KEY = "AIzaSyD9Uh5KN9lpa6ci_VF4uevXn27VLgakDhA";
+  const PLAYLIST_ID = "PLqNi4ilGBqeCX3zVNTRPxsmK3O7hKoElx";
+
   useEffect(() => {
-    setLoaded(true);
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch(
+          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${PLAYLIST_ID}&key=${API_KEY}`
+        );
+        const data = await response.json();
+
+        if (data.items && data.items.length > 0) {
+          const formattedClips = data.items.map((item) => ({
+            id: item.snippet.resourceId.videoId,
+            // יוטיוב מחזיר כותרת אחת, אנחנו נשתמש בה בשתי השפות
+            title: {
+              en: item.snippet.title,
+              he: item.snippet.title,
+            },
+            cat: {
+              en: "Official Video",
+              he: "קליפ רשמי",
+            },
+          }));
+
+          setVideos(formattedClips);
+          setFeaturedClip(formattedClips[0]); // מגדיר את הסרטון הראשון בפלייליסט כ"מומלץ"
+        }
+      } catch (error) {
+        console.error("Error fetching videos:", error);
+      } finally {
+        setLoaded(true);
+      }
+    };
+
+    if (API_KEY !== "YOUR_YOUTUBE_API_KEY_HERE") {
+      fetchVideos();
+    } else {
+      setLoaded(true);
+      console.warn("Please add your YouTube API Key to load videos.");
+    }
   }, []);
 
   return (
@@ -359,64 +380,67 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="rounded-[30px] border border-white/10 bg-gradient-to-br from-white/8 to-white/[0.03] overflow-hidden shadow-[0_20px_90px_rgba(0,0,0,0.6)]">
-                <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
-                  <div className="relative min-h-[320px] lg:min-h-[500px] bg-black">
-                    <iframe
-                      src={`https://www.youtube.com/embed/${featuredClip.id}?rel=0&modestbranding=1`}
-                      title={featuredClip.title[lang]}
-                      className="absolute inset-0 w-full h-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                    />
-                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/78 via-black/30 to-transparent" />
-                  </div>
-
-                  <div className={`p-6 md:p-8 lg:p-10 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
-                    <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
-                      {t.featured}
+              {/* נציג את המסך הראשי רק אם מצאנו סרטון (מגן מפני קריסה) */}
+              {featuredClip && (
+                <div className="rounded-[30px] border border-white/10 bg-gradient-to-br from-white/8 to-white/[0.03] overflow-hidden shadow-[0_20px_90px_rgba(0,0,0,0.6)]">
+                  <div className="grid lg:grid-cols-[1.15fr_0.85fr]">
+                    <div className="relative min-h-[320px] lg:min-h-[500px] bg-black">
+                      <iframe
+                        src={`https://www.youtube.com/embed/${featuredClip.id}?rel=0&modestbranding=1`}
+                        title={featuredClip.title[lang]}
+                        className="absolute inset-0 w-full h-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/78 via-black/30 to-transparent" />
                     </div>
 
-                    <h2 className="text-3xl md:text-5xl font-semibold leading-tight">
-                      {featuredClip.title[lang]}
-                    </h2>
+                    <div className={`p-6 md:p-8 lg:p-10 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
+                      <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
+                        {t.featured}
+                      </div>
 
-                    <div className="mt-6 w-20 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
+                      <h2 className="text-3xl md:text-5xl font-semibold leading-tight">
+                        {featuredClip.title[lang]}
+                      </h2>
 
-                    <p className="mt-6 max-w-xl text-sm md:text-base leading-7 text-white/65">
-                      {isHebrew
-                        ? "כל המוזיקה, הקליפים והעולם של DJ Broiti — במקום אחד."
-                        : "All the music, clips, and world of DJ Broiti — in one place."}
-                    </p>
+                      <div className="mt-6 w-20 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
 
-                    <div className="mt-8 flex flex-wrap gap-3">
-                      <a
-                        href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-6 py-3 font-semibold shadow-[0_0_25px_rgba(201,169,110,0.4)] hover:scale-105 hover:shadow-[0_0_40px_rgba(201,169,110,0.6)] transition-all"
-                      >
-                        <YoutubeIcon />
-                        {t.watchFeatured}
-                      </a>
+                      <p className="mt-6 max-w-xl text-sm md:text-base leading-7 text-white/65">
+                        {isHebrew
+                          ? "כל המוזיקה, הקליפים והעולם של DJ Broiti — במקום אחד."
+                          : "All the music, clips, and world of DJ Broiti — in one place."}
+                      </p>
 
-                      <button
-                        onClick={() => scrollToId("archive")}
-                        className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-white/85 hover:border-[#c9a96e]/35 hover:text-[#c9a96e] transition-all"
-                      >
-                        <MusicIcon />
-                        {t.exploreArchive}
-                      </button>
-                    </div>
+                      <div className="mt-8 flex flex-wrap gap-3">
+                        <a
+                          href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-6 py-3 font-semibold shadow-[0_0_25px_rgba(201,169,110,0.4)] hover:scale-105 hover:shadow-[0_0_40px_rgba(201,169,110,0.6)] transition-all"
+                        >
+                          <YoutubeIcon />
+                          {t.watchFeatured}
+                        </a>
 
-                    <div className="mt-10 grid grid-cols-2 gap-3 max-w-xl">
-                      <StatCard value={ALL_CLIPS.length} label={t.statsTracks} />
-                      <StatCard value="100%" label={t.statsOfficial} />
+                        <button
+                          onClick={() => scrollToId("archive")}
+                          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-white/85 hover:border-[#c9a96e]/35 hover:text-[#c9a96e] transition-all"
+                        >
+                          <MusicIcon />
+                          {t.exploreArchive}
+                        </button>
+                      </div>
+
+                      <div className="mt-10 grid grid-cols-2 gap-3 max-w-xl">
+                        <StatCard value={videos.length} label={t.statsTracks} />
+                        <StatCard value="100%" label={t.statsOfficial} />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>
@@ -483,7 +507,7 @@ export default function App() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
-              {ALL_CLIPS.map((clip, i) => (
+              {videos.map((clip, i) => (
                 <a
                   key={`${clip.id}-${i}`}
                   href={`https://www.youtube.com/watch?v=${clip.id}`}
@@ -530,6 +554,12 @@ export default function App() {
                 </a>
               ))}
             </div>
+            
+            {videos.length === 0 && loaded && (
+              <div className="text-center text-white/50 py-10">
+                לא נמצאו סרטונים או שחסר מפתח API.
+              </div>
+            )}
           </div>
         </section>
 
