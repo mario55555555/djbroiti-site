@@ -234,7 +234,8 @@ export default function App() {
     const fetchVideos = async () => {
       try {
         const response = await fetch(
-  `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${PLAYLIST_ID}&key=${API_KEY}&t=${new Date().getTime()}`
+  `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${PLAYLIST_ID}&key=${API_KEY}`
+);
 );
         );
         const data = await response.json();
