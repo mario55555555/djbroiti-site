@@ -132,7 +132,7 @@ export default function App() {
 
   // API Configuration
   const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
-  const PLAYLIST_ID = "PLqNi4ilGBqeCX3zVNTRPxsmK3O7hKoEIx";
+  const PLAYLIST_ID = "const PLAYLIST_ID = "PLqNi4ilGBqeCX3zVNTRPxsmK3O7hKoEIX";";
 
   useEffect(() => {
     const fetchVideos = async () => {
