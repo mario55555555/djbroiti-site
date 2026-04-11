@@ -1,11 +1,10 @@
 <!doctype html>
-<html lang="he">
+<html lang="he" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
     <title>DJ Broiti | דיג'יי ברויטי - Official AI Music Artist</title>
-
     <meta
       name="description"
       content="DJ Broiti הוא אמן מוזיקה מבוסס בינה מלאכותית מירושלים. מוזיקה אלקטרונית, קליפים רשמיים, סאונד קולנועי וחוויות ויזואליות."
@@ -16,10 +15,26 @@
     />
     <meta name="author" content="DJ Broiti" />
     <meta name="theme-color" content="#050505" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-image-preview:large" />
+    <meta name="format-detection" content="telephone=no, email=no, address=no" />
+
+    <link rel="canonical" href="https://djbroiti.com" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
 
     <meta property="og:locale" content="he_IL" />
     <meta property="og:site_name" content="DJ Broiti" />
-    <meta property="og:title" content="DJ Broiti - Official Website" />
+    <meta property="og:title" content="DJ Broiti | Official AI Music Artist" />
     <meta
       property="og:description"
       content="מוזיקה שנשמעת כמו סרט — האתר הרשמי של DJ Broiti."
@@ -29,24 +44,29 @@
     <meta property="og:image" content="https://djbroiti.com/preview.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="DJ Broiti official website preview" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="DJ Broiti - Official Website" />
+    <meta name="twitter:title" content="DJ Broiti | Official AI Music Artist" />
     <meta
       name="twitter:description"
       content="מוזיקה שנשמעת כמו סרט — האתר הרשמי של DJ Broiti."
     />
     <meta name="twitter:image" content="https://djbroiti.com/preview.jpg" />
 
-    <link rel="canonical" href="https://djbroiti.com" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DT36HWWLP"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-7DT36HWWLP', {
+        anonymize_ip: true,
+        page_title: document.title,
+        page_path: window.location.pathname,
+        page_location: window.location.href
+      });
+    </script>
 
     <script type="application/ld+json">
       {
@@ -56,6 +76,7 @@
         "url": "https://djbroiti.com",
         "image": "https://djbroiti.com/preview.jpg",
         "genre": ["Electronic", "Cinematic", "AI Music"],
+        "description": "DJ Broiti is an AI music artist from Jerusalem creating electronic and cinematic music experiences.",
         "sameAs": [
           "https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A",
           "https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si",
@@ -65,9 +86,57 @@
         ]
       }
     </script>
+
+    <style>
+      html {
+        background: #050505;
+        color-scheme: dark;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: #050505;
+        color: #ffffff;
+        font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      #root {
+        min-height: 100vh;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      img,
+      picture,
+      video,
+      canvas,
+      svg {
+        display: block;
+        max-width: 100%;
+      }
+
+      button,
+      input,
+      textarea,
+      select {
+        font: inherit;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    </style>
   </head>
 
-  <body style="margin: 0; background: #050505;">
+  <body>
+    <noscript>כדי לצפות באתר הזה צריך להפעיל JavaScript.</noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
