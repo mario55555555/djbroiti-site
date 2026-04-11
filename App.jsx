@@ -228,47 +228,13 @@ export default function App() {
   // הכנס את הנתונים שלך כאן:
   // ==========================================
   const API_KEY = "AIzaSyD9Uh5KN9lpa6ci_VF4uevXn27VLgakDhA";
-  const PLAYLIST_ID = "PLqNi4ilGBqeCX3zVNTRPxsmK3O7hKoElx";
+  const PLAYLIST_ID = "UUYjqM6rM9inAmbWdLBcQ86A";
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
         const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${PLAYLIST_ID}&key=${API_KEY}`
-        );
-        const data = await response.json();
-
-        if (data.items && data.items.length > 0) {
-          const formattedClips = data.items.map((item) => ({
-            id: item.snippet.resourceId.videoId,
-            // יוטיוב מחזיר כותרת אחת, אנחנו נשתמש בה בשתי השפות
-            title: {
-              en: item.snippet.title,
-              he: item.snippet.title,
-            },
-            cat: {
-              en: "Official Video",
-              he: "קליפ רשמי",
-            },
-          }));
-
-          setVideos(formattedClips);
-          setFeaturedClip(formattedClips[0]); // מגדיר את הסרטון הראשון בפלייליסט כ"מומלץ"
-        }
-      } catch (error) {
-        console.error("Error fetching videos:", error);
-      } finally {
-        setLoaded(true);
-      }
-    };
-
-    if (API_KEY !== "YOUR_YOUTUBE_API_KEY_HERE") {
-      fetchVideos();
-    } else {
-      setLoaded(true);
-      console.warn("Please add your YouTube API Key to load videos.");
-    }
-  }, []);
+          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=${PLAYLIST_ID}&key=${API_KEY}&t=${new Date().getTime()}`
 
   return (
     <div
