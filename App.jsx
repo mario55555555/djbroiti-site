@@ -131,7 +131,7 @@ export default function App() {
   const t = content[lang];
 
   // API Configuration
-  const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
+  const API_KEY = "AIzaSyD8wqKKL0fumFTg-p7AMxQ8CuI1aKYnez4";
   const PLAYLIST_ID = "PLqNi4ilGBqeCX3zVNTRPxsmK3O7hKoEIX";
 
   useEffect(() => {
