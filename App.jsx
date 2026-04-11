@@ -264,11 +264,11 @@ export default function App() {
       }
     };
 
-    if (API_KEY !== "YOUR_YOUTUBE_API_KEY_HERE") {
+    if (API_KEY) {
       fetchVideos();
     } else {
       setLoaded(true);
-      console.warn("Please add your YouTube API Key to load videos.");
+      console.warn("API Key is missing from Environment Variables");
     }
   }, []);
 
