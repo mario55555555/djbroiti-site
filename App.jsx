@@ -228,7 +228,7 @@ export default function App() {
   // הכנס את הנתונים שלך כאן:
   // ==========================================
   const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
-  const PLAYLIST_ID = "UUYjqM6rM9inAmbWdLBcQ86A";
+  const PLAYLIST_ID = "PLqNi4ilGBqeCX3zVNTRPxsmK3O7hKoEIx";
 
   useEffect(() => {
     const fetchVideos = async () => {
