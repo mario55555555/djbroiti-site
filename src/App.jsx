@@ -57,6 +57,7 @@ const AppleIcon = () => (
 );
 
 const ALL_CLIPS = [
+  { title: { en: "Lo Tzrikha Otkha (Club Remix)", he: "לא צריכה אותך (Club Remix)" }, id: "3WGISHHzDb0", cat: { en: "Club Remix", he: "קלאב רמיקס" } },
   { title: { en: "Lo Tzrikha Otkha (I Don't Need You)", he: "לא צריכה אותך" }, id: "DueG6uK25mU", cat: { en: "Latest Release", he: "הוצאה חדשה" }, featured: true },
   { title: { en: "Shomer Alay", he: "שומר עליי" }, id: "SBsVm1H1tSM", cat: { en: "Official Video", he: "קליפ רשמי" } },
   { title: { en: "Shavrir Shel Shniya", he: "שבריר של שנייה" }, id: "h_ZhlUu9zMc", cat: { en: "Official Video", he: "קליפ רשמי" } },
