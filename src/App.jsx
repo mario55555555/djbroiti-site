@@ -192,7 +192,7 @@ export default function App() {
     >
       {/* GLOBAL FIXED BACKGROUND */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-20">
+        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-60">
           <source src="/dog-loop.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-[#050505]/75" />
