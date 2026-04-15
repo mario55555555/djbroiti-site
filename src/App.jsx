@@ -179,7 +179,6 @@ function FooterIconLink({ href, children }) {
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
-  // מוגדר לאנגלית כברירת מחדל
   const [lang, setLang] = useState("en"); 
   const isHebrew = lang === "he";
   const t = content[lang];
@@ -204,7 +203,6 @@ export default function App() {
       <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/45 backdrop-blur-xl">
         <div className="max-w-[90rem] mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-3 md:gap-4">
           
-          {/* אזור הלוגו - הוגדר ככה שיתכווץ בחכמה בטלפונים (truncate) */}
           <div className={`flex items-center gap-3 md:gap-4 min-w-0 ${isHebrew ? "flex-row-reverse" : ""}`}>
             <div className="w-10 h-10 md:w-14 md:h-14 shrink-0 rounded-full border-2 border-[#c9a96e]/40 text-[#c9a96e] flex items-center justify-center text-lg md:text-2xl font-bold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
               B
@@ -274,7 +272,6 @@ export default function App() {
                 {t.heroBadge}
               </div>
 
-              {/* מרווח השורות תוקן כאן למניעת דריסה (leading-tight) */}
               <h1 className="text-5xl sm:text-[5.5rem] md:text-[7.5rem] font-bold leading-tight tracking-[-0.02em] drop-shadow-[0_0_40px_rgba(201,169,110,0.2)]">
                 {t.heroTitle1}
                 <span className="block mt-2 md:mt-5 text-4xl sm:text-[4rem] md:text-[5.5rem] leading-[1.15] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
@@ -318,47 +315,46 @@ export default function App() {
 
         <section className="px-6 pb-16 md:pb-20">
           <div className="max-w-[90rem] mx-auto">
-            <div className="rounded-[24px] md:rounded-[32px] border border-white/10 bg-gradient-to-br from-white/8 to-white/[0.03] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
-              <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
-                <a
-                  href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block min-h-[250px] md:min-h-[450px]"
-                >
-                  <img
-                    src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`}
-                    alt={featuredClip.title[lang]}
-                    className="w-full h-full object-cover min-h-[250px] md:min-h-[450px] lg:min-h-[550px] group-hover:scale-[1.03] transition-all duration-700"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://i.ytimg.com/vi/${featuredClip.id}/hqdefault.jpg`;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
-                </a>
+            {/* מבנה פלקס שיבטיח שהתמונה תמיד תהיה 16:9 ותיקח 55-60% מהרוחב */}
+            <div className="rounded-[24px] md:rounded-[32px] border border-white/10 bg-gradient-to-br from-white/8 to-white/[0.03] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col lg:flex-row">
+              <a
+                href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block w-full lg:w-[55%] xl:w-[60%] shrink-0 aspect-video overflow-hidden"
+              >
+                <img
+                  src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`}
+                  alt={featuredClip.title[lang]}
+                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-all duration-700"
+                  onError={(e) => {
+                    e.currentTarget.src = `https://i.ytimg.com/vi/${featuredClip.id}/hqdefault.jpg`;
+                  }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
+              </a>
 
-                <div className={`p-8 md:p-14 lg:p-16 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
-                  <div className="text-xs md:text-lg uppercase tracking-[0.35em] text-[#c9a96e] mb-4 md:mb-6 font-bold">
-                    {t.featured}
-                  </div>
+              <div className={`p-8 md:p-12 lg:p-16 flex flex-col justify-center w-full ${isHebrew ? "text-right" : "text-left"}`}>
+                <div className="text-xs md:text-lg uppercase tracking-[0.35em] text-[#c9a96e] mb-4 md:mb-6 font-bold">
+                  {t.featured}
+                </div>
 
-                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                    {featuredClip.title[lang]}
-                  </h2>
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  {featuredClip.title[lang]}
+                </h2>
 
-                  <div className="mt-6 md:mt-8 w-16 md:w-24 h-[2px] md:h-[3px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
+                <div className="mt-6 md:mt-8 w-16 md:w-24 h-[2px] md:h-[3px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
 
-                  <div className="mt-8 md:mt-10 flex flex-wrap gap-4">
-                    <a
-                      href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 md:gap-3 rounded-full bg-[#c9a96e] text-black px-6 py-3 md:px-9 md:py-4 text-base md:text-xl font-bold transition hover:scale-105"
-                    >
-                      <YoutubeIcon />
-                      {t.openClip}
-                    </a>
-                  </div>
+                <div className="mt-8 md:mt-10 flex flex-wrap gap-4">
+                  <a
+                    href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 md:gap-3 rounded-full bg-[#c9a96e] text-black px-6 py-3 md:px-9 md:py-4 text-base md:text-xl font-bold transition hover:scale-105"
+                  >
+                    <YoutubeIcon />
+                    {t.openClip}
+                  </a>
                 </div>
               </div>
             </div>
