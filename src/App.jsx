@@ -156,7 +156,7 @@ function SocialIconLink({ href, children, hideOnMobile = false }) {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className={`${hideOnMobile ? "hidden sm:flex" : "flex"} w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/10 bg-white/5 items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all`}
+      className={`${hideOnMobile ? "hidden md:flex" : "flex"} w-10 h-10 md:w-14 md:h-14 rounded-full border border-white/10 bg-white/5 items-center justify-center text-white/70 hover:text-[#c9a96e] hover:border-[#c9a96e]/40 hover:bg-[#c9a96e]/10 transition-all`}
     >
       {children}
     </a>
@@ -201,22 +201,25 @@ export default function App() {
       </div>
 
       <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/45 backdrop-blur-xl">
-        <div className="max-w-[90rem] mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-4">
-          <div className={`flex items-center gap-4 ${isHebrew ? "flex-row-reverse" : ""}`}>
-            <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-[#c9a96e]/40 text-[#c9a96e] flex items-center justify-center text-xl md:text-2xl font-bold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
+        <div className="max-w-[90rem] mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-3 md:gap-4">
+          
+          {/* LOGO AREA (min-w-0 and truncate added so it safely shrinks on mobile) */}
+          <div className={`flex items-center gap-3 md:gap-4 min-w-0 ${isHebrew ? "flex-row-reverse" : ""}`}>
+            <div className="w-10 h-10 md:w-14 md:h-14 shrink-0 rounded-full border-2 border-[#c9a96e]/40 text-[#c9a96e] flex items-center justify-center text-lg md:text-2xl font-bold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
               B
             </div>
 
-            <div className={isHebrew ? "text-right" : "text-left"}>
-              <div className="text-lg md:text-xl uppercase tracking-[0.35em] text-white/90 font-bold">
+            <div className={`flex flex-col min-w-0 ${isHebrew ? "text-right" : "text-left"}`}>
+              <div className="text-sm md:text-xl uppercase tracking-widest md:tracking-[0.35em] text-white/90 font-bold truncate">
                 DJ BROITI
               </div>
-              <div className={`text-xs md:text-sm tracking-[0.28em] text-white/50 mt-1 ${isHebrew ? "" : "uppercase"} font-medium`}>
+              <div className={`text-[9px] md:text-sm tracking-widest md:tracking-[0.28em] text-white/50 mt-0.5 md:mt-1 ${isHebrew ? "" : "uppercase"} font-medium truncate`}>
                 {isHebrew ? `${t.brandSub} · ${t.brandHebrew}` : t.brandSub}
               </div>
             </div>
           </div>
 
+          {/* DESKTOP LINKS */}
           <div className={`hidden lg:flex items-center gap-10 text-lg font-medium text-white/80 ${isHebrew ? "flex-row-reverse" : ""}`}>
             <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors">
               {t.navHome}
@@ -232,26 +235,28 @@ export default function App() {
             </button>
           </div>
 
-          <div className={`flex items-center gap-3 md:gap-4 ${isHebrew ? "flex-row-reverse" : ""}`}>
-            <SocialIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A">
+          {/* RIGHT SIDE (Socials hidden on mobile, Lang button shrinks safely) */}
+          <div className={`flex items-center gap-2 md:gap-4 shrink-0 ${isHebrew ? "flex-row-reverse" : ""}`}>
+            <SocialIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A" hideOnMobile={true}>
               <YoutubeIcon />
             </SocialIconLink>
 
-            <SocialIconLink href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si">
+            <SocialIconLink href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si" hideOnMobile={true}>
               <SpotifyIcon />
             </SocialIconLink>
 
-            <SocialIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545">
+            <SocialIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545" hideOnMobile={true}>
               <AppleIcon />
             </SocialIconLink>
 
             <button
               onClick={() => setLang(lang === "he" ? "en" : "he")}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 md:px-6 md:py-3 text-sm md:text-base font-bold text-white whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/50 transition-all"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 md:px-6 md:py-3 text-xs md:text-base font-bold text-white whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/50 transition-all shrink-0"
             >
               <GlobeIcon />
               <span className="tracking-wide">
-                {lang === "he" ? "ENGLISH" : "עברית"}
+                {/* Shortened text to save space on mobile */}
+                {lang === "he" ? "EN" : "HE"}
               </span>
             </button>
           </div>
@@ -259,53 +264,50 @@ export default function App() {
       </nav>
 
       <main className="relative z-10">
-        <section id="home" className="px-6 pt-44 md:pt-60 pb-20 md:pb-32">
+        <section id="home" className="px-6 pt-32 md:pt-60 pb-16 md:pb-32">
           <div
             className={`max-w-[90rem] mx-auto transition-all duration-1000 ${
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
             <div className={`max-w-6xl ${isHebrew ? "mr-0 ml-auto text-right" : "text-left"}`}>
-              <div className="inline-flex items-center gap-3 mb-8 md:mb-10 rounded-full border border-[#c9a96e]/30 bg-[#c9a96e]/10 px-6 py-3 text-sm md:text-base uppercase tracking-[0.3em] font-medium text-[#e5c98c]">
+              <div className="inline-flex items-center gap-2 md:gap-3 mb-6 md:mb-10 rounded-full border border-[#c9a96e]/30 bg-[#c9a96e]/10 px-4 py-2 md:px-6 md:py-3 text-[10px] md:text-sm uppercase tracking-[0.3em] font-medium text-[#e5c98c]">
                 <MusicIcon />
                 {t.heroBadge}
               </div>
 
-              {/* Increased size here */}
-              <h1 className="text-[5rem] sm:text-[6.5rem] md:text-[8.5rem] font-bold leading-[0.9] tracking-[-0.04em] drop-shadow-[0_0_40px_rgba(201,169,110,0.2)]">
+              <h1 className="text-4xl sm:text-[6.5rem] md:text-[8.5rem] font-bold leading-[1.1] md:leading-[0.9] tracking-[-0.04em] drop-shadow-[0_0_40px_rgba(201,169,110,0.2)]">
                 {t.heroTitle1}
-                <span className="block mt-4 md:mt-6 text-[3.5rem] sm:text-[4.5rem] md:text-[6.5rem] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
+                <span className="block mt-2 md:mt-6 text-3xl sm:text-[4.5rem] md:text-[6.5rem] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
                   {t.heroTitle2}
                 </span>
               </h1>
 
               {isHebrew && (
-                <div className="mt-6 md:mt-8 text-2xl md:text-3xl text-white/50 tracking-[0.35em] font-bold">
+                <div className="mt-4 md:mt-8 text-lg md:text-3xl text-white/50 tracking-[0.35em] font-bold">
                   ברויטי
                 </div>
               )}
 
-              <div className="mt-10 md:mt-12 w-36 h-[3px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-80" />
+              <div className="mt-8 md:mt-12 w-20 md:w-36 h-[2px] md:h-[3px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-80" />
 
-              {/* Increased paragraph size */}
-              <p className="mt-10 md:mt-12 max-w-4xl text-2xl md:text-4xl leading-relaxed text-white/90 font-medium">
+              <p className="mt-8 md:mt-12 max-w-4xl text-lg md:text-4xl leading-relaxed text-white/90 font-medium">
                 {t.heroText}
               </p>
 
-              <div className="mt-10 max-w-3xl text-xl md:text-2xl text-white/60 leading-relaxed">
+              <div className="mt-6 md:mt-10 max-w-3xl text-base md:text-2xl text-white/60 leading-relaxed">
                 <p>
                   DJ Broiti is an AI music artist creating electronic music, cinematic sound,
                   and visual storytelling experiences.
                 </p>
               </div>
 
-              <div className={`mt-14 flex flex-wrap gap-6 ${isHebrew ? "justify-start" : ""}`}>
-                {/* Button slightly bigger */}
+              <div className={`mt-10 md:mt-14 flex flex-wrap gap-4 md:gap-6 ${isHebrew ? "justify-start" : ""}`}>
                 <a
                   href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-4 rounded-full bg-[#c9a96e] text-black px-12 py-5 text-2xl font-bold hover:scale-[1.03] transition-all shadow-[0_0_40px_rgba(201,169,110,0.3)]"
+                  className="inline-flex items-center gap-3 md:gap-4 rounded-full bg-[#c9a96e] text-black px-8 py-3 md:px-12 md:py-5 text-lg md:text-2xl font-bold hover:scale-[1.03] transition-all shadow-[0_0_40px_rgba(201,169,110,0.3)]"
                 >
                   <YoutubeIcon />
                   {t.watchFeatured}
@@ -315,20 +317,20 @@ export default function App() {
           </div>
         </section>
 
-        <section className="px-6 pb-20">
+        <section className="px-6 pb-16 md:pb-20">
           <div className="max-w-[90rem] mx-auto">
-            <div className="rounded-[32px] border border-white/10 bg-gradient-to-br from-white/8 to-white/[0.03] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+            <div className="rounded-[24px] md:rounded-[32px] border border-white/10 bg-gradient-to-br from-white/8 to-white/[0.03] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
               <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
                 <a
                   href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group relative block min-h-[450px]"
+                  className="group relative block min-h-[250px] md:min-h-[450px]"
                 >
                   <img
                     src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`}
                     alt={featuredClip.title[lang]}
-                    className="w-full h-full object-cover min-h-[450px] lg:min-h-[550px] group-hover:scale-[1.03] transition-all duration-700"
+                    className="w-full h-full object-cover min-h-[250px] md:min-h-[450px] lg:min-h-[550px] group-hover:scale-[1.03] transition-all duration-700"
                     onError={(e) => {
                       e.currentTarget.src = `https://i.ytimg.com/vi/${featuredClip.id}/hqdefault.jpg`;
                     }}
@@ -336,24 +338,23 @@ export default function App() {
                   <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/20 to-transparent" />
                 </a>
 
-                <div className={`p-10 md:p-14 lg:p-16 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
-                  <div className="text-base md:text-lg uppercase tracking-[0.35em] text-[#c9a96e] mb-6 font-bold">
+                <div className={`p-8 md:p-14 lg:p-16 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
+                  <div className="text-xs md:text-lg uppercase tracking-[0.35em] text-[#c9a96e] mb-4 md:mb-6 font-bold">
                     {t.featured}
                   </div>
 
-                  {/* Increased Title here */}
-                  <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
                     {featuredClip.title[lang]}
                   </h2>
 
-                  <div className="mt-8 w-24 h-[3px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
+                  <div className="mt-6 md:mt-8 w-16 md:w-24 h-[2px] md:h-[3px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
 
-                  <div className="mt-10 flex flex-wrap gap-4">
+                  <div className="mt-8 md:mt-10 flex flex-wrap gap-4">
                     <a
                       href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-3 rounded-full bg-[#c9a96e] text-black px-9 py-4 text-xl font-bold transition hover:scale-105"
+                      className="inline-flex items-center gap-2 md:gap-3 rounded-full bg-[#c9a96e] text-black px-6 py-3 md:px-9 md:py-4 text-base md:text-xl font-bold transition hover:scale-105"
                     >
                       <YoutubeIcon />
                       {t.openClip}
@@ -365,23 +366,23 @@ export default function App() {
           </div>
         </section>
 
-        <section id="archive" className="px-6 pt-16 pb-10">
-          <div className={`max-w-[90rem] mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-8 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
+        <section id="archive" className="px-6 pt-10 md:pt-16 pb-8 md:pb-10">
+          <div className={`max-w-[90rem] mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
             <div className={isHebrew ? "text-right" : "text-left"}>
-              <div className="text-lg md:text-xl uppercase tracking-[0.35em] text-[#c9a96e] mb-4 font-bold">
+              <div className="text-xs md:text-xl uppercase tracking-[0.35em] text-[#c9a96e] mb-3 md:mb-4 font-bold">
                 {t.fullCollection}
               </div>
-              <h2 className="text-5xl md:text-7xl font-bold leading-tight">
+              <h2 className="text-3xl md:text-7xl font-bold leading-tight">
                 {t.exploreAll}
               </h2>
             </div>
 
-            <div className="w-36 h-[3px] bg-white/10 mt-8 md:mt-0" />
+            <div className="w-20 md:w-36 h-[2px] md:h-[3px] bg-white/10 mt-4 md:mt-0" />
           </div>
         </section>
 
-        <section className="px-6 pb-24">
-          <div className="max-w-[90rem] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+        <section className="px-6 pb-16 md:pb-24">
+          <div className="max-w-[90rem] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
             {ALL_CLIPS.map((clip, i) => (
               <a
                 key={`${clip.id}-${i}`}
@@ -390,7 +391,7 @@ export default function App() {
                 rel="noreferrer"
                 className="group block"
               >
-                <article className="h-full rounded-[28px] border border-white/10 bg-white/[0.04] overflow-hidden backdrop-blur-sm hover:border-[#c9a96e]/40 hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-2 shadow-[0_12px_40px_rgba(0,0,0,0.3)]">
+                <article className="h-full rounded-[20px] md:rounded-[28px] border border-white/10 bg-white/[0.04] overflow-hidden backdrop-blur-sm hover:border-[#c9a96e]/40 hover:bg-white/[0.06] transition-all duration-500 hover:-translate-y-2 shadow-[0_12px_40px_rgba(0,0,0,0.3)]">
                   <div className="relative aspect-video overflow-hidden bg-[#111]">
                     <img
                       src={`https://i.ytimg.com/vi/${clip.id}/maxresdefault.jpg`}
@@ -403,26 +404,25 @@ export default function App() {
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
-                    <div className={`absolute top-5 ${isHebrew ? "right-5" : "left-5"}`}>
-                      <span className="inline-flex rounded-full border border-[#c9a96e]/40 bg-black/60 backdrop-blur-md px-4 py-1.5 text-sm uppercase tracking-[0.25em] font-bold text-[#e9d4ac]">
+                    <div className={`absolute top-3 md:top-5 ${isHebrew ? "right-3 md:right-5" : "left-3 md:left-5"}`}>
+                      <span className="inline-flex rounded-full border border-[#c9a96e]/40 bg-black/60 backdrop-blur-md px-3 py-1 md:px-4 md:py-1.5 text-[10px] md:text-sm uppercase tracking-[0.25em] font-bold text-[#e9d4ac]">
                         {clip.cat[lang]}
                       </span>
                     </div>
 
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400">
-                      <div className="w-20 h-20 rounded-full bg-[#c9a96e]/95 text-black flex items-center justify-center shadow-[0_0_40px_rgba(201,169,110,0.3)]">
+                      <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-[#c9a96e]/95 text-black flex items-center justify-center shadow-[0_0_40px_rgba(201,169,110,0.3)]">
                         <YoutubeIcon />
                       </div>
                     </div>
                   </div>
 
-                  <div className={`p-6 md:p-8 ${isHebrew ? "text-right" : "text-left"}`}>
-                    <div className="w-12 h-[2px] bg-white/10 mb-5" />
-                    {/* Increased grid text size slightly */}
-                    <h3 className="text-3xl leading-snug font-bold text-white group-hover:text-[#e9d4ac] transition-colors duration-300">
+                  <div className={`p-5 md:p-8 ${isHebrew ? "text-right" : "text-left"}`}>
+                    <div className="w-8 md:w-12 h-[2px] bg-white/10 mb-4 md:mb-5" />
+                    <h3 className="text-xl md:text-3xl leading-snug font-bold text-white group-hover:text-[#e9d4ac] transition-colors duration-300">
                       {clip.title[lang]}
                     </h3>
-                    <div className="mt-6 inline-flex items-center gap-3 text-xl font-medium text-white/60 group-hover:text-[#c9a96e] transition-colors duration-300">
+                    <div className="mt-4 md:mt-6 inline-flex items-center gap-2 md:gap-3 text-sm md:text-xl font-medium text-white/60 group-hover:text-[#c9a96e] transition-colors duration-300">
                       <YoutubeIcon />
                       {t.watchYoutube}
                     </div>
@@ -433,24 +433,24 @@ export default function App() {
           </div>
         </section>
 
-        <section className="px-6 pb-20">
-          <div className="max-w-[90rem] mx-auto grid lg:grid-cols-2 gap-10">
+        <section className="px-6 pb-16 md:pb-20">
+          <div className="max-w-[90rem] mx-auto grid lg:grid-cols-2 gap-8 md:gap-10">
             <div
               id="contact"
-              className={`rounded-[36px] border border-white/10 bg-white/[0.04] p-10 md:p-14 ${isHebrew ? "text-right" : "text-left"}`}
+              className={`rounded-[24px] md:rounded-[36px] border border-white/10 bg-white/[0.04] p-8 md:p-14 ${isHebrew ? "text-right" : "text-left"}`}
             >
-              <div className="text-lg uppercase tracking-[0.35em] text-[#c9a96e] mb-6 font-bold">
+              <div className="text-xs md:text-lg uppercase tracking-[0.35em] text-[#c9a96e] mb-4 md:mb-6 font-bold">
                 {t.contactTitle}
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-8">
+              <h2 className="text-3xl md:text-6xl font-bold mb-6 md:mb-8">
                 {t.contactTitle}
               </h2>
-              <p className="text-2xl text-white/80 leading-relaxed">{t.contactText}</p>
+              <p className="text-base md:text-2xl text-white/80 leading-relaxed">{t.contactText}</p>
 
-              <div className={`mt-10 flex flex-wrap gap-5 ${isHebrew ? "justify-start" : ""}`}>
+              <div className={`mt-8 md:mt-10 flex flex-wrap gap-4 md:gap-5 ${isHebrew ? "justify-start" : ""}`}>
                 <a
                   href="mailto:djbroiti@gmail.com"
-                  className="inline-flex items-center gap-3 rounded-full bg-[#c9a96e] text-black px-9 py-5 text-xl font-bold hover:scale-[1.03] transition-all"
+                  className="inline-flex items-center gap-2 md:gap-3 rounded-full bg-[#c9a96e] text-black px-6 py-3 md:px-9 md:py-5 text-base md:text-xl font-bold hover:scale-[1.03] transition-all"
                 >
                   <MailIcon />
                   {t.emailButton}
@@ -458,7 +458,7 @@ export default function App() {
 
                 <a
                   href="mailto:djbroiti@gmail.com"
-                  className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-9 py-5 text-xl text-white/80 font-medium hover:text-[#c9a96e] hover:border-[#c9a96e]/40 transition-all"
+                  className="inline-flex items-center gap-2 md:gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-3 md:px-9 md:py-5 text-base md:text-xl text-white/80 font-medium hover:text-[#c9a96e] hover:border-[#c9a96e]/40 transition-all"
                 >
                   <MailIcon />
                   djbroiti@gmail.com
@@ -468,34 +468,34 @@ export default function App() {
 
             <div
               id="about"
-              className={`rounded-[36px] border border-white/10 bg-white/[0.04] p-10 md:p-14 ${isHebrew ? "text-right" : "text-left"}`}
+              className={`rounded-[24px] md:rounded-[36px] border border-white/10 bg-white/[0.04] p-8 md:p-14 ${isHebrew ? "text-right" : "text-left"}`}
             >
-              <div className="text-lg uppercase tracking-[0.35em] text-[#c9a96e] mb-6 font-bold">
+              <div className="text-xs md:text-lg uppercase tracking-[0.35em] text-[#c9a96e] mb-4 md:mb-6 font-bold">
                 {t.aboutTitle}
               </div>
-              <h2 className="text-5xl md:text-6xl font-bold mb-8">
+              <h2 className="text-3xl md:text-6xl font-bold mb-6 md:mb-8">
                 {t.aboutTitle}
               </h2>
-              <p className="text-2xl text-white/80 leading-relaxed">{t.aboutText}</p>
-              <div className="mt-8 w-28 h-[3px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-60" />
-              <p className="text-xl text-white/60 leading-relaxed mt-8 font-medium">{t.aboutText2}</p>
+              <p className="text-base md:text-2xl text-white/80 leading-relaxed">{t.aboutText}</p>
+              <div className="mt-6 md:mt-8 w-16 md:w-28 h-[2px] md:h-[3px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-60" />
+              <p className="text-sm md:text-xl text-white/60 leading-relaxed mt-6 md:mt-8 font-medium">{t.aboutText2}</p>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="relative z-10 border-t border-white/10 px-6 py-12 mt-12">
-        <div className={`max-w-[90rem] mx-auto flex flex-col md:flex-row items-center justify-between gap-8 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
+      <footer className="relative z-10 border-t border-white/10 px-6 py-8 md:py-12 mt-8 md:mt-12">
+        <div className={`max-w-[90rem] mx-auto flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
           <div className={isHebrew ? "text-right" : "text-left"}>
-            <div className="text-xl tracking-[0.3em] uppercase text-white/80 font-bold">
+            <div className="text-base md:text-xl tracking-[0.3em] uppercase text-white/80 font-bold">
               DJ BROITI
             </div>
-            <div className="text-base text-white/50 mt-3 font-medium">
+            <div className="text-xs md:text-base text-white/50 mt-2 md:mt-3 font-medium">
               {t.footerLine}
             </div>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5 md:gap-6">
             <FooterIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545">
               <AppleIcon />
             </FooterIconLink>
