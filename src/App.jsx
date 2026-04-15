@@ -94,9 +94,6 @@ const content = {
     heroText: "All the music, visuals, and world of DJ Broiti — in one place.",
     watchFeatured: "Play Now",
     exploreArchive: "Explore All Clips",
-    clips: "Clips",
-    official: "Official",
-    cinematic: "Cinematic",
     featured: "Featured Release",
     openClip: "Open Clip",
     fullCollection: "Full Collection",
@@ -108,7 +105,6 @@ const content = {
     contactTitle: "Contact",
     contactText: "For collaborations, music, and official inquiries:",
     footerLine: "Cinematic Music · © 2026 DJ Broiti",
-    footerTag: "Official Archive",
     emailButton: "Send Email",
   },
   he: {
@@ -124,9 +120,6 @@ const content = {
     heroText: "כל המוזיקה, הקליפים והעולם של DJ Broiti — במקום אחד.",
     watchFeatured: "הפעל עכשיו",
     exploreArchive: "לכל הקליפים",
-    clips: "קליפים",
-    official: "רשמי",
-    cinematic: "קולנועי",
     featured: "קטע נבחר",
     openClip: "צפה ביוטיוב",
     fullCollection: "האוסף המלא",
@@ -138,7 +131,6 @@ const content = {
     contactTitle: "יצירת קשר",
     contactText: "לשיתופי פעולה, מוזיקה ופניות רשמיות:",
     footerLine: "ברויטי · מוזיקה קולנועית · © 2026 כל הזכויות שמורות",
-    footerTag: "הארכיון הרשמי",
     emailButton: "שלח מייל",
   },
 };
@@ -179,30 +171,27 @@ function FooterIconLink({ href, children }) {
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
-  const [lang, setLang] = useState("en"); 
+  const [lang, setLang] = useState("en"); // נטען באנגלית כברירת מחדל
   const isHebrew = lang === "he";
   const t = content[lang];
 
   useEffect(() => {
-    // ייבוא Heebo (לעברית/רגיל) ו- Playfair Display (לכותרות קולנועיות באנגלית)
+    // טעינת הפונט Frank Ruhl Libre שתומך מושלם בעברית ואנגלית במראה קולנועי
     const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&family=Playfair+Display:wght@400;600;700;800&display=swap';
+    link.href = 'https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&display=swap';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
 
     setLoaded(true);
   }, []);
 
-  // משתנה דינמי: אם האתר באנגלית נשתמש בפונט הסריפי, אם בעברית נשאר עם Heebo
-  const titleFontClass = !isHebrew ? "font-['Playfair_Display',serif]" : "font-['Heebo',sans-serif]";
-
   return (
     <div
       dir={isHebrew ? "rtl" : "ltr"}
       className="min-h-screen bg-[#050505] text-white overflow-x-hidden"
-      style={{ fontFamily: "'Heebo', sans-serif" }}
+      style={{ fontFamily: "'Frank Ruhl Libre', serif" }} // שימוש גלובלי בפונט האחיד
     >
-      <div className="fixed inset-0 pointer-events-none">
+      <div className="fixed inset-0 z-0 pointer-events-none">
         <video
           autoPlay
           loop
@@ -212,23 +201,19 @@ export default function App() {
         >
           <source src="/dog-loop.mp4" type="video/mp4" />
         </video>
-        
         <div className="absolute inset-0 bg-[#050505]/75" />
-
         <div className="absolute top-[-10%] left-[-10%] w-[34rem] h-[34rem] rounded-full bg-[#c9a96e]/10 blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[30rem] h-[30rem] rounded-full bg-[#7a5a2d]/10 blur-[120px]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),transparent_34%)]" />
       </div>
 
       <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/45 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-4">
           <div className={`flex items-center gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
-            <div className="w-10 h-10 rounded-full border border-[#c9a96e]/35 text-[#c9a96e] flex items-center justify-center font-semibold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
+            <div className="w-10 h-10 rounded-full border border-[#c9a96e]/35 text-[#c9a96e] flex items-center justify-center font-bold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
               B
             </div>
-
             <div className={isHebrew ? "text-right" : "text-left"}>
-              <div className="text-[13px] uppercase tracking-[0.35em] text-white/90 font-semibold">
+              <div className="text-[13px] uppercase tracking-[0.35em] text-white/90 font-bold">
                 DJ BROITI
               </div>
               <div className={`text-[10px] tracking-[0.28em] text-white/38 ${isHebrew ? "" : "uppercase"}`}>
@@ -238,105 +223,54 @@ export default function App() {
           </div>
 
           <div className={`hidden md:flex items-center gap-6 text-sm text-white/70 ${isHebrew ? "flex-row-reverse" : ""}`}>
-            <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors font-medium">
-              {t.navHome}
-            </button>
-            <button onClick={() => scrollToId("archive")} className="hover:text-[#c9a96e] transition-colors font-medium">
-              {t.navArchive}
-            </button>
-            <button onClick={() => scrollToId("about")} className="hover:text-[#c9a96e] transition-colors font-medium">
-              {t.navAbout}
-            </button>
-            <button onClick={() => scrollToId("contact")} className="hover:text-[#c9a96e] transition-colors font-medium">
-              {t.navContact}
-            </button>
+            <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors">{t.navHome}</button>
+            <button onClick={() => scrollToId("archive")} className="hover:text-[#c9a96e] transition-colors">{t.navArchive}</button>
+            <button onClick={() => scrollToId("about")} className="hover:text-[#c9a96e] transition-colors">{t.navAbout}</button>
+            <button onClick={() => scrollToId("contact")} className="hover:text-[#c9a96e] transition-colors">{t.navContact}</button>
           </div>
 
           <div className={`flex items-center gap-2 md:gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
-            <SocialIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A">
-              <YoutubeIcon />
-            </SocialIconLink>
-
-            <SocialIconLink href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si">
-              <SpotifyIcon />
-            </SocialIconLink>
-
-            <SocialIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545">
-              <AppleIcon />
-            </SocialIconLink>
-
-            <SocialIconLink href="https://www.instagram.com/djbroiti/" hideOnMobile>
-              <InstagramIcon />
-            </SocialIconLink>
-
-            <SocialIconLink href="https://www.tiktok.com/@djbroiti" hideOnMobile>
-              <TiktokIcon />
-            </SocialIconLink>
-
+            <SocialIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A"><YoutubeIcon /></SocialIconLink>
+            <SocialIconLink href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si"><SpotifyIcon /></SocialIconLink>
+            <SocialIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545"><AppleIcon /></SocialIconLink>
             <button
               onClick={() => setLang(lang === "he" ? "en" : "he")}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-[9px] text-sm font-semibold text-white/80 whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-[9px] text-sm font-bold text-white/80 whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
             >
               <GlobeIcon />
-              <span className="tracking-wide">
-                {lang === "he" ? "EN" : "עב"}
-              </span>
+              <span className="tracking-wide">{lang === "he" ? "EN" : "עב"}</span>
             </button>
           </div>
         </div>
       </nav>
 
       <main className="relative z-10">
-        
         <section id="home" className="px-6 pt-32 md:pt-40 min-h-screen flex flex-col items-center md:items-start overflow-hidden">
-          <div
-            className={`w-full max-w-7xl mx-auto transition-all duration-1000 ${
-              loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
-          >
+          <div className={`w-full max-w-7xl mx-auto transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <div className={`max-w-5xl ${isHebrew ? "mr-0 ml-auto text-right" : "text-left"}`}>
-              <div className="inline-flex items-center gap-2 mb-4 md:mb-6 rounded-full border border-[#c9a96e]/25 bg-[#c9a96e]/10 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-[#e5c98c] font-semibold">
+              <div className="inline-flex items-center gap-2 mb-4 md:mb-6 rounded-full border border-[#c9a96e]/25 bg-[#c9a96e]/10 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-[#e5c98c] font-bold">
                 <MusicIcon />
                 {t.heroBadge}
               </div>
 
-              {/* הכותרת הראשיות מקבלות עכשיו את הפונט המיוחד (titleFontClass) */}
-              <h1 className={`text-6xl sm:text-7xl md:text-[8.5rem] font-bold leading-[1] tracking-tight drop-shadow-[0_0_40px_rgba(201,169,110,0.18)] ${titleFontClass}`}>
+              {/* הכותרת מקבלת גודל ענק זהה בשתי השפות */}
+              <h1 className="text-6xl sm:text-7xl md:text-[8.5rem] font-black leading-[1] tracking-tight drop-shadow-[0_0_40px_rgba(201,169,110,0.18)] uppercase">
                 {t.heroTitle1}
-                <span className="block mt-2 text-4xl sm:text-6xl md:text-[6rem] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
+                <span className="block mt-2 text-4xl sm:text-6xl md:text-[6rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e]">
                   {t.heroTitle2}
                 </span>
               </h1>
 
-              {isHebrew && (
-                <div className="mt-4 text-sm text-white/35 tracking-[0.35em] font-semibold">
-                  ברויטי
-                </div>
-              )}
-
+              {isHebrew && <div className="mt-4 text-sm text-white/35 tracking-[0.35em] font-bold">ברויטי</div>}
               <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
-
-              <p className="mt-6 max-w-2xl text-lg md:text-xl font-medium leading-relaxed text-white/80">
-                {t.heroText}
-              </p>
-
-              <div className="mt-6 max-w-2xl text-base text-white/50 leading-relaxed font-light">
-                <p>
-                  DJ Broiti is an AI music artist creating electronic music, cinematic sound,
-                  and visual storytelling experiences.
-                </p>
-
-                <p className="mt-1">
-                  דיג'י ברויטי הוא אמן מוזיקה אלקטרונית מבוססת בינה מלאכותית מירושלים.
-                </p>
-              </div>
-
+              <p className="mt-6 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-white/80">{t.heroText}</p>
+              
               <div className={`mt-10 flex flex-wrap gap-4 ${isHebrew ? "justify-start" : ""}`}>
                 <a
                   href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-8 py-4 text-lg font-bold hover:scale-[1.03] transition-all shadow-[0_0_40px_rgba(201,169,110,0.28)]"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-8 py-4 text-lg font-black hover:scale-[1.03] transition-all shadow-[0_0_40px_rgba(201,169,110,0.28)]"
                 >
                   <YoutubeIcon />
                   {t.watchFeatured}
@@ -350,195 +284,22 @@ export default function App() {
           <div className="max-w-7xl mx-auto">
             <div className="rounded-[30px] border border-white/10 bg-black/40 backdrop-blur-md overflow-hidden shadow-[0_20px_90px_rgba(0,0,0,0.5)]">
               <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
-                <a
-                  href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block min-h-[300px]"
-                >
-                  <img
-                    src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`}
-                    alt={featuredClip.title[lang]}
-                    className="w-full h-full object-cover min-h-[300px] lg:min-h-[430px] group-hover:scale-[1.03] transition-all duration-700"
-                    onError={(e) => {
-                      e.currentTarget.src = `https://i.ytimg.com/vi/${featuredClip.id}/hqdefault.jpg`;
-                    }}
-                  />
+                <a href={`https://www.youtube.com/watch?v=${featuredClip.id}`} target="_blank" rel="noopener noreferrer" className="group relative block min-h-[300px]">
+                  <img src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`} alt={featuredClip.title[lang]} className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/10 to-transparent" />
                 </a>
-
                 <div className={`p-6 md:p-8 lg:p-10 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
-                  <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
-                    {t.featured}
-                  </div>
-
-                  <h2 className={`text-3xl md:text-5xl font-bold leading-tight ${titleFontClass}`}>
-                    {featuredClip.title[lang]}
-                  </h2>
-
-                  <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-60" />
-
+                  <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">{t.featured}</div>
+                  <h2 className="text-3xl md:text-5xl font-black leading-tight">{featuredClip.title[lang]}</h2>
                   <div className="mt-8 flex flex-wrap gap-3">
-                    <a
-                      href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-5 py-3 font-semibold transition hover:scale-105"
-                    >
-                      <YoutubeIcon />
-                      {t.openClip}
-                    </a>
+                    <a href={`https://www.youtube.com/watch?v=${featuredClip.id}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-5 py-3 font-black hover:scale-105 transition-all"><YoutubeIcon />{t.openClip}</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
-        <section id="archive" className="px-6 pt-8 pb-6">
-          <div className={`max-w-7xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-4 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
-            <div className={isHebrew ? "text-right" : "text-left"}>
-              <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-3">
-                {t.fullCollection}
-              </div>
-              <h2 className={`text-3xl md:text-6xl font-bold leading-tight ${titleFontClass}`}>
-                {t.exploreAll}
-              </h2>
-            </div>
-
-            <div className="w-24 h-[1px] bg-white/10 mt-4 md:mt-0" />
-          </div>
-        </section>
-
-        <section className="px-6 pb-24">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
-            {ALL_CLIPS.map((clip, i) => (
-              <a
-                key={`${clip.id}-${i}`}
-                href={`https://www.youtube.com/watch?v=${clip.id}`}
-                target="_blank"
-                rel="noreferrer"
-                className="group block"
-              >
-                <article className="h-full rounded-[24px] border border-white/10 bg-black/40 overflow-hidden backdrop-blur-md hover:border-[#c9a96e]/35 hover:bg-black/60 transition-all duration-500 hover:-translate-y-1 shadow-[0_12px_50px_rgba(0,0,0,0.35)]">
-                  <div className="relative aspect-video overflow-hidden bg-[#111]">
-                    <img
-                      src={`https://i.ytimg.com/vi/${clip.id}/maxresdefault.jpg`}
-                      alt={clip.title[lang]}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
-                      onError={(e) => {
-                        e.currentTarget.src = `https://i.ytimg.com/vi/${clip.id}/hqdefault.jpg`;
-                      }}
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                    <div className={`absolute top-4 ${isHebrew ? "right-4" : "left-4"}`}>
-                      <span className="inline-flex rounded-full border border-[#c9a96e]/30 bg-black/50 backdrop-blur-md px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-[#e9d4ac]">
-                        {clip.cat[lang]}
-                      </span>
-                    </div>
-
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400">
-                      <div className="w-16 h-16 rounded-full bg-[#c9a96e]/95 text-black flex items-center justify-center shadow-[0_0_40px_rgba(201,169,110,0.35)]">
-                        <YoutubeIcon />
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className={`p-5 md:p-6 ${isHebrew ? "text-right" : "text-left"}`}>
-                    <div className="w-10 h-[1px] bg-white/10 mb-4" />
-                    <h3 className="text-xl leading-tight font-medium text-white group-hover:text-[#e9d4ac] transition-colors duration-300">
-                      {clip.title[lang]}
-                    </h3>
-                    <div className="mt-5 inline-flex items-center gap-2 text-sm text-white/55 group-hover:text-[#c9a96e] transition-colors duration-300">
-                      <YoutubeIcon />
-                      {t.watchYoutube}
-                    </div>
-                  </div>
-                </article>
-              </a>
-            ))}
-          </div>
-        </section>
-
-        <section className="px-6 pb-12">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
-            <div
-              id="contact"
-              className={`rounded-[28px] border border-white/10 bg-black/40 backdrop-blur-md p-8 md:p-10 ${isHebrew ? "text-right" : "text-left"}`}
-            >
-              <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
-                {t.contactTitle}
-              </div>
-              <h2 className={`text-3xl md:text-5xl font-bold mb-5 ${titleFontClass}`}>
-                {t.contactTitle}
-              </h2>
-              <p className="text-white/70 leading-8">{t.contactText}</p>
-
-              <div className={`mt-6 flex flex-wrap gap-3 ${isHebrew ? "justify-start" : ""}`}>
-                <a
-                  href="mailto:djbroiti@gmail.com"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-5 py-3 font-semibold hover:scale-[1.03] transition-all"
-                >
-                  <MailIcon />
-                  {t.emailButton}
-                </a>
-
-                <a
-                  href="mailto:djbroiti@gmail.com"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-3 text-white/80 hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
-                >
-                  <MailIcon />
-                  djbroiti@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div
-              id="about"
-              className={`rounded-[28px] border border-white/10 bg-black/40 backdrop-blur-md p-8 md:p-10 ${isHebrew ? "text-right" : "text-left"}`}
-            >
-              <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
-                {t.aboutTitle}
-              </div>
-              <h2 className={`text-3xl md:text-5xl font-bold mb-5 ${titleFontClass}`}>
-                {t.aboutTitle}
-              </h2>
-              <p className="text-white/70 leading-8">{t.aboutText}</p>
-              <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-60" />
-              <p className="text-white/50 leading-8 mt-6">{t.aboutText2}</p>
-            </div>
-          </div>
-        </section>
       </main>
-
-      <footer className="relative z-10 border-t border-white/10 px-6 py-12 mt-8 bg-black/60 backdrop-blur-md">
-        <div className={`max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-5 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
-          <div className={isHebrew ? "text-right" : "text-left"}>
-            <div className="text-sm tracking-[0.3em] uppercase text-white/80">
-              DJ BROITI
-            </div>
-            <div className="text-xs text-white/38 mt-2">
-              {t.footerLine}
-            </div>
-          </div>
-
-          <div className="flex items-center gap-5">
-            <FooterIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545">
-              <AppleIcon />
-            </FooterIconLink>
-
-            <FooterIconLink href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si">
-              <SpotifyIcon />
-            </FooterIconLink>
-
-            <FooterIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A">
-              <YoutubeIcon />
-            </FooterIconLink>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
