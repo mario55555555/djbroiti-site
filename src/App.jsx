@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+// Icons Components
 const YoutubeIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 2-2h15a2 2 0 0 1 2 2 24.12 24.12 0 0 1 0 10 2 2 0 0 1-2 2h-15a2 2 0 0 1-2-2Z" />
@@ -171,17 +172,15 @@ function FooterIconLink({ href, children }) {
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
-  const [lang, setLang] = useState("en"); // נטען באנגלית כברירת מחדל
+  const [lang, setLang] = useState("en"); 
   const isHebrew = lang === "he";
   const t = content[lang];
 
   useEffect(() => {
-    // טעינת הפונט Frank Ruhl Libre שתומך מושלם בעברית ואנגלית במראה קולנועי
     const link = document.createElement('link');
     link.href = 'https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&display=swap';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
-
     setLoaded(true);
   }, []);
 
@@ -189,16 +188,11 @@ export default function App() {
     <div
       dir={isHebrew ? "rtl" : "ltr"}
       className="min-h-screen bg-[#050505] text-white overflow-x-hidden"
-      style={{ fontFamily: "'Frank Ruhl Libre', serif" }} // שימוש גלובלי בפונט האחיד
+      style={{ fontFamily: "'Frank Ruhl Libre', serif" }}
     >
+      {/* GLOBAL FIXED BACKGROUND */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-20"
-        >
+        <video autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover opacity-20">
           <source src="/dog-loop.mp4" type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-[#050505]/75" />
@@ -209,97 +203,127 @@ export default function App() {
       <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/45 backdrop-blur-xl">
         <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-4">
           <div className={`flex items-center gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
-            <div className="w-10 h-10 rounded-full border border-[#c9a96e]/35 text-[#c9a96e] flex items-center justify-center font-bold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
-              B
-            </div>
+            <div className="w-10 h-10 rounded-full border border-[#c9a96e]/35 text-[#c9a96e] flex items-center justify-center font-bold">B</div>
             <div className={isHebrew ? "text-right" : "text-left"}>
-              <div className="text-[13px] uppercase tracking-[0.35em] text-white/90 font-bold">
-                DJ BROITI
-              </div>
-              <div className={`text-[10px] tracking-[0.28em] text-white/38 ${isHebrew ? "" : "uppercase"}`}>
-                {isHebrew ? `${t.brandSub} · ${t.brandHebrew}` : t.brandSub}
-              </div>
+              <div className="text-[13px] uppercase tracking-[0.35em] text-white/90 font-bold">DJ BROITI</div>
+              <div className="text-[10px] tracking-[0.28em] text-white/38 uppercase">{t.brandSub}</div>
             </div>
           </div>
-
-          <div className={`hidden md:flex items-center gap-6 text-sm text-white/70 ${isHebrew ? "flex-row-reverse" : ""}`}>
+          <div className="hidden md:flex items-center gap-6 text-sm text-white/70">
             <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors">{t.navHome}</button>
             <button onClick={() => scrollToId("archive")} className="hover:text-[#c9a96e] transition-colors">{t.navArchive}</button>
             <button onClick={() => scrollToId("about")} className="hover:text-[#c9a96e] transition-colors">{t.navAbout}</button>
             <button onClick={() => scrollToId("contact")} className="hover:text-[#c9a96e] transition-colors">{t.navContact}</button>
           </div>
-
           <div className={`flex items-center gap-2 md:gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
             <SocialIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A"><YoutubeIcon /></SocialIconLink>
             <SocialIconLink href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si"><SpotifyIcon /></SocialIconLink>
             <SocialIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545"><AppleIcon /></SocialIconLink>
-            <button
-              onClick={() => setLang(lang === "he" ? "en" : "he")}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-[9px] text-sm font-bold text-white/80 whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
-            >
-              <GlobeIcon />
-              <span className="tracking-wide">{lang === "he" ? "EN" : "עב"}</span>
+            <button onClick={() => setLang(lang === "he" ? "en" : "he")} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-white/80 transition-all hover:text-[#c9a96e]">
+              {lang === "he" ? "EN" : "עב"}
             </button>
           </div>
         </div>
       </nav>
 
       <main className="relative z-10">
-        <section id="home" className="px-6 pt-32 md:pt-40 min-h-screen flex flex-col items-center md:items-start overflow-hidden">
+        {/* HERO SECTION */}
+        <section id="home" className="px-6 pt-32 md:pt-40 min-h-screen flex flex-col items-center md:items-start">
           <div className={`w-full max-w-7xl mx-auto transition-all duration-1000 ${loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <div className={`max-w-5xl ${isHebrew ? "mr-0 ml-auto text-right" : "text-left"}`}>
-              <div className="inline-flex items-center gap-2 mb-4 md:mb-6 rounded-full border border-[#c9a96e]/25 bg-[#c9a96e]/10 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-[#e5c98c] font-bold">
-                <MusicIcon />
-                {t.heroBadge}
+              <div className="inline-flex items-center gap-2 mb-6 rounded-full border border-[#c9a96e]/25 bg-[#c9a96e]/10 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-[#e5c98c] font-bold">
+                <MusicIcon /> {t.heroBadge}
               </div>
-
-              {/* הכותרת מקבלת גודל ענק זהה בשתי השפות */}
               <h1 className="text-6xl sm:text-7xl md:text-[8.5rem] font-black leading-[1] tracking-tight drop-shadow-[0_0_40px_rgba(201,169,110,0.18)] uppercase">
                 {t.heroTitle1}
-                <span className="block mt-2 text-4xl sm:text-6xl md:text-[6rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e]">
-                  {t.heroTitle2}
-                </span>
+                <span className="block mt-2 text-4xl sm:text-6xl md:text-[6rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e]">{t.heroTitle2}</span>
               </h1>
-
-              {isHebrew && <div className="mt-4 text-sm text-white/35 tracking-[0.35em] font-bold">ברויטי</div>}
-              <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
               <p className="mt-6 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-white/80">{t.heroText}</p>
-              
-              <div className={`mt-10 flex flex-wrap gap-4 ${isHebrew ? "justify-start" : ""}`}>
-                <a
-                  href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-8 py-4 text-lg font-black hover:scale-[1.03] transition-all shadow-[0_0_40px_rgba(201,169,110,0.28)]"
-                >
-                  <YoutubeIcon />
-                  {t.watchFeatured}
+              <div className="mt-10 flex flex-wrap gap-4">
+                <a href={`https://www.youtube.com/watch?v=${featuredClip.id}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-8 py-4 text-lg font-black hover:scale-105 transition-all shadow-[0_0_40px_rgba(201,169,110,0.3)]">
+                  <YoutubeIcon /> {t.watchFeatured}
                 </a>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="px-6 pb-10 pt-10">
+        {/* FEATURED CLIP */}
+        <section className="px-6 pb-20">
           <div className="max-w-7xl mx-auto">
-            <div className="rounded-[30px] border border-white/10 bg-black/40 backdrop-blur-md overflow-hidden shadow-[0_20px_90px_rgba(0,0,0,0.5)]">
+            <div className="rounded-[30px] border border-white/10 bg-black/40 backdrop-blur-md overflow-hidden">
               <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
                 <a href={`https://www.youtube.com/watch?v=${featuredClip.id}`} target="_blank" rel="noopener noreferrer" className="group relative block min-h-[300px]">
-                  <img src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`} alt={featuredClip.title[lang]} className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700" />
+                  <img src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`} className="w-full h-full object-cover transition-all group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/10 to-transparent" />
                 </a>
-                <div className={`p-6 md:p-8 lg:p-10 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
+                <div className={`p-8 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
                   <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">{t.featured}</div>
-                  <h2 className="text-3xl md:text-5xl font-black leading-tight">{featuredClip.title[lang]}</h2>
-                  <div className="mt-8 flex flex-wrap gap-3">
-                    <a href={`https://www.youtube.com/watch?v=${featuredClip.id}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-5 py-3 font-black hover:scale-105 transition-all"><YoutubeIcon />{t.openClip}</a>
-                  </div>
+                  <h2 className="text-3xl md:text-5xl font-black mb-8">{featuredClip.title[lang]}</h2>
+                  <a href={`https://www.youtube.com/watch?v=${featuredClip.id}`} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#c9a96e] text-black px-6 py-3 font-bold w-fit hover:scale-105 transition-all">
+                    <YoutubeIcon /> {t.openClip}
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </section>
+
+        {/* ARCHIVE SECTION */}
+        <section id="archive" className="px-6 pb-24">
+          <div className="max-w-7xl mx-auto">
+            <div className={`flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 ${isHebrew ? "md:flex-row-reverse" : ""}`}>
+              <div className={isHebrew ? "text-right" : "text-left"}>
+                <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-3">{t.fullCollection}</div>
+                <h2 className="text-3xl md:text-6xl font-black">{t.exploreAll}</h2>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+              {ALL_CLIPS.map((clip, i) => (
+                <a key={i} href={`https://www.youtube.com/watch?v=${clip.id}`} target="_blank" rel="noreferrer" className="group block">
+                  <article className="h-full rounded-[24px] border border-white/10 bg-black/40 overflow-hidden backdrop-blur-md transition-all hover:-translate-y-1">
+                    <div className="relative aspect-video overflow-hidden">
+                      <img src={`https://i.ytimg.com/vi/${clip.id}/maxresdefault.jpg`} className="w-full h-full object-cover transition-all group-hover:scale-105" />
+                      <div className="absolute top-4 left-4"><span className="rounded-full bg-black/50 px-3 py-1 text-[10px] uppercase text-[#e9d4ac]">{clip.cat[lang]}</span></div>
+                    </div>
+                    <div className={`p-6 ${isHebrew ? "text-right" : "text-left"}`}>
+                      <h3 className="text-xl font-bold mb-4">{clip.title[lang]}</h3>
+                      <div className="text-sm text-white/55 flex items-center gap-2 group-hover:text-[#c9a96e] transition-colors">
+                        <YoutubeIcon /> {t.watchYoutube}
+                      </div>
+                    </div>
+                  </article>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ABOUT & CONTACT */}
+        <section className="px-6 pb-12">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+            <div id="contact" className={`rounded-[28px] border border-white/10 bg-black/40 backdrop-blur-md p-10 ${isHebrew ? "text-right" : "text-left"}`}>
+              <h2 className="text-3xl md:text-5xl font-black mb-6">{t.contactTitle}</h2>
+              <p className="text-white/70 mb-8">{t.contactText}</p>
+              <a href="mailto:djbroiti@gmail.com" className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-6 py-3 font-bold hover:scale-105 transition-all">
+                <MailIcon /> {t.emailButton}
+              </a>
+            </div>
+            <div id="about" className={`rounded-[28px] border border-white/10 bg-black/40 backdrop-blur-md p-10 ${isHebrew ? "text-right" : "text-left"}`}>
+              <h2 className="text-3xl md:text-5xl font-black mb-6">{t.aboutTitle}</h2>
+              <p className="text-white/70">{t.aboutText}</p>
+              <p className="text-white/50 mt-6">{t.aboutText2}</p>
+            </div>
+          </div>
+        </section>
       </main>
+
+      <footer className="border-t border-white/10 py-12 bg-black/60 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="text-sm text-white/38">{t.footerLine}</div>
+          <div className="flex gap-6"><FooterIconLink href="#"><AppleIcon /></FooterIconLink><FooterIconLink href="#"><SpotifyIcon /></FooterIconLink><FooterIconLink href="#"><YoutubeIcon /></FooterIconLink></div>
+        </div>
+      </footer>
     </div>
   );
 }
