@@ -179,11 +179,19 @@ function FooterIconLink({ href, children }) {
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
-  const [lang, setLang] = useState("he"); 
+  
+  // שינינו לאנגלית כברירת מחדל
+  const [lang, setLang] = useState("en"); 
+  
   const isHebrew = lang === "he";
   const t = content[lang];
 
   useEffect(() => {
+    const link = document.createElement('link');
+    link.href = 'https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&display=swap';
+    link.rel = 'stylesheet';
+    document.head.appendChild(link);
+
     setLoaded(true);
   }, []);
 
@@ -191,12 +199,9 @@ export default function App() {
     <div
       dir={isHebrew ? "rtl" : "ltr"}
       className="min-h-screen bg-[#050505] text-white overflow-x-hidden"
-      style={{ fontFamily: "Montserrat, sans-serif" }}
+      style={{ fontFamily: "'Heebo', sans-serif" }}
     >
-      {/* ======================================= */}
-      {/* GLOBAL FIXED BACKGROUND (VIDEO + OVERLAY) */}
-      {/* ======================================= */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
+      <div className="fixed inset-0 pointer-events-none">
         <video
           autoPlay
           loop
@@ -207,10 +212,8 @@ export default function App() {
           <source src="/dog-loop.mp4" type="video/mp4" />
         </video>
         
-        {/* שכבת ההשחרה מעל הוידאו כדי שכל האתר יהיה קריא */}
         <div className="absolute inset-0 bg-[#050505]/75" />
 
-        {/* ההילות (Glows) העדינות שנמצאות ברקע */}
         <div className="absolute top-[-10%] left-[-10%] w-[34rem] h-[34rem] rounded-full bg-[#c9a96e]/10 blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[30rem] h-[30rem] rounded-full bg-[#7a5a2d]/10 blur-[120px]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.04),transparent_34%)]" />
@@ -234,16 +237,16 @@ export default function App() {
           </div>
 
           <div className={`hidden md:flex items-center gap-6 text-sm text-white/70 ${isHebrew ? "flex-row-reverse" : ""}`}>
-            <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors">
+            <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors font-medium">
               {t.navHome}
             </button>
-            <button onClick={() => scrollToId("archive")} className="hover:text-[#c9a96e] transition-colors">
+            <button onClick={() => scrollToId("archive")} className="hover:text-[#c9a96e] transition-colors font-medium">
               {t.navArchive}
             </button>
-            <button onClick={() => scrollToId("about")} className="hover:text-[#c9a96e] transition-colors">
+            <button onClick={() => scrollToId("about")} className="hover:text-[#c9a96e] transition-colors font-medium">
               {t.navAbout}
             </button>
-            <button onClick={() => scrollToId("contact")} className="hover:text-[#c9a96e] transition-colors">
+            <button onClick={() => scrollToId("contact")} className="hover:text-[#c9a96e] transition-colors font-medium">
               {t.navContact}
             </button>
           </div>
@@ -271,7 +274,7 @@ export default function App() {
 
             <button
               onClick={() => setLang(lang === "he" ? "en" : "he")}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-[9px] text-sm font-medium text-white/80 whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-[9px] text-sm font-semibold text-white/80 whitespace-nowrap hover:text-[#c9a96e] hover:border-[#c9a96e]/35 transition-all"
             >
               <GlobeIcon />
               <span className="tracking-wide">
@@ -282,7 +285,6 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Main Content (now all scrolls OVER the fixed video background) */}
       <main className="relative z-10">
         
         <section id="home" className="px-6 pt-32 md:pt-40 min-h-screen flex flex-col items-center md:items-start overflow-hidden">
@@ -291,32 +293,33 @@ export default function App() {
               loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <div className={`max-w-4xl ${isHebrew ? "mr-0 ml-auto text-right" : "text-left"}`}>
-              <div className="inline-flex items-center gap-2 mb-4 md:mb-6 rounded-full border border-[#c9a96e]/25 bg-[#c9a96e]/10 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-[#e5c98c]">
+            <div className={`max-w-5xl ${isHebrew ? "mr-0 ml-auto text-right" : "text-left"}`}>
+              <div className="inline-flex items-center gap-2 mb-4 md:mb-6 rounded-full border border-[#c9a96e]/25 bg-[#c9a96e]/10 px-4 py-2 text-[11px] uppercase tracking-[0.3em] text-[#e5c98c] font-semibold">
                 <MusicIcon />
                 {t.heroBadge}
               </div>
 
-              <h1 className="text-4xl sm:text-6xl md:text-7xl font-semibold leading-[1.05] tracking-[-0.04em] drop-shadow-[0_0_40px_rgba(201,169,110,0.18)]">
+              {/* הכותרת הוגדלה משמעותית כדי שתהיה מרשימה גם בעברית */}
+              <h1 className="text-6xl sm:text-7xl md:text-[8.5rem] font-extrabold leading-[1] tracking-tight drop-shadow-[0_0_40px_rgba(201,169,110,0.18)]">
                 {t.heroTitle1}
-                <span className="block mt-1 text-3xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
+                <span className="block mt-2 text-4xl sm:text-6xl md:text-[6rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
                   {t.heroTitle2}
                 </span>
               </h1>
 
               {isHebrew && (
-                <div className="mt-3 text-sm text-white/35 tracking-[0.35em]">
+                <div className="mt-4 text-sm text-white/35 tracking-[0.35em] font-semibold">
                   ברויטי
                 </div>
               )}
 
-              <div className="mt-5 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
+              <div className="mt-6 w-16 h-[1px] bg-gradient-to-r from-[#c9a96e] to-transparent opacity-70" />
 
-              <p className="mt-5 max-w-2xl text-sm md:text-lg leading-7 text-white/65">
+              <p className="mt-6 max-w-2xl text-lg md:text-xl font-medium leading-relaxed text-white/80">
                 {t.heroText}
               </p>
 
-              <div className="mt-6 max-w-2xl text-sm text-white/40 leading-6">
+              <div className="mt-6 max-w-2xl text-base text-white/50 leading-relaxed font-light">
                 <p>
                   DJ Broiti is an AI music artist creating electronic music, cinematic sound,
                   and visual storytelling experiences.
@@ -327,12 +330,12 @@ export default function App() {
                 </p>
               </div>
 
-              <div className={`mt-8 flex flex-wrap gap-4 ${isHebrew ? "justify-start" : ""}`}>
+              <div className={`mt-10 flex flex-wrap gap-4 ${isHebrew ? "justify-start" : ""}`}>
                 <a
                   href={`https://www.youtube.com/watch?v=${featuredClip.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-6 py-3 font-semibold hover:scale-[1.03] transition-all shadow-[0_0_40px_rgba(201,169,110,0.28)]"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#c9a96e] text-black px-8 py-4 text-lg font-bold hover:scale-[1.03] transition-all shadow-[0_0_40px_rgba(201,169,110,0.28)]"
                 >
                   <YoutubeIcon />
                   {t.watchFeatured}
