@@ -179,6 +179,7 @@ function FooterIconLink({ href, children }) {
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
+  // מוגדר לאנגלית כברירת מחדל
   const [lang, setLang] = useState("en"); 
   const isHebrew = lang === "he";
   const t = content[lang];
@@ -203,7 +204,7 @@ export default function App() {
       <nav className="fixed top-0 left-0 z-50 w-full border-b border-white/10 bg-black/45 backdrop-blur-xl">
         <div className="max-w-[90rem] mx-auto px-5 md:px-8 py-4 flex items-center justify-between gap-3 md:gap-4">
           
-          {/* LOGO AREA (min-w-0 and truncate added so it safely shrinks on mobile) */}
+          {/* אזור הלוגו - הוגדר ככה שיתכווץ בחכמה בטלפונים (truncate) */}
           <div className={`flex items-center gap-3 md:gap-4 min-w-0 ${isHebrew ? "flex-row-reverse" : ""}`}>
             <div className="w-10 h-10 md:w-14 md:h-14 shrink-0 rounded-full border-2 border-[#c9a96e]/40 text-[#c9a96e] flex items-center justify-center text-lg md:text-2xl font-bold shadow-[0_0_30px_rgba(201,169,110,0.18)]">
               B
@@ -219,7 +220,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* DESKTOP LINKS */}
           <div className={`hidden lg:flex items-center gap-10 text-lg font-medium text-white/80 ${isHebrew ? "flex-row-reverse" : ""}`}>
             <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors">
               {t.navHome}
@@ -235,7 +235,6 @@ export default function App() {
             </button>
           </div>
 
-          {/* RIGHT SIDE (Socials hidden on mobile, Lang button shrinks safely) */}
           <div className={`flex items-center gap-2 md:gap-4 shrink-0 ${isHebrew ? "flex-row-reverse" : ""}`}>
             <SocialIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A" hideOnMobile={true}>
               <YoutubeIcon />
@@ -255,7 +254,6 @@ export default function App() {
             >
               <GlobeIcon />
               <span className="tracking-wide">
-                {/* Shortened text to save space on mobile */}
                 {lang === "he" ? "EN" : "HE"}
               </span>
             </button>
@@ -276,9 +274,10 @@ export default function App() {
                 {t.heroBadge}
               </div>
 
-              <h1 className="text-4xl sm:text-[6.5rem] md:text-[8.5rem] font-bold leading-[1.1] md:leading-[0.9] tracking-[-0.04em] drop-shadow-[0_0_40px_rgba(201,169,110,0.2)]">
+              {/* מרווח השורות תוקן כאן למניעת דריסה (leading-tight) */}
+              <h1 className="text-5xl sm:text-[5.5rem] md:text-[7.5rem] font-bold leading-tight tracking-[-0.02em] drop-shadow-[0_0_40px_rgba(201,169,110,0.2)]">
                 {t.heroTitle1}
-                <span className="block mt-2 md:mt-6 text-3xl sm:text-[4.5rem] md:text-[6.5rem] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
+                <span className="block mt-2 md:mt-5 text-4xl sm:text-[4rem] md:text-[5.5rem] leading-[1.15] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
                   {t.heroTitle2}
                 </span>
               </h1>
