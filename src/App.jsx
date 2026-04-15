@@ -90,7 +90,7 @@ const content = {
     brandHebrew: "ברויטי",
     heroBadge: "Official Website Live",
     heroTitle1: "DJ BROITI",
-    heroTitle2: "Music That Feels Like Cinema",
+    heroTitle2: "MUSIC THAT FEELS LIKE CINEMA",
     heroText: "All the music, visuals, and world of DJ Broiti — in one place.",
     watchFeatured: "Play Now",
     exploreArchive: "Explore All Clips",
@@ -179,21 +179,22 @@ function FooterIconLink({ href, children }) {
 
 export default function App() {
   const [loaded, setLoaded] = useState(false);
-  
-  // שינינו לאנגלית כברירת מחדל
   const [lang, setLang] = useState("en"); 
-  
   const isHebrew = lang === "he";
   const t = content[lang];
 
   useEffect(() => {
+    // ייבוא Heebo (לעברית/רגיל) ו- Playfair Display (לכותרות קולנועיות באנגלית)
     const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&display=swap';
+    link.href = 'https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&family=Playfair+Display:wght@400;600;700;800&display=swap';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
 
     setLoaded(true);
   }, []);
+
+  // משתנה דינמי: אם האתר באנגלית נשתמש בפונט הסריפי, אם בעברית נשאר עם Heebo
+  const titleFontClass = !isHebrew ? "font-['Playfair_Display',serif]" : "font-['Heebo',sans-serif]";
 
   return (
     <div
@@ -299,10 +300,10 @@ export default function App() {
                 {t.heroBadge}
               </div>
 
-              {/* הכותרת הוגדלה משמעותית כדי שתהיה מרשימה גם בעברית */}
-              <h1 className="text-6xl sm:text-7xl md:text-[8.5rem] font-extrabold leading-[1] tracking-tight drop-shadow-[0_0_40px_rgba(201,169,110,0.18)]">
+              {/* הכותרת הראשיות מקבלות עכשיו את הפונט המיוחד (titleFontClass) */}
+              <h1 className={`text-6xl sm:text-7xl md:text-[8.5rem] font-bold leading-[1] tracking-tight drop-shadow-[0_0_40px_rgba(201,169,110,0.18)] ${titleFontClass}`}>
                 {t.heroTitle1}
-                <span className="block mt-2 text-4xl sm:text-6xl md:text-[6rem] font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
+                <span className="block mt-2 text-4xl sm:text-6xl md:text-[6rem] text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f4e3bf] to-[#c9a96e] drop-shadow-[0_0_35px_rgba(201,169,110,0.18)]">
                   {t.heroTitle2}
                 </span>
               </h1>
@@ -371,7 +372,7 @@ export default function App() {
                     {t.featured}
                   </div>
 
-                  <h2 className="text-3xl md:text-5xl font-semibold leading-tight">
+                  <h2 className={`text-3xl md:text-5xl font-bold leading-tight ${titleFontClass}`}>
                     {featuredClip.title[lang]}
                   </h2>
 
@@ -400,7 +401,7 @@ export default function App() {
               <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-3">
                 {t.fullCollection}
               </div>
-              <h2 className="text-3xl md:text-5xl font-semibold leading-tight">
+              <h2 className={`text-3xl md:text-6xl font-bold leading-tight ${titleFontClass}`}>
                 {t.exploreAll}
               </h2>
             </div>
@@ -470,7 +471,7 @@ export default function App() {
               <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
                 {t.contactTitle}
               </div>
-              <h2 className="text-3xl md:text-4xl font-semibold mb-5">
+              <h2 className={`text-3xl md:text-5xl font-bold mb-5 ${titleFontClass}`}>
                 {t.contactTitle}
               </h2>
               <p className="text-white/70 leading-8">{t.contactText}</p>
@@ -501,7 +502,7 @@ export default function App() {
               <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">
                 {t.aboutTitle}
               </div>
-              <h2 className="text-3xl md:text-4xl font-semibold mb-5">
+              <h2 className={`text-3xl md:text-5xl font-bold mb-5 ${titleFontClass}`}>
                 {t.aboutTitle}
               </h2>
               <p className="text-white/70 leading-8">{t.aboutText}</p>
