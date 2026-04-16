@@ -16,11 +16,11 @@ const MusicIcon = () => (
   </svg>
 );
 
-const GlobeIcon = () => (
+const DownloadIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M2 12h20" />
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" x2="12" y1="15" y2="3" />
   </svg>
 );
 
@@ -28,20 +28,6 @@ const MailIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="5" width="18" height="14" rx="2" />
     <path d="m3 7 9 6 9-6" />
-  </svg>
-);
-
-const InstagramIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="20" rx="5" />
-    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-    <path d="M17.5 6.5h.01" />
-  </svg>
-);
-
-const TiktokIcon = () => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M16.5 3c.4 2 1.6 3.5 3.5 4v3.1c-1.2 0-2.4-.3-3.5-.9v6.2c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .7 0 1 .1v3.2c-.3-.1-.6-.1-1-.1-1.5 0-2.8 1.2-2.8 2.8s1.2 2.8 2.8 2.8 2.8-1.2 2.8-2.8V3h3.2z" />
   </svg>
 );
 
@@ -85,54 +71,64 @@ const content = {
   en: {
     navHome: "Home",
     navArchive: "Archive",
+    navEpk: "EPK",
     navAbout: "About",
     navContact: "Contact",
     brandSub: "Official Archive",
-    brandHebrew: "ברויטי",
     heroBadge: "Official Website Live",
     heroTitle1: "DJ BROITI",
     heroTitle2: "MUSIC THAT FEELS LIKE CINEMA",
     heroText: "All the music, visuals, and world of DJ Broiti — in one place.",
     watchFeatured: "Play Now",
-    exploreArchive: "Explore All Clips",
     featured: "Featured Release",
     openClip: "Open Clip",
     fullCollection: "Full Collection",
     exploreAll: "Explore All Clips",
     watchYoutube: "Watch on YouTube",
-    aboutTitle: "About",
+    epkLabel: "Official",
+    epkTitle: "Electronic Press Kit",
+    epkBioTitle: "Short Bio",
+    epkBioText: "DJ Broiti is an AI artist and music producer from Jerusalem, blending deep house and melodic trance with cutting-edge artificial intelligence to create cinematic digital experiences.",
+    epkDownload: "Download Press Assets",
+    aboutTitle: "About DJ Broiti",
     aboutText: "DJ Broiti is an AI artist from Jerusalem, creating music, visuals, and cinematic digital experiences through imagination and artificial intelligence.",
     aboutText2: "This official site brings together original songs, visual storytelling, and direct access to the full archive.",
     contactTitle: "Contact",
     contactText: "For collaborations, music, and official inquiries:",
     footerLine: "Cinematic Music · © 2026 DJ Broiti",
     emailButton: "Send Email",
+    listenNow: "Listen Now",
   },
   he: {
     navHome: "בית",
     navArchive: "ארכיון",
+    navEpk: "EPK",
     navAbout: "אודות",
     navContact: "יצירת קשר",
     brandSub: "הארכיון הרשמי",
-    brandHebrew: "ברויטי",
     heroBadge: "האתר הרשמי עלה לאוויר",
     heroTitle1: "DJ BROITI",
     heroTitle2: "מוזיקה שנשמעת כמו סרט",
-    heroText: "כל המוזיקה, הקליפים והעולם של DJ Broiti — במקום אחד.",
+    heroText: "כל המוזיקה, הקליפים והעולם של דיג'יי ברויטי — במקום אחד.",
     watchFeatured: "הפעל עכשיו",
-    exploreArchive: "לכל הקליפים",
     featured: "קטע נבחר",
     openClip: "צפה ביוטיוב",
     fullCollection: "האוסף המלא",
     exploreAll: "לכל הקליפים",
     watchYoutube: "צפה ביוטיוב",
-    aboutTitle: "אודות",
-    aboutText: "DJ Broiti הוא אמן AI מירושלים, היוצר מוזיקה, ויז'ואלים וחוויות דיגיטל קולנועיות באמצעות דמיון ובינה מלאכותית.",
-    aboutText2: "האתר הרשמי מרכז במקום אחד את השירים המקוריים, הסיפור הוויזואלי והגישה המלאה לארכיון.",
+    epkLabel: "רשמי",
+    epkTitle: "Press Kit (EPK)",
+    epkBioTitle: "ביוגרפיה קצרה",
+    epkBioText: "דיג'יי ברויטי (DJ Broiti) הוא יוצר מוזיקה אלקטרונית מירושלים, המשלב דיפ-האוס וטראנס מלודי עם כלים מבוססי AI ליצירת חוויות קולנועיות.",
+    epkDownload: "הורד נכסי תקשורת",
+    aboutTitle: "אודות דיגיי ברוייטי",
+    aboutText: "דיגיי ברוייטי (DJ Broiti) הוא אמן AI מירושלים, היוצר מוזיקה, ויז'ואלים וחוויות דיגיטל קולנועיות באמצעות דמיון ובינה מלאכותית.",
+    aboutText2: "האתר הרשמי מרכז במקום אחד את השירים המקוריים, הסיפור הוויזואלי והגישה המלאה לארכיון של דיג'יי ברויטי.",
     contactTitle: "יצירת קשר",
     contactText: "לשיתופי פעולה, מוזיקה ופניות רשמיות:",
     footerLine: "ברויטי · מוזיקה קולנועית · © 2026 כל הזכויות שמורות",
     emailButton: "שלח מייל",
+    listenNow: "האזן עכשיו",
   },
 };
 
@@ -212,12 +208,13 @@ export default function App() {
           <div className="hidden md:flex items-center gap-6 text-sm text-white/70">
             <button onClick={() => scrollToId("home")} className="hover:text-[#c9a96e] transition-colors">{t.navHome}</button>
             <button onClick={() => scrollToId("archive")} className="hover:text-[#c9a96e] transition-colors">{t.navArchive}</button>
+            <button onClick={() => scrollToId("epk")} className="hover:text-[#c9a96e] transition-colors">{t.navEpk}</button>
             <button onClick={() => scrollToId("about")} className="hover:text-[#c9a96e] transition-colors">{t.navAbout}</button>
             <button onClick={() => scrollToId("contact")} className="hover:text-[#c9a96e] transition-colors">{t.navContact}</button>
           </div>
           <div className={`flex items-center gap-2 md:gap-3 ${isHebrew ? "flex-row-reverse" : ""}`}>
             <SocialIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A"><YoutubeIcon /></SocialIconLink>
-            <SocialIconLink href="https://open.spotify.com/artist/5pfzwmN1A0pYdZZiQGf15D?si"><SpotifyIcon /></SocialIconLink>
+            <SocialIconLink href="https://open.spotify.com/search/DJ%20Broiti"><SpotifyIcon /></SocialIconLink>
             <SocialIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545"><AppleIcon /></SocialIconLink>
             <button onClick={() => setLang(lang === "he" ? "en" : "he")} className="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-bold text-white/80 transition-all hover:text-[#c9a96e]">
               {lang === "he" ? "EN" : "עב"}
@@ -254,7 +251,7 @@ export default function App() {
             <div className="rounded-[30px] border border-white/10 bg-black/40 backdrop-blur-md overflow-hidden">
               <div className="grid lg:grid-cols-[1.2fr_0.8fr]">
                 <a href={`https://www.youtube.com/watch?v=${featuredClip.id}`} target="_blank" rel="noopener noreferrer" className="group relative block min-h-[300px]">
-                  <img src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`} className="w-full h-full object-cover transition-all group-hover:scale-105" />
+                  <img src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`} alt={`DJ Broiti דיג'יי ברויטי - ${featuredClip.title[lang]}`} className="w-full h-full object-cover transition-all group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/10 to-transparent" />
                 </a>
                 <div className={`p-8 flex flex-col justify-center ${isHebrew ? "text-right" : "text-left"}`}>
@@ -283,7 +280,7 @@ export default function App() {
                 <a key={i} href={`https://www.youtube.com/watch?v=${clip.id}`} target="_blank" rel="noreferrer" className="group block">
                   <article className="h-full rounded-[24px] border border-white/10 bg-black/40 overflow-hidden backdrop-blur-md transition-all hover:-translate-y-1">
                     <div className="relative aspect-video overflow-hidden">
-                      <img src={`https://i.ytimg.com/vi/${clip.id}/maxresdefault.jpg`} className="w-full h-full object-cover transition-all group-hover:scale-105" />
+                      <img src={`https://i.ytimg.com/vi/${clip.id}/maxresdefault.jpg`} alt={`DJ Broiti דיגיי ברוייטי - ${clip.title[lang]}`} className="w-full h-full object-cover transition-all group-hover:scale-105" />
                       <div className="absolute top-4 left-4"><span className="rounded-full bg-black/50 px-3 py-1 text-[10px] uppercase text-[#e9d4ac]">{clip.cat[lang]}</span></div>
                     </div>
                     <div className={`p-6 ${isHebrew ? "text-right" : "text-left"}`}>
@@ -295,6 +292,28 @@ export default function App() {
                   </article>
                 </a>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* EPK SECTION */}
+        <section id="epk" className="px-6 pb-24">
+          <div className="max-w-7xl mx-auto">
+            <div className={`rounded-[30px] border border-[#c9a96e]/30 bg-[#c9a96e]/5 backdrop-blur-md p-10 md:p-14 ${isHebrew ? "text-right" : "text-left"}`}>
+              <div className="text-[11px] uppercase tracking-[0.35em] text-[#c9a96e] mb-4">{t.epkLabel}</div>
+              <h2 className="text-3xl md:text-5xl font-black mb-8">{t.epkTitle}</h2>
+              <div className="grid md:grid-cols-2 gap-10 items-center">
+                <div>
+                  <h3 className="text-xl font-bold mb-4 text-white/90">{t.epkBioTitle}</h3>
+                  <p className="text-white/70 leading-relaxed text-lg">{t.epkBioText}</p>
+                </div>
+                <div className={`flex flex-col justify-center ${isHebrew ? "md:items-end" : "md:items-start"}`}>
+                  <a href="/dj-broiti-press-kit.zip" download="DJ_Broiti_Press_Kit.zip" className="inline-flex items-center gap-3 rounded-full border border-[#c9a96e] text-[#c9a96e] px-8 py-4 font-bold hover:bg-[#c9a96e] hover:text-black transition-all">
+                    <DownloadIcon /> {t.epkDownload}
+                  </a>
+                  <p className="text-sm text-white/40 mt-4 px-4">Includes high-res logos & press photos</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -318,12 +337,45 @@ export default function App() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10 py-12 bg-black/60 backdrop-blur-md">
+      <footer className="border-t border-white/10 pt-12 pb-28 md:pb-32 bg-black/60 backdrop-blur-md">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-sm text-white/38">{t.footerLine}</div>
-          <div className="flex gap-6"><FooterIconLink href="#"><AppleIcon /></FooterIconLink><FooterIconLink href="#"><SpotifyIcon /></FooterIconLink><FooterIconLink href="#"><YoutubeIcon /></FooterIconLink></div>
+          <div className="flex gap-6">
+            <FooterIconLink href="https://music.apple.com/il/artist/dj-broiti/1832848545"><AppleIcon /></FooterIconLink>
+            <FooterIconLink href="https://open.spotify.com/search/DJ%20Broiti"><SpotifyIcon /></FooterIconLink>
+            <FooterIconLink href="https://www.youtube.com/channel/UCYjqM6rM9inAmbWdLBcQ86A"><YoutubeIcon /></FooterIconLink>
+          </div>
         </div>
       </footer>
+
+      {/* --- FLOATING MUSIC PLAYER --- */}
+      <div className="fixed bottom-0 left-0 w-full bg-[#050505]/90 backdrop-blur-xl border-t border-white/10 p-3 z-50 flex items-center justify-between px-4 md:px-8">
+        {/* Track Info */}
+        <div className={`flex items-center gap-4 ${isHebrew ? 'flex-row-reverse' : ''}`}>
+          <img
+            src={`https://i.ytimg.com/vi/${featuredClip.id}/maxresdefault.jpg`}
+            className="w-12 h-12 md:w-14 md:h-14 rounded-md object-cover border border-white/10 shadow-lg"
+            alt={`DJ Broiti - ${featuredClip.title[lang]}`}
+          />
+          <div className={isHebrew ? "text-right" : "text-left"}>
+            <div className="text-white font-bold text-sm md:text-base line-clamp-1">{featuredClip.title[lang]}</div>
+            <div className="text-[#c9a96e] text-[10px] md:text-xs font-bold tracking-widest uppercase mt-0.5">DJ Broiti</div>
+          </div>
+        </div>
+
+        {/* Streaming Buttons */}
+        <div className={`flex items-center gap-2 md:gap-3 ${isHebrew ? 'flex-row-reverse' : ''}`}>
+          <span className="hidden md:inline-block text-[10px] text-white/40 font-bold uppercase tracking-[0.2em] mx-2">
+            {t.listenNow}
+          </span>
+          <a href="https://open.spotify.com/search/DJ%20Broiti" target="_blank" rel="noreferrer" className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 bg-white/5 text-white/70 hover:text-[#1DB954] hover:border-[#1DB954]/50 hover:bg-[#1DB954]/10 transition-all shadow-[0_0_15px_rgba(29,185,84,0)] hover:shadow-[0_0_15px_rgba(29,185,84,0.3)]">
+            <SpotifyIcon />
+          </a>
+          <a href="https://music.apple.com/il/artist/dj-broiti/1832848545" target="_blank" rel="noreferrer" className="flex items-center justify-center w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/10 bg-white/5 text-white/70 hover:text-[#FA243C] hover:border-[#FA243C]/50 hover:bg-[#FA243C]/10 transition-all shadow-[0_0_15px_rgba(250,36,60,0)] hover:shadow-[0_0_15px_rgba(250,36,60,0.3)]">
+            <AppleIcon />
+          </a>
+        </div>
+      </div>
     </div>
   );
 }
